@@ -7,8 +7,12 @@ nav {
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
-.header-nav ul {
+.nav-ul {
   list-style: none;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  border: solid;
 }
 
 .header-nav > ul {
@@ -19,6 +23,7 @@ nav {
 /** Styling the Logo **/
 .pageTitle {
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .pageTitle h1 {
@@ -30,6 +35,7 @@ nav {
 }
 
 /** Styling the Categories **/
+
 .categories-holder ul {
   list-style: none;
   display: flex;
@@ -37,6 +43,8 @@ nav {
   gap: 24px;
 }
 
-.categories-holder ul li {
-  margin-left: 0;
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
 }

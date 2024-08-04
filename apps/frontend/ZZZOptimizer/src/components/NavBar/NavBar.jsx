@@ -6,7 +6,7 @@ import "./nav.css";
 export default function NavBar() {
   return (
     <nav className="header-nav ms-auto">
-      <ul className="d-flex align-items-center">
+      <ul className="d-flex align-items-center nav-ul">
         <NavLogo />
         <NavCategories />
         <NavAvatar />
