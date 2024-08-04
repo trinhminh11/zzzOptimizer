@@ -18,6 +18,13 @@ function NavCategories() {
             <span>Team Comps</span>
           </a>
         </li>
+
+        <li className="nav-item">
+          <a href="#" className="nav-link collapsed">
+            <i className="bi bi-people"></i>
+            <span>W-Engine</span>
+          </a>
+        </li>
       </ul>
     </div>
   );
