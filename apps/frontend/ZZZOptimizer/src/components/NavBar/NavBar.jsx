@@ -1,6 +1,7 @@
 import NavAvatar from "./NavAvatar";
 import NavCategories from "./NavCategories";
 import NavLogo from "./NavLogo";
+import "./nav.css";
 
 export default function NavBar() {
   return (

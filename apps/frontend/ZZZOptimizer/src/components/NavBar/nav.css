@@ -1,0 +1,42 @@
+/** Styling the nav **/
+
+nav {
+  background-color: #1c1c1f;
+  color: white;
+  border: none;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.header-nav ul {
+  list-style: none;
+}
+
+.header-nav > ul {
+  margin: 0;
+  padding: 0;
+}
+
+/** Styling the Logo **/
+.pageTitle {
+  margin-bottom: 10px;
+}
+
+.pageTitle h1 {
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+}
+
+/** Styling the Categories **/
+.categories-holder ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.categories-holder ul li {
+  margin-left: 0;
+}
