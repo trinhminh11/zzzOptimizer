@@ -1,3 +1,1 @@
 # zzzOptimizer
-
-Ngu Minh Trinh
