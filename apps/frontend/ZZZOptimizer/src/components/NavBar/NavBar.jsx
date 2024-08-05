@@ -9,7 +9,6 @@ export default function NavBar() {
       <ul className="d-flex align-items-center nav-ul">
         <NavLogo />
         <NavCategories />
-        <NavAvatar />
       </ul>
     </nav>
   );
