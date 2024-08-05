@@ -81,8 +81,8 @@ function CharacterLeftColumn() {
 
         {demoData.map((demoData) => {
           return (
-            <div className="champion" key={`${demoData.agentName}`}>
-              {demoData.agentName}
+            <div className="champion" key={`${demoData.characterName}`}>
+              <span>{demoData.characterName}</span>
             </div>
           );
         })}
