@@ -6,6 +6,7 @@ import iceLogo from "../../assets/logo/agentsAttributes/Icon_Ice.jpg";
 import physicalLogo from "../../assets/logo/agentsAttributes/Icon_Physical.jpg";
 import agentRinaLogo from "../../assets/logo/agents/Agent_Rina_Icon.jpg";
 import "./character.css";
+import demoData from "../../../../../backend/components/character.json";
 
 function CharacterLeftColumn() {
   return (
@@ -16,7 +17,7 @@ function CharacterLeftColumn() {
       </div>
 
       {/* Filter Bar  */}
-      <div class="filter-bar">
+      <div className="filter-bar">
         {/* Elements */}
         <button type="button" className="btn btn-secondary">
           <img alt="Electric Logo" src={electricLogo} className="nav-icon" />
@@ -41,7 +42,7 @@ function CharacterLeftColumn() {
 
       {/* Champion display */}
       <div className="champion-grid">
-        <div className="champion">
+        {/* <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
           <span className="champion-name"> Alexandrina Sebastiane</span>
         </div>
@@ -76,7 +77,15 @@ function CharacterLeftColumn() {
         <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
           <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
+        </div> */}
+
+        {demoData.map((demoData) => {
+          return (
+            <div className="champion" key={`${demoData.agentName}`}>
+              {demoData.agentName}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,18 +1,18 @@
 [
-	{
-		"name": "Ellen Joe",
-		"rank": "S",
-		"attribute": "Ice",
-		"style": "Attack",
-		"faction": "Victoria Housekeeping",
-		"type": "slash"
-	},
-	{
-		"name": "Soldier 11",
-		"rank": "S",
-		"attribute": "Fire",
-		"style": "Attack",
-		"faction": "Obol Squad",
-		"type": "slash"
-	}
+  {
+    "agentName": "Ellen Joe",
+    "rank": "S",
+    "attribute": "Ice",
+    "style": "Attack",
+    "faction": "Victoria Housekeeping",
+    "type": "slash"
+  },
+  {
+    "agentName": "Soldier 11",
+    "rank": "S",
+    "attribute": "Fire",
+    "style": "Attack",
+    "faction": "Obol Squad",
+    "type": "slash"
+  }
 ]
