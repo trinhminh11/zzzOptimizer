@@ -3,7 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/HomePage/Home";
-import Character from "./components/CharacterPage/Character";
+import CharacterDisplay from "./components/CharacterPage/CharacterDisplay";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <Route path="/deploy-github/" element={<Home />}></Route>
           <Route
             path="/deploy-github/characters"
-            element={<Character />}
+            element={<CharacterDisplay />}
           ></Route>
         </Routes>
       </div>

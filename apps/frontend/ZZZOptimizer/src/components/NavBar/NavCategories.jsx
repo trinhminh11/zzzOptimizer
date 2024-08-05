@@ -1,7 +1,8 @@
 import React from "react";
 import "./nav.css";
-import engineLogo from "../../assets/logo/W-Engine.jpg";
-import discLogo from "../../assets/logo/Drive-Disc.jpg";
+import engineLogo from "../../assets/logo/wEngine/W-Engine.jpg";
+import discLogo from "../../assets/logo/driveDisc/Drive-Disc.jpg";
+import bangbooLogo from "../../assets/logo/bangboos/Bangboo.jpg";
 
 function NavCategories() {
   return (
@@ -11,15 +12,7 @@ function NavCategories() {
         <li className="nav-item">
           <a href="/deploy-github/characters" className="nav-link collapsed">
             <i className="bi bi-person"></i>
-            <span>Characters</span>
-          </a>
-        </li>
-
-        {/* Team Comps */}
-        <li className="nav-item">
-          <a href="#" className="nav-link collapsed">
-            <i className="bi bi-people"></i>
-            <span>Team Comps</span>
+            <span>Agents</span>
           </a>
         </li>
 
@@ -36,6 +29,22 @@ function NavCategories() {
           <a href="#" className="nav-link collapsed">
             <img alt="Logo" src={discLogo} className="nav-icon" />
             <span>Drive-Disc</span>
+          </a>
+        </li>
+
+        {/* Team Comps */}
+        <li className="nav-item">
+          <a href="#" className="nav-link collapsed">
+            <i className="bi bi-people"></i>
+            <span>Team Comps</span>
+          </a>
+        </li>
+
+        {/* Bangboos */}
+        <li className="nav-item">
+          <a href="#" className="nav-link collapsed">
+            <img alt="bangbooLogo" src={bangbooLogo} className="nav-icon" />
+            <span>Bangboo</span>
           </a>
         </li>
       </ul>

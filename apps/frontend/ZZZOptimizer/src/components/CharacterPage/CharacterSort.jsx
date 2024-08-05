@@ -1,10 +1,10 @@
 import React from "react";
 import "./character.css";
-import fireLogo from "../../assets/logo/Icon_Fire.jpg";
-import electricLogo from "../../assets/logo/Icon_Electric.jpg";
-import etherLogo from "../../assets/logo/Icon_Ether.jpg";
-import iceLogo from "../../assets/logo/Icon_Ice.jpg";
-import physicalLogo from "../../assets/logo/Icon_Physical.jpg";
+import fireLogo from "../../assets/logo/agentsAttributes/Icon_Fire.jpg";
+import electricLogo from "../../assets/logo/agentsAttributes/Icon_Electric.jpg";
+import etherLogo from "../../assets/logo/agentsAttributes/Icon_Ether.jpg";
+import iceLogo from "../../assets/logo/agentsAttributes/Icon_Ice.jpg";
+import physicalLogo from "../../assets/logo/agentsAttributes/Icon_Physical.jpg";
 
 function CharacterSort() {
   return (
