@@ -1,0 +1,77 @@
+/** Styling the nav **/
+
+nav {
+  background-color: #1c1c1f;
+  color: white;
+  border: none;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  height: 55px;
+  margin: 0px;
+  padding: 0px;
+  line-height: 55px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.nav-ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  height: 100%;
+}
+
+.header-nav > ul {
+  margin: 0;
+  padding: 0;
+}
+
+/** Styling the Logo **/
+.pageTitle {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.pageTitle h1 {
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+}
+
+/** Styling the Categories **/
+
+.categories-holder {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+  margin-right: 150px;
+}
+
+.categories-holder ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin-right: 100px;
+  height: 100%;
+}
+
+.categories-holder ul li {
+  height: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.categories-holder ul li:hover {
+  background-color: #7b7b7b;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
