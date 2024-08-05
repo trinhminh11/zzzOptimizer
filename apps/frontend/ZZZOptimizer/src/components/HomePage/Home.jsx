@@ -1,13 +1,14 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
+import { Routes, Route, Link } from "react-router-dom";
 
-function Character() {
+function Home() {
   return (
     <div>
       <NavBar />
-      Character
+      HomePage
     </div>
   );
 }
 
-export default Character;
+export default Home;

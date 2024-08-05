@@ -4,7 +4,9 @@ import "./nav.css";
 function NavLogo() {
   return (
     <div className="nav-item pageTitle p-3">
-      <h1>ZZZOptimizer</h1>
+      <a href="/deploy-github/">
+        <h1>ZZZOptimizer</h1>
+      </a>
     </div>
   );
 }

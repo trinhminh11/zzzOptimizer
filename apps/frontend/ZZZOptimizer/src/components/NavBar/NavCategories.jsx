@@ -9,7 +9,7 @@ function NavCategories() {
       <ul className="categories">
         {/* Character  */}
         <li className="nav-item">
-          <a href="#" className="nav-link collapsed">
+          <a href="/deploy-github/characters" className="nav-link collapsed">
             <i className="bi bi-person"></i>
             <span>Characters</span>
           </a>
