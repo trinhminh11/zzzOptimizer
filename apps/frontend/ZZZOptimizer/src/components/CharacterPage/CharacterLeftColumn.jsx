@@ -6,9 +6,9 @@ import iceLogo from "../../assets/logo/agentsAttributes/Icon_Ice.jpg";
 import physicalLogo from "../../assets/logo/agentsAttributes/Icon_Physical.jpg";
 import "./character.css";
 // import demoData from "../../../../../backend/components/character.json";
-import demoData from "./demo.json";
+// import demoData from "./demo.json";
 
-function CharacterLeftColumn() {
+function CharacterLeftColumn({ list }) {
   return (
     <div className="row left-table">
       {/* Search Bar  */}
@@ -42,50 +42,24 @@ function CharacterLeftColumn() {
 
       {/* Champion display */}
       <div className="champion-grid">
-        {/* <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name"> Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div>
-        <div className="champion">
-          <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span className="champion-name">Alexandrina Sebastiane</span>
-        </div> */}
-
-        {demoData.map((demoData) => {
+        {/* {demoData.map((demoData) => {
           const location = demoData.img;
           return (
             <div className="champion" key={`${demoData.characterName}`}>
               {console.log(demoData.img)}
               <img src={require(location)} alt="demo"></img>
               <div className="name-showcase">{demoData.characterName} </div>
+            </div>
+          );
+        })} */}
+
+        {list.map((value) => {
+          console.log(value);
+          return (
+            <div className="champion" key={`${value.characterName}`}>
+              {/* {console.log(CharacterInfo.img)} */}
+              <img src={require(value.icon)} alt="demo"></img>
+              <div className="name-showcase">{value.characterName} </div>
             </div>
           );
         })}

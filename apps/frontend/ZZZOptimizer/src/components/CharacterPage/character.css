@@ -85,6 +85,7 @@
 .champion {
   text-align: center;
   overflow: hidden;
+  color: white;
 }
 
 .name-showcase {
