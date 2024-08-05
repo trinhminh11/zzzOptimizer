@@ -1,11 +1,11 @@
 [
   {
-    "characterName": "Rina (Alexandrina Sebastiane)",
+    "characterName": "Rina",
     "rank": "S",
     "attribute": "Electric",
     "style": "Support",
     "faction": "Victoria Housekeeping",
     "type": "Strike",
-    "img": "/deploy-github/src/assets/logo/agents/Agent_Rina_Icon.jpg"
+    "img": "/deploy-github/src/assets/logo/agents/Rina.jpg"
   }
 ]

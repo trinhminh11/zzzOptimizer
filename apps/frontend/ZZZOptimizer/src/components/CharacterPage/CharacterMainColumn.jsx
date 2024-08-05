@@ -4,7 +4,7 @@ import electricLogo from "../../assets/logo/agentsAttributes/Icon_Electric.jpg";
 import etherLogo from "../../assets/logo/agentsAttributes/Icon_Ether.jpg";
 import iceLogo from "../../assets/logo/agentsAttributes/Icon_Ice.jpg";
 import physicalLogo from "../../assets/logo/agentsAttributes/Icon_Physical.jpg";
-import agentRinaLogo from "../../assets/logo/agents/Agent_Rina_Icon.jpg";
+import agentRinaLogo from "../../assets/logo/agents/Rina.jpg";
 import sRankLogo from "../../assets/logo/agentsRanks/Icon_AgentRank_S.jpg";
 import aRankLogo from "../../assets/logo/agentsRanks/Icon_AgentRank_A.jpg";
 import anomalyRole from "../../assets/logo/agentsRoles/Icon_Anomaly.jpg";

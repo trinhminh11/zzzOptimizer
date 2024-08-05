@@ -4,7 +4,6 @@ import electricLogo from "../../assets/logo/agentsAttributes/Icon_Electric.jpg";
 import etherLogo from "../../assets/logo/agentsAttributes/Icon_Ether.jpg";
 import iceLogo from "../../assets/logo/agentsAttributes/Icon_Ice.jpg";
 import physicalLogo from "../../assets/logo/agentsAttributes/Icon_Physical.jpg";
-import agentRinaLogo from "../../assets/logo/agents/Agent_Rina_Icon.jpg";
 import "./character.css";
 // import demoData from "../../../../../backend/components/character.json";
 import demoData from "./demo.json";
@@ -81,12 +80,12 @@ function CharacterLeftColumn() {
         </div> */}
 
         {demoData.map((demoData) => {
+          {
+          }
           return (
             <div className="champion" key={`${demoData.characterName}`}>
-              <img
-                src={require("../../assets/logo/agents/Agent_Rina_Icon.jpg")}
-                alt="demo"
-              ></img>
+              {console.log(location)}
+              <img src={require(demoData.img)} alt="demo"></img>
               {demoData.characterName}
             </div>
           );
