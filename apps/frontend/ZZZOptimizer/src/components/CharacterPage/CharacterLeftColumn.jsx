@@ -36,42 +36,42 @@ function CharacterLeftColumn() {
         </button>
       </div>
 
-      <div class="champion-grid">
-        <div class="champion">
+      <div className="champion-grid">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name"> Alexandrina Sebastiane</span>
+          <span className="champion-name"> Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
-        <div class="champion">
+        <div className="champion">
           <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
-          <span class="champion-name">Alexandrina Sebastiane</span>
+          <span className="champion-name">Alexandrina Sebastiane</span>
         </div>
       </div>
     </div>

@@ -39,14 +39,14 @@
 
 /* Styling the under columns */
 .character-columns-holder {
-  width: 80%;
+  width: 90%;
   background-color: #1c1c1f;
-  border: solid white;
 }
 
 /* Styling the left table */
 .left-table {
   background-color: #404258;
+  border-radius: 5px;
 }
 
 .search-bar {
@@ -90,6 +90,8 @@
   width: 50px;
   height: 50px;
   border-radius: 4px;
+  border: solid white;
+  border-width: 1px;
 }
 
 .champion-name {
@@ -97,4 +99,87 @@
   margin-top: 5px;
   font-size: 12px;
   color: #b0b3b8;
+}
+
+/* Styling the right column */
+
+.character-right-column {
+  background-color: #404258;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.table-container {
+  width: 80%;
+  overflow-x: auto;
+  background-color: #404258;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+thead {
+  background-color: #2c2f36;
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #3b3e46;
+}
+
+td img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+td {
+  vertical-align: middle;
+}
+
+td img[alt="S Rank"],
+td img[alt="A Rank"] {
+  width: 20px;
+  height: 20px;
+}
+
+td img[alt="Support"],
+td img[alt="Stun"],
+td img[alt="Attack"],
+td img[alt="Defense"],
+td img[alt="Victoria"] {
+  width: 24px;
+  height: 24px;
+}
+tbody tr {
+  border-bottom: 2px solid #31313c;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+th.fighting-style th.attribute {
+  width: 100px;
+}
+
+th.faction {
+  width: 250px;
 }
