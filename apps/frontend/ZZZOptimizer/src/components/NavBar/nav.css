@@ -63,6 +63,7 @@ nav {
 .categories-holder ul li {
   height: 100%;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .categories-holder ul li:hover {
