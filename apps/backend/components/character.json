@@ -1,5 +1,4 @@
 [
-<<<<<<< HEAD
   {
     "characterName": "Rina (Alexandrina Sebastiane)",
     "rank": "S",
@@ -7,274 +6,141 @@
     "style": "Support",
     "faction": "Victoria Housekeeping",
     "type": "Strike",
-    "img": "../../assets/logo/agentsAttributes/Icon_Physical.jpg"
+    "icon": "../../assets/logo/agents/Rina.jpg"
+  },
+  {
+    "characterName": "Anby Demara",
+    "rank": "A",
+    "attribute": "Electric",
+    "style": "Stun",
+    "faction": "Cunning Hares",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Anby.jpg"
+  },
+  {
+    "characterName": "Anton Ivanov",
+    "rank": "A",
+    "attribute": "Electric",
+    "style": "Attack",
+    "faction": "Belobog Heavy Industries",
+    "type": "Pierce",
+    "icon": "../../assets/logo/agents/Anton.jpg"
+  },
+  {
+    "characterName": "Ben Bigger",
+    "rank": "A",
+    "attribute": "Fire",
+    "style": "Defense",
+    "faction": "Belobog Heavy Industries",
+    "type": "Strike",
+    "icon": "../../assets/logo/agents/Ben.jpg"
+  },
+  {
+    "characterName": "Billy Kid",
+    "rank": "A",
+    "attribute": "Physical",
+    "style": "Attack",
+    "faction": "Cunning Hares",
+    "type": "Pierce",
+    "icon": "../../assets/logo/agents/Billy.jpg"
+  },
+  {
+    "characterName": "Corin Wickes",
+    "rank": "A",
+    "attribute": "Physical",
+    "style": "Attack",
+    "faction": "Victoria Housekeeping",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Corin.jpg"
+  },
+  {
+    "characterName": "Ellen Joe",
+    "rank": "S",
+    "attribute": "Ice",
+    "style": "Attack",
+    "faction": "Victoria Housekeeping",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Ellen.jpg"
+  },
+  {
+    "characterName": "Koleda Belobog",
+    "rank": "S",
+    "attribute": "Fire",
+    "style": "Stun",
+    "faction": "Belobog Heavy Industries",
+    "type": "Strike",
+    "icon": "../../assets/logo/agents/Koleda.jpg"
+  },
+  {
+    "characterName": "Lucy (Luciana de Montefio)",
+    "rank": "A",
+    "attribute": "Fire",
+    "style": "Support",
+    "faction": "Sons of Calydon",
+    "type": "Strike",
+    "icon": "../../assets/logo/agents/Lucy.jpg"
+  },
+  {
+    "characterName": "Nekomata (Nekomiya Mana)",
+    "rank": "S",
+    "attribute": "Physical",
+    "style": "Attack",
+    "faction": "Cunning Hares",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Nekomata.jpg"
+  },
+  {
+    "characterName": "Nicole Demara",
+    "rank": "A",
+    "attribute": "Ether",
+    "style": "Support",
+    "faction": "Cunning Hares",
+    "type": "Strike",
+    "icon": "../../assets/logo/agents/Nicole.jpg"
+  },
+  {
+    "characterName": "Piper Wheel",
+    "rank": "A",
+    "attribute": "Physical",
+    "style": "Anomaly",
+    "faction": "Sons of Calydon",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Piper.jpg"
+  },
+  {
+    "characterName": "Soldier11",
+    "rank": "S",
+    "attribute": "Fire",
+    "style": "Attack",
+    "faction": "Obol Squad",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Soldier11.jpg"
+  },
+  {
+    "characterName": "Soukaku",
+    "rank": "A",
+    "attribute": "Ice",
+    "style": "Support",
+    "faction": "Section 6",
+    "type": "Slash",
+    "icon": "../../assets/logo/agents/Soukaku.jpg"
+  },
+  {
+    "characterName": "Von Lycaon",
+    "rank": "S",
+    "attribute": "Ice",
+    "style": "Stun",
+    "faction": "Victoria Housekeeping",
+    "type": "Strike",
+    "icon": "../../assets/logo/agents/Lycaon.jpg"
+  },
+  {
+    "characterName": "Zhu Yuan",
+    "rank": "S",
+    "attribute": "Ether",
+    "style": "Attack",
+    "faction": "Criminal Investigation Special Response Team",
+    "type": "Pierce",
+    "icon": "../../assets/logo/agents/Yuan.jpg"
   }
-  //   },
-  //   {
-  //     "characterName": "Anby Demara",
-  //     "rank": "A",
-  //     "attribute": "Electric",
-  //     "style": "Stun",
-  //     "faction": "Cunning Hares",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Anton Ivanov",
-  //     "rank": "A",
-  //     "attribute": "Electric",
-  //     "style": "Attack",
-  //     "faction": "Belobog Heavy Industries",
-  //     "type": "Pierce"
-  //   },
-  //   {
-  //     "characterName": "Ben Bigger",
-  //     "rank": "A",
-  //     "attribute": "Fire",
-  //     "style": "Defense",
-  //     "faction": "Belobog Heavy Industries",
-  //     "type": "Strike"
-  //   },
-  //   {
-  //     "characterName": "Billy Kid",
-  //     "rank": "A",
-  //     "attribute": "Physical",
-  //     "style": "Attack",
-  //     "faction": "Cunning Hares",
-  //     "type": "Pierce"
-  //   },
-  //   {
-  //     "characterName": "Corin Wickes",
-  //     "rank": "A",
-  //     "attribute": "Physical",
-  //     "style": "Attack",
-  //     "faction": "Victoria Housekeeping",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Ellen Joe",
-  //     "rank": "S",
-  //     "attribute": "Ice",
-  //     "style": "Attack",
-  //     "faction": "Victoria Housekeeping",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Koleda Belobog",
-  //     "rank": "S",
-  //     "attribute": "Fire",
-  //     "style": "Stun",
-  //     "faction": "Belobog Heavy Industries",
-  //     "type": "Strike"
-  //   },
-  //   {
-  //     "characterName": "Luciana de Montefio",
-  //     "rank": "A",
-  //     "attribute": "Fire",
-  //     "style": "Support",
-  //     "faction": "Sons of Calydon",
-  //     "type": "Strike"
-  //   },
-  //   {
-  //     "characterName": "Nekomata (Nekomiya Mana)",
-  //     "rank": "S",
-  //     "attribute": "Physical",
-  //     "style": "Attack",
-  //     "faction": "Cunning Hares",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Nicole Demara",
-  //     "rank": "A",
-  //     "attribute": "Ether",
-  //     "style": "Support",
-  //     "faction": "Cunning Hares",
-  //     "type": "Strike"
-  //   },
-  //   {
-  //     "characterName": "Piper Wheel",
-  //     "rank": "A",
-  //     "attribute": "Physical",
-  //     "style": "Anomaly",
-  //     "faction": "Sons of Calydon",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Soldier11",
-  //     "rank": "S",
-  //     "attribute": "Fire",
-  //     "style": "Attack",
-  //     "faction": "Obol Squad",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Soukaku",
-  //     "rank": "A",
-  //     "attribute": "Ice",
-  //     "style": "Support",
-  //     "faction": "Section 6",
-  //     "type": "Slash"
-  //   },
-  //   {
-  //     "characterName": "Von Lycaon",
-  //     "rank": "S",
-  //     "attribute": "Ice",
-  //     "style": "Stun",
-  //     "faction": "Victoria Housekeeping",
-  //     "type": "Strike"
-  //   },
-  //   {
-  //     "characterName": "Zhu Yuan",
-  //     "rank": "S",
-  //     "attribute": "Ether",
-  //     "style": "Attack",
-  //     "faction": "Criminal Investigation Special Response Team",
-  //     "type": "Pierce"
-  //   }
 ]
-=======
-	{
-		"characterName": "Rina (Alexandrina Sebastiane)",
-		"rank": "S",
-		"attribute": "Electric",
-		"style": "Support",
-		"faction": "Victoria Housekeeping",
-		"type": "Strike",
-		"icon": "../../assets/logo/agents/Rina.jpg"
-	},
-	{
-		"characterName": "Anby Demara",
-		"rank": "A",
-		"attribute": "Electric",
-		"style": "Stun",
-		"faction": "Cunning Hares",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Anby.jpg"
-	},
-	{
-		"characterName": "Anton Ivanov",
-		"rank": "A",
-		"attribute": "Electric",
-		"style": "Attack",
-		"faction": "Belobog Heavy Industries",
-		"type": "Pierce",
-		"icon": "../../assets/logo/agents/Anton.jpg"
-	},
-	{
-		"characterName": "Ben Bigger",
-		"rank": "A",
-		"attribute": "Fire",
-		"style": "Defense",
-		"faction": "Belobog Heavy Industries",
-		"type": "Strike",
-		"icon": "../../assets/logo/agents/Ben.jpg"
-	},
-	{
-		"characterName": "Billy Kid",
-		"rank": "A",
-		"attribute": "Physical",
-		"style": "Attack",
-		"faction": "Cunning Hares",
-		"type": "Pierce",
-		"icon": "../../assets/logo/agents/Billy.jpg"
-	},
-	{
-		"characterName": "Corin Wickes",
-		"rank": "A",
-		"attribute": "Physical",
-		"style": "Attack",
-		"faction": "Victoria Housekeeping",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Corin.jpg"
-	},
-	{
-		"characterName": "Ellen Joe",
-		"rank": "S",
-		"attribute": "Ice",
-		"style": "Attack",
-		"faction": "Victoria Housekeeping",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Ellen.jpg"
-	},
-	{
-		"characterName": "Koleda Belobog",
-		"rank": "S",
-		"attribute": "Fire",
-		"style": "Stun",
-		"faction": "Belobog Heavy Industries",
-		"type": "Strike",
-		"icon": "../../assets/logo/agents/Koleda.jpg"
-	},
-	{
-		"characterName": "Lucy (Luciana de Montefio)",
-		"rank": "A",
-		"attribute": "Fire",
-		"style": "Support",
-		"faction": "Sons of Calydon",
-		"type": "Strike",
-		"icon": "../../assets/logo/agents/Lucy.jpg"
-	},
-	{
-		"characterName": "Nekomata (Nekomiya Mana)",
-		"rank": "S",
-		"attribute": "Physical",
-		"style": "Attack",
-		"faction": "Cunning Hares",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Nekomata.jpg"
-	},
-	{
-		"characterName": "Nicole Demara",
-		"rank": "A",
-		"attribute": "Ether",
-		"style": "Support",
-		"faction": "Cunning Hares",
-		"type": "Strike",
-		"icon": "../../assets/logo/agents/Nicole.jpg"
-	},
-	{
-		"characterName": "Piper Wheel",
-		"rank": "A",
-		"attribute": "Physical",
-		"style": "Anomaly",
-		"faction": "Sons of Calydon",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Piper.jpg"
-	},
-	{
-		"characterName": "Soldier11",
-		"rank": "S",
-		"attribute": "Fire",
-		"style": "Attack",
-		"faction": "Obol Squad",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Soldier11.jpg"
-	},
-	{
-		"characterName": "Soukaku",
-		"rank": "A",
-		"attribute": "Ice",
-		"style": "Support",
-		"faction": "Section 6",
-		"type": "Slash",
-		"icon": "../../assets/logo/agents/Soukaku.jpg"
-	},
-	{
-		"characterName": "Von Lycaon",
-		"rank": "S",
-		"attribute": "Ice",
-		"style": "Stun",
-		"faction": "Victoria Housekeeping",
-		"type": "Strike",
-		"icon": "../../assets/logo/agents/Lycaon.jpg"
-	},
-	{
-		"characterName": "Zhu Yuan",
-		"rank": "S",
-		"attribute": "Ether",
-		"style": "Attack",
-		"faction": "Criminal Investigation Special Response Team",
-		"type": "Pierce",
-		"icon": "../../assets/logo/agents/Yuan.jpg"
-	}
-]
->>>>>>> Minh
