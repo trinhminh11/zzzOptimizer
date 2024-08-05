@@ -1,11 +1,12 @@
-[
-  {
-    "characterName": "Rina",
-    "rank": "S",
-    "attribute": "Electric",
-    "style": "Support",
-    "faction": "Victoria Housekeeping",
-    "type": "Strike",
-    "img": "/deploy-github/src/assets/logo/agents/Rina.jpg"
-  }
+
+let d = [
+	{
+		"characterName": "Rina (Alexandrina Sebastiane)",
+		"rank": "S",
+		"attribute": "Electric",
+		"style": "Support",
+		"faction": "Victoria Housekeeping",
+		"type": "Strike",
+		"icon": require("../../assets/logo/agents/Rina.jpg")
+	}
 ]

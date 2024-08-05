@@ -80,13 +80,12 @@ function CharacterLeftColumn() {
         </div> */}
 
         {demoData.map((demoData) => {
-          {
-          }
+          const location = demoData.img;
           return (
             <div className="champion" key={`${demoData.characterName}`}>
-              {console.log(location)}
-              <img src={require(demoData.img)} alt="demo"></img>
-              {demoData.characterName}
+              {console.log(demoData.img)}
+              <img src={require(location)} alt="demo"></img>
+              <div className="name-showcase">{demoData.characterName} </div>
             </div>
           );
         })}

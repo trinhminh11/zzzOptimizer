@@ -3,6 +3,7 @@ import "./nav.css";
 import engineLogo from "../../assets/logo/wEngine/W-Engine.jpg";
 import discLogo from "../../assets/logo/driveDisc/Drive-Disc.jpg";
 import bangbooLogo from "../../assets/logo/bangboos/Bangboo.jpg";
+import agentLogo from "../../assets/logo/agents/agents.jpg";
 
 function NavCategories() {
   return (
@@ -11,7 +12,7 @@ function NavCategories() {
         {/* Character  */}
         <li className="nav-item">
           <a href="/deploy-github/characters" className="nav-link collapsed">
-            <i className="bi bi-person"></i>
+            <img alt="agent Logo" src={agentLogo} className="nav-icon"></img>
             <span>Agents</span>
           </a>
         </li>
@@ -20,7 +21,7 @@ function NavCategories() {
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
             <img alt="W-Engin Logo" src={engineLogo} className="nav-icon" />
-            <span>W-Engine</span>
+            <span>W-Engines</span>
           </a>
         </li>
 
@@ -28,7 +29,7 @@ function NavCategories() {
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
             <img alt="Logo" src={discLogo} className="nav-icon" />
-            <span>Drive-Disc</span>
+            <span>Drive-Discs</span>
           </a>
         </li>
 

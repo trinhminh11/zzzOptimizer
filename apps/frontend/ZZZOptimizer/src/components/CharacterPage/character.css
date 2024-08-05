@@ -85,6 +85,10 @@
 .champion {
   text-align: center;
   overflow: hidden;
+}
+
+.name-showcase {
+  overflow: hidden;
   white-space: nowrap;
 }
 
