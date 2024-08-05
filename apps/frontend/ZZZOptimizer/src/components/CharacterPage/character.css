@@ -36,3 +36,65 @@
   border: solid white;
   background-color: white;
 }
+
+/* Styling the under columns */
+.character-columns-holder {
+  width: 80%;
+  background-color: #1c1c1f;
+  border: solid white;
+}
+
+/* Styling the left table */
+.left-table {
+  background-color: #404258;
+}
+
+.search-bar {
+  padding: 10px;
+  background-color: #404258;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2c2f36;
+  color: white;
+  font-size: 14px;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #404258;
+}
+
+.filter-bar button {
+  background-color: #50577a;
+}
+
+.champion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.champion {
+  text-align: center;
+}
+
+.champion img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+}
+
+.champion-name {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #b0b3b8;
+}
