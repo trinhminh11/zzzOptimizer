@@ -1,18 +1,130 @@
 [
 	{
-		"name": "Ellen Joe",
+		"characterName": "Rina (Alexandrina Sebastiane)",
+		"rank": "S",
+		"attribute": "Electric",
+		"style": "Support",
+		"faction": "Victoria Housekeeping",
+		"type": "Strike"
+	},
+	{
+		"characterName": "Anby Demara",
+		"rank": "A",
+		"attribute": "Electric",
+		"style": "Stun",
+		"faction": "Cunning Hares",
+		"type": "Slash"
+	},
+	{
+		"characterName": "Anton Ivanov",
+		"rank": "A",
+		"attribute": "Electric",
+		"style": "Attack",
+		"faction": "Belobog Heavy Industries",
+		"type": "Pierce"
+	},
+	{
+		"characterName": "Ben Bigger",
+		"rank": "A",
+		"attribute": "Fire",
+		"style": "Defense",
+		"faction": "Belobog Heavy Industries",
+		"type": "Strike"
+	},
+	{
+		"characterName": "Billy Kid",
+		"rank": "A",
+		"attribute": "Physical",
+		"style": "Attack",
+		"faction": "Cunning Hares",
+		"type": "Pierce"
+	},
+	{
+		"characterName": "Corin Wickes",
+		"rank": "A",
+		"attribute": "Physical",
+		"style": "Attack",
+		"faction": "Victoria Housekeeping",
+		"type": "Slash"
+	},
+	{
+		"characterName": "Ellen Joe",
 		"rank": "S",
 		"attribute": "Ice",
 		"style": "Attack",
 		"faction": "Victoria Housekeeping",
-		"type": "slash"
+		"type": "Slash"
 	},
 	{
-		"name": "Soldier 11",
+		"characterName": "Koleda Belobog",
+		"rank": "S",
+		"attribute": "Fire",
+		"style": "Stun",
+		"faction": "Belobog Heavy Industries",
+		"type": "Strike"
+	},
+	{
+		"characterName": "Luciana de Montefio",
+		"rank": "A",
+		"attribute": "Fire",
+		"style": "Support",
+		"faction": "Sons of Calydon",
+		"type": "Strike"
+	},
+	{
+		"characterName": "Nekomata (Nekomiya Mana)",
+		"rank": "S",
+		"attribute": "Physical",
+		"style": "Attack",
+		"faction": "Cunning Hares",
+		"type": "Slash"
+	},
+	{
+		"characterName": "Nicole Demara",
+		"rank": "A",
+		"attribute": "Ether",
+		"style": "Support",
+		"faction": "Cunning Hares",
+		"type": "Strike"
+	},
+	{
+		"characterName": "Piper Wheel",
+		"rank": "A",
+		"attribute": "Physical",
+		"style": "Anomaly",
+		"faction": "Sons of Calydon",
+		"type": "Slash"
+	},
+	{
+		"characterName": "Soldier11",
 		"rank": "S",
 		"attribute": "Fire",
 		"style": "Attack",
 		"faction": "Obol Squad",
-		"type": "slash"
+		"type": "Slash"
+	},
+	{
+		"characterName": "Soukaku",
+		"rank": "A",
+		"attribute": "Ice",
+		"style": "Support",
+		"faction": "Section 6",
+		"type": "Slash"
+	},
+	{
+		"characterName": "Von Lycaon",
+		"rank": "S",
+		"attribute": "Ice",
+		"style": "Stun",
+		"faction": "Victoria Housekeeping",
+		"type": "Strike"
+	},
+	{
+		"characterName": "Zhu Yuan",
+		"rank": "S",
+		"attribute": "Ether",
+		"style": "Attack",
+		"faction": "Criminal Investigation Special Response Team",
+		"type": "Pierce"
 	}
 ]
