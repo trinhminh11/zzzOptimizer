@@ -25,6 +25,7 @@ function agentLocalDatabase() {
             <th className="attibute">Attribute</th>
             <th className="fighting-style">Fighting Style</th>
             <th className="faction">Faction</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +53,9 @@ function agentLocalDatabase() {
               <img src={victoriaFacton} alt="Victoria"></img>
               <span>Victoria Housekeeping</span>
             </td>
+            <td>
+              <button>Remove</button>
+            </td>
           </tr>
           <tr>
             <td>
@@ -76,6 +80,9 @@ function agentLocalDatabase() {
             <td>
               <img src={victoriaFacton} alt="Victoria"></img>
               <span>Victoria Housekeeping</span>
+            </td>
+            <td>
+              <button>Remove</button>
             </td>
           </tr>
         </tbody>
