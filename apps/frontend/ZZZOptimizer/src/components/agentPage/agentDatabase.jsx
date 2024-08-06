@@ -5,10 +5,17 @@ import etherIcon from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
 import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
 import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
 import "./agent.css";
-// import demoData from "../../../../../backend/components/character.json";
-// import demoData from "./demo.json";
+import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
+import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
+import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
+import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
+import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 
 function agentDatabase({ agentInfoList }) {
+  const handleAgentClick = (name) => {
+    console.log(`${name} clicked`);
+  };
+
   return (
     <div className="row left-table">
       {/* Search Bar  */}
@@ -16,7 +23,7 @@ function agentDatabase({ agentInfoList }) {
         <input type="text" placeholder="Search an agent"></input>
       </div>
 
-      {/* Filter Bar  */}
+      {/* Attribute Filter Bar  */}
       <div className="filter-bar">
         {/* Elements */}
         <button type="button" className="btn btn-secondary">
@@ -40,11 +47,39 @@ function agentDatabase({ agentInfoList }) {
         </button>
       </div>
 
+      {/* Fighting style Filter Bar  */}
+      <div className="filter-bar">
+        {/* Elements */}
+        <button type="button" className="btn btn-secondary">
+          <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
+        </button>
+
+        <button type="button" className="btn btn-secondary">
+          <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
+        </button>
+
+        <button type="button" className="btn btn-secondary">
+          <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
+        </button>
+
+        <button type="button" className="btn btn-secondary">
+          <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
+        </button>
+
+        <button type="button" className="btn btn-secondary">
+          <img alt="Support Icon" src={supportIcon} className="nav-icon" />
+        </button>
+      </div>
+
       {/* Champion display */}
       <div className="agent-grid">
         {agentInfoList.map((agent) => {
           return (
-            <div className="agent" key={`${agent.characterName}`}>
+            <div
+              className="agent"
+              key={agent.characterName}
+              onClick={() => handleAgentClick(agent.characterName)}
+            >
               <img src={agent.icon} alt="demo"></img>
               <div className="agent-name-showcase">{agent.characterName} </div>
             </div>
