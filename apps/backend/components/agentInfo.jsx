@@ -1,9 +1,10 @@
 import AgentDatabase from "../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
 
-export default function agentInfo() {
+
+export default function agentInfo({agents}) {
   let agentIconFolder = "../../frontend/ZZZOptimizer/src/assets/icon/agents/";
   
-  const agents = [
+  const agentsJson = [
     {
       characterName: "Rina (Alexandrina Sebastiane)",
       rank: "S",
@@ -152,7 +153,8 @@ export default function agentInfo() {
 
   return (
     <div>
-      <AgentDatabase agentInfoList={agents} />
+      <AgentDatabase agentInfoList={agentsJson} />
     </div>
   );
 }
+
