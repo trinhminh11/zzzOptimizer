@@ -1,7 +1,9 @@
-import CharacterLeftColumn from "./CharacterLeftColumn";
+import AgentDatabase from "../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
 
-export default function Test() {
-  const CharacterInfo = [
+export default function agentInfo() {
+  let agentIconFolder = "../../frontend/ZZZOptimizer/src/assets/icon/agents/";
+  
+  const agents = [
     {
       characterName: "Rina (Alexandrina Sebastiane)",
       rank: "S",
@@ -9,7 +11,7 @@ export default function Test() {
       style: "Support",
       faction: "Victoria Housekeeping",
       type: "Strike",
-      icon: require("../../assets/logo/agents/Rina.jpg"),
+      icon: require(agentIconFolder + "Rina.jpg"),
     },
     {
       characterName: "Anby Demara",
@@ -18,7 +20,7 @@ export default function Test() {
       style: "Stun",
       faction: "Cunning Hares",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Anby.jpg"),
+      icon: require(agentIconFolder + "Anby.jpg"),
     },
     {
       characterName: "Anton Ivanov",
@@ -27,7 +29,7 @@ export default function Test() {
       style: "Attack",
       faction: "Belobog Heavy Industries",
       type: "Pierce",
-      icon: require("../../assets/logo/agents/Anton.jpg"),
+      icon: require(agentIconFolder + "Anton.jpg"),
     },
     {
       characterName: "Ben Bigger",
@@ -36,7 +38,7 @@ export default function Test() {
       style: "Defense",
       faction: "Belobog Heavy Industries",
       type: "Strike",
-      icon: require("../../assets/logo/agents/Ben.jpg"),
+      icon: require(agentIconFolder + "Ben.jpg"),
     },
     {
       characterName: "Billy Kid",
@@ -45,7 +47,7 @@ export default function Test() {
       style: "Attack",
       faction: "Cunning Hares",
       type: "Pierce",
-      icon: require("../../assets/logo/agents/Billy.jpg"),
+      icon: require(agentIconFolder + "Billy.jpg"),
     },
     {
       characterName: "Corin Wickes",
@@ -54,7 +56,7 @@ export default function Test() {
       style: "Attack",
       faction: "Victoria Housekeeping",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Corin.jpg"),
+      icon: require(agentIconFolder + "Corin.jpg"),
     },
     {
       characterName: "Ellen Joe",
@@ -63,7 +65,7 @@ export default function Test() {
       style: "Attack",
       faction: "Victoria Housekeeping",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Ellen.jpg"),
+      icon: require(agentIconFolder + "Ellen.jpg"),
     },
     {
       characterName: "Koleda Belobog",
@@ -72,7 +74,7 @@ export default function Test() {
       style: "Stun",
       faction: "Belobog Heavy Industries",
       type: "Strike",
-      icon: require("../../assets/logo/agents/Koleda.jpg"),
+      icon: require(agentIconFolder + "Koleda.jpg"),
     },
     {
       characterName: "Lucy (Luciana de Montefio)",
@@ -81,7 +83,7 @@ export default function Test() {
       style: "Support",
       faction: "Sons of Calydon",
       type: "Strike",
-      icon: require("../../assets/logo/agents/Lucy.jpg"),
+      icon: require(agentIconFolder + "Lucy.jpg"),
     },
     {
       characterName: "Nekomata (Nekomiya Mana)",
@@ -90,7 +92,7 @@ export default function Test() {
       style: "Attack",
       faction: "Cunning Hares",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Nekomata.jpg"),
+      icon: require(agentIconFolder + "Nekomata.jpg"),
     },
     {
       characterName: "Nicole Demara",
@@ -99,7 +101,7 @@ export default function Test() {
       style: "Support",
       faction: "Cunning Hares",
       type: "Strike",
-      icon: require("../../assets/logo/agents/Nicole.jpg"),
+      icon: require(agentIconFolder + "Nicole.jpg"),
     },
     {
       characterName: "Piper Wheel",
@@ -108,7 +110,7 @@ export default function Test() {
       style: "Anomaly",
       faction: "Sons of Calydon",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Piper.jpg"),
+      icon: require(agentIconFolder + "Piper.jpg"),
     },
     {
       characterName: "Soldier11",
@@ -117,7 +119,7 @@ export default function Test() {
       style: "Attack",
       faction: "Obol Squad",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Soldier11.jpg"),
+      icon: require(agentIconFolder + "Soldier11.jpg"),
     },
     {
       characterName: "Soukaku",
@@ -126,7 +128,7 @@ export default function Test() {
       style: "Support",
       faction: "Section 6",
       type: "Slash",
-      icon: require("../../assets/logo/agents/Soukaku.jpg"),
+      icon: require(agentIconFolder + "Soukaku.jpg"),
     },
     {
       characterName: "Von Lycaon",
@@ -135,7 +137,7 @@ export default function Test() {
       style: "Stun",
       faction: "Victoria Housekeeping",
       type: "Strike",
-      icon: require("../../assets/logo/agents/Lycaon.jpg"),
+      icon: require(agentIconFolder + "Lycaon.jpg"),
     },
     {
       characterName: "Zhu Yuan",
@@ -144,9 +146,13 @@ export default function Test() {
       style: "Attack",
       faction: "Criminal Investigation Special Response Team",
       type: "Pierce",
-      icon: require("../../assets/logo/agents/Yuan.jpg"),
+      icon: require(agentIconFolder + "Yuan.jpg"),
     },
   ];
 
-  return <div>{/* <CharacterLeftColumn list={CharacterInfo} /> */}</div>;
+  return (
+    <div>
+      <AgentDatabase agentInfoList={agents} />
+    </div>
+  );
 }

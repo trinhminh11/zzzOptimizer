@@ -1,18 +1,18 @@
 import React from "react";
 import "./nav.css";
-import engineLogo from "../../assets/logo/wEngine/W-Engine.jpg";
-import discLogo from "../../assets/logo/driveDisc/Drive-Disc.jpg";
-import bangbooLogo from "../../assets/logo/bangboos/Bangboo.jpg";
-import agentLogo from "../../assets/logo/agents/agents.jpg";
+import engineIcon from "../../assets/icon/wEngine/W-Engine.jpg";
+import discIcon from "../../assets/icon/driveDisc/Drive-Disc.jpg";
+import bangbooIcon from "../../assets/icon/bangboos/Bangboo.jpg";
+import agentIcon from "../../assets/icon/agents/agents.jpg";
 
 function NavCategories() {
   return (
     <div className="nav-item categories-holder">
       <ul className="categories">
-        {/* Character  */}
+        {/* Agent  */}
         <li className="nav-item">
-          <a href="/deploy-github/characters" className="nav-link collapsed">
-            <img alt="agent Logo" src={agentLogo} className="nav-icon"></img>
+          <a href="/deploy-github/agents" className="nav-link collapsed">
+            <img alt="agent Icon" src={agentIcon} className="nav-icon"></img>
             <span>Agents</span>
           </a>
         </li>
@@ -20,7 +20,7 @@ function NavCategories() {
         {/* W-Engine */}
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
-            <img alt="W-Engin Logo" src={engineLogo} className="nav-icon" />
+            <img alt="W-Engin Icon" src={engineIcon} className="nav-icon" />
             <span>W-Engines</span>
           </a>
         </li>
@@ -28,7 +28,7 @@ function NavCategories() {
         {/* Drive Disc */}
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
-            <img alt="Logo" src={discLogo} className="nav-icon" />
+            <img alt="Icon" src={discIcon} className="nav-icon" />
             <span>Drive-Discs</span>
           </a>
         </li>
@@ -44,7 +44,7 @@ function NavCategories() {
         {/* Bangboos */}
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
-            <img alt="bangbooLogo" src={bangbooLogo} className="nav-icon" />
+            <img alt="bangbooIcon" src={bangbooIcon} className="nav-icon" />
             <span>Bangboo</span>
           </a>
         </li>

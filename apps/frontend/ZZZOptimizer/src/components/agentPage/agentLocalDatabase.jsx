@@ -1,21 +1,21 @@
 import React from "react";
-import fireLogo from "../../assets/logo/agentsAttributes/Icon_Fire.jpg";
-import electricLogo from "../../assets/logo/agentsAttributes/Icon_Electric.jpg";
-import etherLogo from "../../assets/logo/agentsAttributes/Icon_Ether.jpg";
-import iceLogo from "../../assets/logo/agentsAttributes/Icon_Ice.jpg";
-import physicalLogo from "../../assets/logo/agentsAttributes/Icon_Physical.jpg";
-import agentRinaLogo from "../../assets/logo/agents/Rina.jpg";
-import sRankLogo from "../../assets/logo/agentsRanks/Icon_AgentRank_S.jpg";
-import aRankLogo from "../../assets/logo/agentsRanks/Icon_AgentRank_A.jpg";
-import anomalyRole from "../../assets/logo/agentsRoles/Icon_Anomaly.jpg";
-import attackRole from "../../assets/logo/agentsRoles/Icon_Attack.jpg";
-import supportRole from "../../assets/logo/agentsRoles/Icon_Support.jpg";
-import victoriaFacton from "../../assets/logo/agentFactions/Victoria_Housekeeping_Icon.jpg";
-import "./character.css";
+import fireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
+import electricIcon from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
+import etherIcon from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
+import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
+import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
+import agentRinaIcon from "../../assets/icon/agents/Rina.jpg";
+import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
+import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
+import anomalyRole from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
+import attackRole from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
+import supportRole from "../../assets/icon/agentsRoles/Icon_Support.jpg";
+import victoriaFacton from "../../assets/icon/agentFactions/Victoria_Housekeeping_Icon.jpg";
+import "./agent.css";
 
-function CharacterMainColumn() {
+function agentLocalDatabase() {
   return (
-    <div className="character-right-column">
+    <div className="agent-local-database">
       <table>
         <thead>
           <tr>
@@ -30,16 +30,16 @@ function CharacterMainColumn() {
         <tbody>
           <tr>
             <td>
-              <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
+              <img alt="Rina Icon" src={agentRinaIcon} className="nav-icon" />
             </td>
             <td>Alexandrina Sebastiane</td>
             <td>
-              <img src={sRankLogo} alt="S Rank"></img>
+              <img src={sRankIcon} alt="S Rank"></img>
             </td>
             <td>
               <img
-                alt="Electric Logo"
-                src={electricLogo}
+                alt="Electric Icon"
+                src={electricIcon}
                 className="nav-icon"
               />
               <span>Electric</span>
@@ -55,16 +55,16 @@ function CharacterMainColumn() {
           </tr>
           <tr>
             <td>
-              <img alt="Rina Logo" src={agentRinaLogo} className="nav-icon" />
+              <img alt="Rina Icon" src={agentRinaIcon} className="nav-icon" />
             </td>
             <td>Alexandrina Sebastiane</td>
             <td>
-              <img src={sRankLogo} alt="S Rank"></img>
+              <img src={sRankIcon} alt="S Rank"></img>
             </td>
             <td>
               <img
-                alt="Electric Logo"
-                src={electricLogo}
+                alt="Electric Icon"
+                src={electricIcon}
                 className="nav-icon"
               />
               <span>Electric</span>
@@ -84,4 +84,4 @@ function CharacterMainColumn() {
   );
 }
 
-export default CharacterMainColumn;
+export default agentLocalDatabase;

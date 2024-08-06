@@ -1,9 +1,7 @@
-import { useState } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/HomePage/Home";
-import CharacterDisplay from "./components/CharacterPage/CharacterDisplay";
+import AgentPage from "./components/agentPage/agentPage";
 
 function App() {
   return (
@@ -12,8 +10,8 @@ function App() {
         <Routes>
           <Route path="/deploy-github/" element={<Home />}></Route>
           <Route
-            path="/deploy-github/characters"
-            element={<CharacterDisplay />}
+            path="/deploy-github/agents"
+            element={<AgentPage />}
           ></Route>
         </Routes>
       </div>
