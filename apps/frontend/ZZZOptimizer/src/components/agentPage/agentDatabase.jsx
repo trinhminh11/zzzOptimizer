@@ -10,10 +10,12 @@ import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
 import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
 import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
+import { useState, useEffect } from "react";
 
 function agentDatabase({ agentInfoList }) {
-  const handleAgentClick = (name) => {
-    console.log(`${name} clicked`);
+  const handleAgentClick = (agent) => {
+    localStorage.setItem("selectedAgent", JSON.stringify(agent));
+    console.log(`${agent.characterName} clicked`);
   };
 
   return (
@@ -78,7 +80,7 @@ function agentDatabase({ agentInfoList }) {
             <div
               className="agent"
               key={agent.characterName}
-              onClick={() => handleAgentClick(agent.characterName)}
+              onClick={() => handleAgentClick(agent)}
             >
               <img src={agent.icon} alt="demo"></img>
               <div className="agent-name-showcase">{agent.characterName} </div>
