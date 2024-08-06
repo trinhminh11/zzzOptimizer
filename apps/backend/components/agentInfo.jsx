@@ -69,6 +69,15 @@ export default function agentInfo({agents}) {
       icon: require(agentIconFolder + "Ellen.jpg"),
     },
     {
+      characterName: "Grace Howard",
+      rank: "S",
+      attribute: "Electric",
+      style: "Anomaly",
+      faction: "Belobog Heavy Industries",
+      type: "Pierce",
+      icon: require(agentIconFolder + "Grace.jpg"),
+    },
+    {
       characterName: "Koleda Belobog",
       rank: "S",
       attribute: "Fire",
