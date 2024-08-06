@@ -15,16 +15,18 @@ import { useEffect, useState } from "react";
 
 import "./agent.css";
 
-export default function agentLocalDatabase() {
+export default function AgentLocalDatabase() {
   const [agents, setAgents] = useState([]);
   useEffect(() => {
-    const storedAgent = localStorage.getItem("selectedAgent");
-    if (storedAgent) {
-      setAgents(JSON.parse(storedAgent));
-    }
+    storedAgent();
   }, []);
 
-  console.log(agents);
+  const storedAgent = async () => {
+    let res = await localStorage.getItem("selectedAgent");
+    if (res) {
+      setAgents(JSON.parse(res));
+    }
+  };
 
   return (
     <div className="agent-local-database">
@@ -41,7 +43,7 @@ export default function agentLocalDatabase() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {/* <tr>
             <td>
               <img alt="Rina Icon" src={agentRinaIcon} className="nav-icon" />
             </td>
@@ -68,35 +70,27 @@ export default function agentLocalDatabase() {
             <td>
               <button>Remove</button>
             </td>
-          </tr>
-          <tr>
-            <td>
-              <img alt="Rina Icon" src={agentRinaIcon} className="nav-icon" />
-            </td>
-            <td>Alexandrina Sebastiane</td>
-            <td>
-              <img src={sRankIcon} alt="S Rank"></img>
-            </td>
-            <td>
-              <img
-                alt="Electric Icon"
-                src={electricIcon}
-                className="nav-icon"
-              />
-              <span>Electric</span>
-            </td>
-            <td>
-              <img src={supportRole} alt="Support"></img>
-              <span>Support</span>
-            </td>
-            <td>
-              <img src={victoriaFacton} alt="Victoria"></img>
-              <span>Victoria Housekeeping</span>
-            </td>
-            <td>
-              <button>Remove</button>
-            </td>
-          </tr>
+          </tr> */}
+          {console.log(agents)}
+          {agents &&
+            agents.length > 0 &&
+            agents.map((item) => {
+              return (
+                <tr key={`users-${item.characterName}`}>
+                  <td>
+                    <img src={item.icon} alt="demo"></img>
+                  </td>
+                  <td>{item.characterName}</td>
+                  <td>{item.rank}</td>
+                  <td>{item.attribute}</td>
+                  <td>{item.style}</td>
+                  <td>{item.faction}</td>
+                  <td>
+                    <button className="btn btn-danger">Delete</button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>

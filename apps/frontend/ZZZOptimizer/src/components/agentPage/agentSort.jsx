@@ -7,8 +7,13 @@ import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
 import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
 import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
 import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
+import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
+import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
+import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
+import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
+import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 
-export default function agentSort() {
+export default function AgentSort() {
   return (
     <div className="row agent-sorting-container">
       <button type="button" className="btn btn-secondary">
@@ -43,6 +48,27 @@ export default function agentSort() {
 
       <a className="element-sort">
         <img alt="Ether Icon" src={etherIcon} className="nav-icon" />
+      </a>
+
+      {/* Fighting Style */}
+      <a className="element-sort">
+        <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
+      </a>
+
+      <a className="element-sort">
+        <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
+      </a>
+
+      <a className="element-sort">
+        <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
+      </a>
+
+      <a className="element-sort">
+        <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
+      </a>
+
+      <a className="element-sort">
+        <img alt="Support Icon" src={supportIcon} className="nav-icon" />
       </a>
     </div>
   );

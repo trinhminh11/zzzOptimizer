@@ -12,7 +12,7 @@ import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 import { useState, useEffect } from "react";
 
-function agentDatabase({ agentInfoList }) {
+function AgentDatabase({ agentInfoList }) {
   const handleAgentClick = (agent) => {
     localStorage.setItem("selectedAgent", JSON.stringify(agent));
     console.log(`${agent.characterName} clicked`);
@@ -92,4 +92,4 @@ function agentDatabase({ agentInfoList }) {
   );
 }
 
-export default agentDatabase;
+export default AgentDatabase;
