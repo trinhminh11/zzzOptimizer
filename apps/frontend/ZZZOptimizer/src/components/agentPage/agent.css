@@ -14,12 +14,35 @@
 
 .agent-sorting-container {
   width: 53%;
-  padding: 10px;
   border-radius: 5px;
   margin: 40px;
-  display: flex;
-  justify-content: center;
+  padding: 0px;
+  height: 100%;
   gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  min-width: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.element-sort {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+  flex-basis: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.element-sort:hover {
+  background-color: #7b7b7b;
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .agent-sorting-container button {
@@ -29,12 +52,12 @@
   background-color: #6b728e;
 }
 
-.element-container {
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-  border: solid white;
-  background-color: white;
+.filters-divider {
+  display: initial;
+  width: 10px;
+  height: 30px;
+  background: #4d5fc4;
+  margin: 0 20px;
 }
 
 /* Styling the under columns */

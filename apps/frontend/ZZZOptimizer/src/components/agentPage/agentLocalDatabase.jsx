@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 
 import "./agent.css";
 
-function agentLocalDatabase() {
+export default function AgentLocalDatabase() {
   const [agents, setAgents] = useState([]);
   useEffect(() => {
     const storedAgent = localStorage.getItem("selectedAgent");
@@ -102,5 +102,3 @@ function agentLocalDatabase() {
     </div>
   );
 }
-
-export default agentLocalDatabase;

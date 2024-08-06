@@ -1,11 +1,9 @@
-import AgentDatabase from "../../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
-import AgentProcessing from "./agentProcessing";
+import AgentDatabase from "../../../frontend/ZZZOptimizer/src/components/agentPage/AgentDatabase";
 
-export default function agentInfo() {
-  let agentIconFolder = "../../../frontend/ZZZOptimizer/src/assets/icon/agents/";
-  let a = new AgentProcessing();
-  console.log(a.agents)
-  
+export default function AgentInfo({ agents }) {
+  let agentIconFolder =
+    "../../../frontend/ZZZOptimizer/src/assets/icon/agents/";
+
   const agentsJson = [
     {
       characterName: "Rina (Alexandrina Sebastiane)",
@@ -168,4 +166,3 @@ export default function agentInfo() {
     </div>
   );
 }
-
