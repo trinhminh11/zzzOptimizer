@@ -1,8 +1,10 @@
-import AgentDatabase from "../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
+import AgentDatabase from "../../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
+import AgentProcessing from "./agentProcessing";
 
-
-export default function agentInfo({agents}) {
-  let agentIconFolder = "../../frontend/ZZZOptimizer/src/assets/icon/agents/";
+export default function agentInfo() {
+  let agentIconFolder = "../../../frontend/ZZZOptimizer/src/assets/icon/agents/";
+  let a = new AgentProcessing();
+  console.log(a.agents)
   
   const agentsJson = [
     {
