@@ -1,9 +1,10 @@
 import AgentDatabase from "../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
 
-export default function agentInfo() {
+
+export default function agentInfo({agents}) {
   let agentIconFolder = "../../frontend/ZZZOptimizer/src/assets/icon/agents/";
   
-  const agents = [
+  const agentsJson = [
     {
       characterName: "Rina (Alexandrina Sebastiane)",
       rank: "S",
@@ -66,6 +67,15 @@ export default function agentInfo() {
       faction: "Victoria Housekeeping",
       type: "Slash",
       icon: require(agentIconFolder + "Ellen.jpg"),
+    },
+    {
+      characterName: "Grace Howard",
+      rank: "S",
+      attribute: "Electric",
+      style: "Anomaly",
+      faction: "Belobog Heavy Industries",
+      type: "Pierce",
+      icon: require(agentIconFolder + "Grace.jpg"),
     },
     {
       characterName: "Koleda Belobog",
@@ -152,7 +162,8 @@ export default function agentInfo() {
 
   return (
     <div>
-      <AgentDatabase agentInfoList={agents} />
+      <AgentDatabase agentInfoList={agentsJson} />
     </div>
   );
 }
+

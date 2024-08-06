@@ -74,7 +74,6 @@ function agentDatabase({ agentInfoList }) {
       {/* Champion display */}
       <div className="agent-grid">
         {agentInfoList.map((agent) => {
-          console.log(agent);
           return (
             <div
               className="agent"

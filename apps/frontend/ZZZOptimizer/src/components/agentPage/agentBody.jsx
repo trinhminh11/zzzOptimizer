@@ -1,13 +1,13 @@
 import React from "react";
 import AgentLocalDatabase from "./agentLocalDatabase";
-import AgentInfo from "../../../../../backend/components/agentInfo";
+import AgentProcessing from "../../../../../backend/components/agentProcessing";
 import "./agent.css";
 
 function agentBody() {
   return (
     <div className="row agent-body">
       <div className="col-lg-3">
-        <AgentInfo />
+        <AgentProcessing />
       </div>
       <div className="col-lg-9">
         <AgentLocalDatabase />
