@@ -8,7 +8,7 @@ import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
 import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
 import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
 
-export default function AgentSort() {
+export default function agentSort() {
   return (
     <div className="row agent-sorting-container">
       <button type="button" className="btn btn-secondary">

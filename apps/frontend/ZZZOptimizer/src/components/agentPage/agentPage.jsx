@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
-import AgentBody from "./AgentBody";
-import AgentSort from "./AgentSort";
+import AgentBody from "./agentBody";
+import AgentSort from "./agentSort";
 import "./agent.css";
 
-function AgentPage() {
+function agentPage() {
   return (
     <div className="agent-page-container">
       <NavBar />
@@ -14,4 +14,4 @@ function AgentPage() {
   );
 }
 
-export default AgentPage;
+export default agentPage;

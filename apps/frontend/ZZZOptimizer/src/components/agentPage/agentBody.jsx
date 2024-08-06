@@ -1,9 +1,9 @@
 import React from "react";
 import AgentInfo from "../../../../../backend/components/agents/AgentInfo";
 import "./agent.css";
-import AgentLocalDatabase from "./AgentLocalDatabase";
+import AgentLocalDatabase from "./agentLocalDatabase";
 
-function AgentBody() {
+function agentBody() {
   return (
     <div className="row agent-body">
       <div className="col-lg-3">
@@ -16,4 +16,4 @@ function AgentBody() {
   );
 }
 
-export default AgentBody;
+export default agentBody;
