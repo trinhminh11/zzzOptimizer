@@ -86,6 +86,7 @@
   text-align: center;
   overflow: hidden;
   color: white;
+  cursor: pointer;
 }
 
 .agent-name-showcase {
