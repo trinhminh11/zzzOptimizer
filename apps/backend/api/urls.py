@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import main, init
+from .views import agentDatabaseView
 
 urlpatterns = [
-	path('', main),
+	path('agents', agentDatabaseView.as_view()),
 ]
