@@ -11,9 +11,21 @@ import anomalyRole from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
 import attackRole from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
 import supportRole from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 import victoriaFacton from "../../assets/icon/agentFactions/Victoria_Housekeeping_Icon.jpg";
+import { useEffect, useState } from "react";
+
 import "./agent.css";
 
 function agentLocalDatabase() {
+  const [agents, setAgents] = useState([]);
+  useEffect(() => {
+    const storedAgent = localStorage.getItem("selectedAgent");
+    if (storedAgent) {
+      setAgents(JSON.parse(storedAgent));
+    }
+  }, []);
+
+  console.log(agents);
+
   return (
     <div className="agent-local-database">
       <table>
