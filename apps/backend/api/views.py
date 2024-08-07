@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from .Processing import agent as Agent
 from .models import agentDatabase
 
@@ -8,14 +8,24 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializer import agentDatabaseSerializer
 
+
 # Create your views here.
-def init(request: HttpRequest):
+class agentDatabaseView(generics.ListAPIView):
+	queryset = agentDatabase.objects.all()
+	serializer_class = agentDatabaseSerializer
+
+def agentView(request: HttpRequest):
+
+	print(request.body)
+
+	agentDatabase.objects.all().delete()
 	iconFolder = "uploads/agents/"
 	agents = Agent.main()
 
 	for agent in agents.values():
 		new_agent = agentDatabase(
 			name = agent.name, 
+			realName = agent.realName,
 			rank = agent.rank, 
 			fightingStyle = agent.fightingStyle, 
 			faction = agent.faction, 
@@ -24,24 +34,14 @@ def init(request: HttpRequest):
 		)
 
 		new_agent.save()
-	
 
-	return HttpResponse("intialize")
+	return agentDatabaseView.as_view()(request)
 
+def optimize(request: HttpRequest):
+	pass
 
+def optimize_(data: dict):
+	agents = Agent.main()
+	agent = agents[data['name']]
+	agent.fromJson(data)
 
-class agentDatabaseView(generics.ListCreateAPIView):
-	queryset = agentDatabase.objects.all()
-	serializer_class = agentDatabaseSerializer
-
-	# def get(self, request):
-	# 	output = [{'name': output.name, 'rank': output.rank, 'fightingStyle': output.fightingStyle, 'faction': output.faction, 'moduleType': output.moduleType, 'icon': output.icon} 
-	# 		for output in agentDatabase.objects.all()]
-		
-	# 	return Response(output)
-
-	# def post(self, request):
-	# 	serializer = agentDatabaseSerializer(data=request.data)
-	# 	if serializer.is_valid(raise_exception=True):
-	# 		serializer.save()
-	# 		return Response(serializer.data)
