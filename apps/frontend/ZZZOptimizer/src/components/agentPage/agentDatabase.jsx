@@ -26,9 +26,33 @@ function AgentDatabase({ agentInfoList }) {
     }
   };
 
+  var listSelectedAgents = [];
+
+  if (localStorage.getItem("selected agent") == null) {
+    listSelectedAgents = [];
+  } else {
+    listSelectedAgents = JSON.parse(localStorage.getItem("selected agent"));
+    console.log(listSelectedAgents);
+  }
+
   const handleAgentClick = (agent) => {
-    localStorage.setItem("selectedAgent", JSON.stringify(agent));
-    console.log(`${agent.name} clicked`);
+    var check = false;
+    for (let i = 0; i < listSelectedAgents.length; i++) {
+      console.log(listSelectedAgents[i]);
+      if (listSelectedAgents[i].name == agent.name) {
+        check = true;
+
+        break;
+      }
+    }
+
+    if (!check) {
+      listSelectedAgents.push(agent);
+      localStorage.setItem(
+        "selected agent",
+        JSON.stringify(listSelectedAgents)
+      );
+    }
   };
 
   return (
@@ -96,7 +120,6 @@ function AgentDatabase({ agentInfoList }) {
               onClick={() => handleAgentClick(agent)}
             >
               <img src={agent.icon} alt="demo"></img>
-              {console.log(agent.icon)}
               <div className="agent-name-showcase">{agent.name} </div>
             </div>
           );
