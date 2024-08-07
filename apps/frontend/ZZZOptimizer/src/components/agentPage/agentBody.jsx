@@ -1,7 +1,7 @@
 import React from "react";
 import AgentInfo from "../../../../../backend/components/agents/AgentInfo";
 import "./agent.css";
-import AgentLocalDatabase from "./AgentLocalDatabase";
+import AgentLocalDatabase from "./agentLocalDatabase";
 
 function AgentBody() {
   return (

@@ -1,4 +1,4 @@
-import AgentDatabase from "../../../frontend/ZZZOptimizer/src/components/agentPage/AgentDatabase";
+import AgentDatabase from "../../../frontend/ZZZOptimizer/src/components/agentPage/agentDatabase";
 
 export default function AgentInfo({ agents }) {
   let agentIconFolder =
