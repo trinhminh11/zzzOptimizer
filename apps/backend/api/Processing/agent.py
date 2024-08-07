@@ -62,15 +62,17 @@ class Agent:
 	iceDMG_: float = 0
 	etherDMG_: float = 0
 
+	atkBuff: float
+
 	baseStatLevel: dict = {}
 	baseStat: dict = {}
 
 	core: int = 1
 	basic: int = 1
-	dash: int = 1
+	dogde: int = 1
 	assist: int = 1
 	special: int = 1
-	ultimate: int = 1
+	chain: int = 1
 	
 	def __init__(self, name: str, realName: str, rank: str, attribute: str, fightingStyle: str, faction: str, moduleType: str):
 			self.name = name
@@ -115,6 +117,13 @@ class Agent:
 		self.baseStat['hp'] = (stat_min[0] + stat_max[0]) / 2
 		self.baseStat['atk'] = (stat_min[1] + stat_max[1]) / 2
 		self.baseStat['def'] = (stat_min[2] + stat_max[2]) / 2
+
+		self.core = int(data['core'])
+		self.basic = int(data['basic'])
+		self.dogde = int(data['dogde'])
+		self.assist = int(data['assist'])
+		self.special = int(data['special'])
+		self.chain = int(data['chain'])
 
 
 

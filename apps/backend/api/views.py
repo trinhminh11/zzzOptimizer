@@ -19,7 +19,7 @@ def agentView(request: HttpRequest):
 	print(request.body)
 
 	agentDatabase.objects.all().delete()
-	iconFolder = "uploads/agents/"
+	iconFolder = "agents/"
 	agents = Agent.main()
 
 	for agent in agents.values():
