@@ -1,8 +1,21 @@
+from typing import Any
 from django.db import models
+from .Processing import agent as Agent
+
+def auto_increment():
+	largest = agentDatabase.objects.all().order_by('id').last()
+	if not largest:
+		return 1
+	return largest.id + 1
 
 # Create your models here.
 class agentDatabase(models.Model):
+
+	id = models.IntegerField(primary_key=True, default=auto_increment)
+
 	name = models.CharField(max_length=50, default="", unique=True)
+
+	realName = models.CharField(max_length=50, default="", unique=True)
 
 	rank = models.CharField(max_length=1, default="S", unique=False, choices=(
 		("S", "S"),
@@ -33,4 +46,7 @@ class agentDatabase(models.Model):
 		("Strike", "Strike")
 	))
 
-	icon = models.ImageField(default="", upload_to ='uploads/agents/')
+	icon = models.ImageField(default="", upload_to ='media/agents/')
+
+	def __str__(self):
+		return f'{self.name}'
