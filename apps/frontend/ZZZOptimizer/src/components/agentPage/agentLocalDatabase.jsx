@@ -17,6 +17,7 @@ import "./agent.css";
 
 export default function AgentLocalDatabase() {
   const [agents, setAgents] = useState([]);
+
   useEffect(() => {
     storedAgent();
   }, []);
@@ -72,6 +73,7 @@ export default function AgentLocalDatabase() {
             </td>
           </tr> */}
           {console.log(agents)}
+
           {agents &&
             agents.length > 0 &&
             agents.map((item) => {
