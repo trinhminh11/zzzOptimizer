@@ -92,11 +92,12 @@ function AgentDatabase({ agentInfoList }) {
           return (
             <div
               className="agent"
-              key={agent.characterName}
+              key={agent.id}
               onClick={() => handleAgentClick(agent)}
             >
               <img src={agent.icon} alt="demo"></img>
-              <div className="agent-name-showcase">{agent.characterName} </div>
+              {console.log(agent.icon)}
+              <div className="agent-name-showcase">{agent.name} </div>
             </div>
           );
         })}
