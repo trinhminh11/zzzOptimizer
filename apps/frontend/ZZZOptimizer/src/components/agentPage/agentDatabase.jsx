@@ -28,7 +28,7 @@ function AgentDatabase({ agentInfoList }) {
 
   const handleAgentClick = (agent) => {
     localStorage.setItem("selectedAgent", JSON.stringify(agent));
-    console.log(`${agent.characterName} clicked`);
+    console.log(`${agent.name} clicked`);
   };
 
   return (

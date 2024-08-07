@@ -8,7 +8,7 @@ instance.interceptors.response.use(
     return response.data;
   },
   function (error) {
-    return Promise.reject(error);
+    return Promise.reject(error.response.data);
   }
 );
 
