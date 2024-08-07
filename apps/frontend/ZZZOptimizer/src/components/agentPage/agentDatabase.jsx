@@ -10,12 +10,25 @@ import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
 import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
 import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
+import { AgentsService } from "../../services/AgentService";
 import { useState, useEffect } from "react";
 
 function AgentDatabase({ agentInfoList }) {
+  const [listAgents, setListAgents] = useState([]);
+
+  useEffect(() => {
+    getAgents();
+  }, []);
+  const getAgents = async () => {
+    let res = await AgentsService();
+    if (res) {
+      setListAgents(res);
+    }
+  };
+
   const handleAgentClick = (agent) => {
     localStorage.setItem("selectedAgent", JSON.stringify(agent));
-    console.log(`${agent.characterName} clicked`);
+    console.log(`${agent.name} clicked`);
   };
 
   return (
@@ -75,15 +88,16 @@ function AgentDatabase({ agentInfoList }) {
 
       {/* Champion display */}
       <div className="agent-grid">
-        {agentInfoList.map((agent) => {
+        {listAgents.map((agent) => {
           return (
             <div
               className="agent"
-              key={agent.characterName}
+              key={agent.id}
               onClick={() => handleAgentClick(agent)}
             >
               <img src={agent.icon} alt="demo"></img>
-              <div className="agent-name-showcase">{agent.characterName} </div>
+              {console.log(agent.icon)}
+              <div className="agent-name-showcase">{agent.name} </div>
             </div>
           );
         })}
