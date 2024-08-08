@@ -15,23 +15,15 @@ import { useEffect, useState } from "react";
 
 import "./agent.css";
 
-export default function AgentLocalDatabase() {
-  // // List to store selected agents
-
-  // var listSelectedAgents = [];
-
-  // // Check null and initialize list
-  // if (localStorage.getItem("selected agent") == null) {
-  //   listSelectedAgents = [];
-  // } else {
-  //   listSelectedAgents = JSON.parse(localStorage.getItem("selected agent"));
-  // }
-
-  const [listSelectedAgents, setListSelectedAgents] = useState(() => {
-    // Check local storage and initialize list
-    const storedAgents = localStorage.getItem("selected agent");
-    return storedAgents ? JSON.parse(storedAgents) : [];
-  });
+export default function AgentLocalDatabase({
+  listSelectedAgents,
+  setListSelectedAgents,
+}) {
+  // const [listSelectedAgents, setListSelectedAgents] = useState(() => {
+  //   // Check local storage and initialize list
+  //   const storedAgents = localStorage.getItem("selected agent");
+  //   return storedAgents ? JSON.parse(storedAgents) : [];
+  // });
 
   useEffect(() => {
     const handleStorageChange = (event) => {
