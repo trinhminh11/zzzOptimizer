@@ -16,17 +16,45 @@ import { useEffect, useState } from "react";
 import "./agent.css";
 
 export default function AgentLocalDatabase() {
-  const [agents, setAgents] = useState([]);
+  // // List to store selected agents
+
+  // var listSelectedAgents = [];
+
+  // // Check null and initialize list
+  // if (localStorage.getItem("selected agent") == null) {
+  //   listSelectedAgents = [];
+  // } else {
+  //   listSelectedAgents = JSON.parse(localStorage.getItem("selected agent"));
+  // }
+
+  const [listSelectedAgents, setListSelectedAgents] = useState(() => {
+    // Check local storage and initialize list
+    const storedAgents = localStorage.getItem("selected agent");
+    return storedAgents ? JSON.parse(storedAgents) : [];
+  });
 
   useEffect(() => {
-    storedAgent();
+    const handleStorageChange = (event) => {
+      if (event.key === "selected agent") {
+        setListSelectedAgents(event.newValue ? JSON.parse(event.newValue) : []);
+      }
+    };
+
+    // Add event listener for storage event
+    window.addEventListener("storage", handleStorageChange);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
-  const storedAgent = async () => {
-    let res = await localStorage.getItem("selectedAgent");
-    if (res) {
-      setAgents(JSON.parse(res));
-    }
+  const removeAgent = (name) => {
+    const updatedAgents = listSelectedAgents.filter(
+      (agent) => agent.name !== name
+    );
+    setListSelectedAgents(updatedAgents);
+    localStorage.setItem("selected agent", JSON.stringify(updatedAgents));
   };
 
   return (
@@ -44,55 +72,29 @@ export default function AgentLocalDatabase() {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <td>
-              <img alt="Rina Icon" src={agentRinaIcon} className="nav-icon" />
-            </td>
-            <td>Alexandrina Sebastiane</td>
-            <td>
-              <img src={sRankIcon} alt="S Rank"></img>
-            </td>
-            <td>
-              <img
-                alt="Electric Icon"
-                src={electricIcon}
-                className="nav-icon"
-              />
-              <span>Electric</span>
-            </td>
-            <td>
-              <img src={supportRole} alt="Support"></img>
-              <span>Support</span>
-            </td>
-            <td>
-              <img src={victoriaFacton} alt="Victoria"></img>
-              <span>Victoria Housekeeping</span>
-            </td>
-            <td>
-              <button>Remove</button>
-            </td>
-          </tr> */}
-          {console.log(agents)}
-
-          {agents &&
-            agents.length > 0 &&
-            agents.map((item) => {
-              return (
-                <tr key={`users-${item.characterName}`}>
-                  <td>
-                    <img src={item.icon} alt="demo"></img>
-                  </td>
-                  <td>{item.characterName}</td>
-                  <td>{item.rank}</td>
-                  <td>{item.attribute}</td>
-                  <td>{item.style}</td>
-                  <td>{item.faction}</td>
-                  <td>
-                    <button className="btn btn-danger">Delete</button>
-                  </td>
-                </tr>
-              );
-            })}
+          {listSelectedAgents.map((item) => {
+            return (
+              <tr key={`users-${item.name}`}>
+                <td>
+                  <img src={item.icon} alt="demo"></img>
+                </td>
+                <td>{item.realName}</td>
+                <td>{item.rank}</td>
+                {/* <td>{item.attribute}</td> */}
+                <td>TBD</td>
+                <td>{item.fightingStyle}</td>
+                <td>{item.faction}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => removeAgent(item.name)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

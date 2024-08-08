@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import fireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
 import electricIcon from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
 import etherIcon from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
 import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
 import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
-import "./agent.css";
 import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
 import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
 import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
 import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 import { AgentsService } from "../../services/AgentService";
-import { useState, useEffect } from "react";
+import "./agent.css";
 
-function AgentDatabase({ agentInfoList }) {
+function AgentDatabase() {
+  // set up list for store agent from api
   const [listAgents, setListAgents] = useState([]);
 
+  // set up localstorage to store infomation
+  const [listSelectedAgents, setListSelectedAgents] = useState(() => {
+    // Check local storage and initialize list
+    const storedAgents = localStorage.getItem("selected agent");
+    return storedAgents ? JSON.parse(storedAgents) : [];
+  });
+
+  // Set up function to store data from api into the list
   useEffect(() => {
     getAgents();
   }, []);
+
   const getAgents = async () => {
     let res = await AgentsService();
     if (res) {
@@ -26,32 +35,32 @@ function AgentDatabase({ agentInfoList }) {
     }
   };
 
-  var listSelectedAgents = [];
+  // useEffect(() => {
+  //   const handleStorageChange = (event) => {
+  //     if (event.key === "selected agent") {
+  //       setListSelectedAgents(event.newValue ? JSON.parse(event.newValue) : []);
+  //     }
+  //   };
 
-  if (localStorage.getItem("selected agent") == null) {
-    listSelectedAgents = [];
-  } else {
-    listSelectedAgents = JSON.parse(localStorage.getItem("selected agent"));
-    console.log(listSelectedAgents);
-  }
+  //   // Add event listener for storage event
+  //   window.addEventListener("storage", handleStorageChange);
+
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, []);
 
   const handleAgentClick = (agent) => {
-    var check = false;
-    for (let i = 0; i < listSelectedAgents.length; i++) {
-      console.log(listSelectedAgents[i]);
-      if (listSelectedAgents[i].name == agent.name) {
-        check = true;
-
-        break;
-      }
-    }
+    const check = listSelectedAgents.some(
+      (selectedAgent) => selectedAgent.name === agent.name
+    );
 
     if (!check) {
-      listSelectedAgents.push(agent);
-      localStorage.setItem(
-        "selected agent",
-        JSON.stringify(listSelectedAgents)
-      );
+      const updatedAgents = [...listSelectedAgents, agent];
+      setListSelectedAgents(updatedAgents);
+      localStorage.setItem("selected agent", JSON.stringify(updatedAgents));
+      location.reload();
     }
   };
 
@@ -112,18 +121,16 @@ function AgentDatabase({ agentInfoList }) {
 
       {/* Champion display */}
       <div className="agent-grid">
-        {listAgents.map((agent) => {
-          return (
-            <div
-              className="agent"
-              key={agent.id}
-              onClick={() => handleAgentClick(agent)}
-            >
-              <img src={agent.icon} alt="demo"></img>
-              <div className="agent-name-showcase">{agent.name} </div>
-            </div>
-          );
-        })}
+        {listAgents.map((agent) => (
+          <div
+            className="agent"
+            key={agent.id}
+            onClick={() => handleAgentClick(agent)}
+          >
+            <img src={agent.icon} alt="demo"></img>
+            <div className="agent-name-showcase">{agent.name} </div>
+          </div>
+        ))}
       </div>
     </div>
   );
