@@ -19,7 +19,7 @@ def agentView(request: HttpRequest):
 	print(request.body)
 
 	agentDatabase.objects.all().delete()
-	iconFolder = "agents/"
+	iconFolder = ""
 	agents = Agent.main()
 
 	for agent in agents.values():
@@ -31,7 +31,11 @@ def agentView(request: HttpRequest):
 			fightingStyle = agent.fightingStyle, 
 			faction = agent.faction, 
 			moduleType = agent.moduleType, 
-			icon = f'{iconFolder}{agent.name}.png'
+			nameIcon = f'{iconFolder}/agents/{agent.name}.png',
+			attributeIcon = f'{iconFolder}/attributes/{agent.attribute}.png',
+			fightingStyleIcon = f'{iconFolder}/fightingStyle/{agent.fightingStyle}.png',
+			factionIcon = f'{iconFolder}/faction/{agent.faction.replace(" ", "_")}.png',
+			moduleTypeIcon = f'{iconFolder}/moduleType/{agent.moduleType}.png',
 		)
 
 		new_agent.save()
