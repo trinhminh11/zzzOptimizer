@@ -26,7 +26,8 @@ def agentView(request: HttpRequest):
 		new_agent = agentDatabase(
 			name = agent.name, 
 			realName = agent.realName,
-			rank = agent.rank, 
+			rank = agent.rank,
+			attribute = agent.attribute,
 			fightingStyle = agent.fightingStyle, 
 			faction = agent.faction, 
 			moduleType = agent.moduleType, 

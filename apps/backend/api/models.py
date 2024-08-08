@@ -22,6 +22,14 @@ class agentDatabase(models.Model):
 		("A", "A"),
 		("B", "B")
 	))
+
+	attribute = models.CharField(max_length=20, default="", unique=False, choices=(
+		('Physical', 'Physical'),
+		('Electric', 'Electric'),
+		('Fire', 'Fire'),
+		('Ice', 'Ice'),
+		('Ether', 'Ether')
+	))
 	
 	fightingStyle = models.CharField(max_length=50, default="", unique=False, choices=(
 		("Attack", "Attack"),
