@@ -1,16 +1,5 @@
 import React from "react";
-import FireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
-import Electric from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
-import Ether from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
-import Ice from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
-import Physical from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
-import agentRinaIcon from "../../assets/icon/agents/Rina.jpg";
-import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
-import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
-import anomalyRole from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
-import attackRole from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
-import supportRole from "../../assets/icon/agentsRoles/Icon_Support.jpg";
-import victoriaFacton from "../../assets/icon/agentFactions/Victoria_Housekeeping_Icon.jpg";
+
 import { useEffect, useState } from "react";
 
 import "./agent.css";
@@ -65,11 +54,10 @@ export default function AgentLocalDatabase({
       <table>
         <thead>
           <tr>
-            <th>Icon</th>
-            <th>Name</th>
-            <th>Rank</th>
-            <th className="attibute">Attribute</th>
-            <th className="fighting-style">Fighting Style</th>
+            <th>Agent</th>
+            <th className="center-column">Rank</th>
+            <th className="attibute center-column">Attribute</th>
+            <th className="fighting-style center-column">Fighting Style</th>
             <th className="faction">Weapon</th>
             <th></th>
           </tr>
@@ -77,18 +65,34 @@ export default function AgentLocalDatabase({
         <tbody>
           {listSelectedAgents.map((item) => {
             return (
-              <tr
-                key={`users-${item.name}`}
-                onClick={() => handleEditAgent(item)}
-              >
-                <td>
-                  <img src={item.icon} alt="demo"></img>
+              <tr key={`users-${item.name}`}>
+                <td onClick={() => handleEditAgent(item)}>
+                  <img
+                    src={item.nameIcon}
+                    alt="demo"
+                    className="agentImg"
+                  ></img>
+                  <span>{item.realName}</span>
                 </td>
-                <td>{item.realName}</td>
-                <td>{item.rank}</td>
-                <td>{/* <img src={item.attribute} alt="" /> */}</td>
-                <td>{item.fightingStyle}</td>
-                <td>Default weapon</td>
+                <td
+                  className="center-column"
+                  onClick={() => handleEditAgent(item)}
+                >
+                  {item.rank}
+                </td>
+                <td
+                  className="center-column"
+                  onClick={() => handleEditAgent(item)}
+                >
+                  <img src={item.attributeIcon} alt="demo"></img>
+                </td>
+                <td
+                  className="center-column"
+                  onClick={() => handleEditAgent(item)}
+                >
+                  <img src={item.fightingStyleIcon} alt="demo"></img>
+                </td>
+                <td onClick={() => handleEditAgent(item)}>Default weapon</td>
                 <td>
                   <button
                     className="btn btn-danger"
