@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from .Processing import agent as Agent
+from Processing.agent import load_agent
 from .models import agentDatabase
 
 from rest_framework import generics
@@ -20,7 +20,7 @@ def agentView(request: HttpRequest):
 
 	agentDatabase.objects.all().delete()
 	iconFolder = ""
-	agents = Agent.main()
+	agents = load_agent()
 
 	for agent in agents.values():
 		new_agent = agentDatabase(
@@ -32,6 +32,7 @@ def agentView(request: HttpRequest):
 			faction = agent.faction, 
 			moduleType = agent.moduleType, 
 			nameIcon = f'{iconFolder}/agents/{agent.name}.png',
+			rankIcon = f'{iconFolder}/rank/{agent.rank}.png',
 			attributeIcon = f'{iconFolder}/attributes/{agent.attribute}.png',
 			fightingStyleIcon = f'{iconFolder}/fightingStyle/{agent.fightingStyle}.png',
 			factionIcon = f'{iconFolder}/faction/{agent.faction.replace(" ", "_")}.png',
@@ -46,7 +47,7 @@ def optimize(request: HttpRequest):
 	pass
 
 def optimize_(data: dict):
-	agents = Agent.main()
+	agents = load_agent()
 	agent = agents[data['name']]
 	agent.fromJson(data)
 

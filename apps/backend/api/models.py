@@ -1,6 +1,4 @@
-from typing import Any
 from django.db import models
-from .Processing import agent as Agent
 
 def auto_increment():
 	largest = agentDatabase.objects.all().order_by('id').last()
@@ -55,6 +53,8 @@ class agentDatabase(models.Model):
 	))
 
 	nameIcon = models.ImageField(default="", upload_to ='media/agents/')
+
+	rankIcon = models.ImageField(editable=False, default='')
 
 	attributeIcon = models.ImageField(editable=False, default='')
 
