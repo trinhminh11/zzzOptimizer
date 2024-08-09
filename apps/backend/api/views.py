@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import agentModel
 
 from rest_framework import generics
@@ -8,12 +8,35 @@ from rest_framework.response import Response
 from .serializer import agentModelSerializer
 
 from Processing.agent import load_agent
+from django.core import serializers
+
+import json
+
 
 
 # Create your views here.
-class agentModelView(generics.ListAPIView):
-	queryset = agentModel.objects.all()
-	serializer_class = agentModelSerializer
+class agentModelView(APIView):
+	# queryset = agentModel.objects.all()
+	# serializer_class = agentModelSerializer
+
+	# def get_queryset(self):
+	# 	if self.request.GET:
+	# 		return agentModel.objects.filter(pk = self.request.GET['id'])
+	# 	return agentModel.objects.all()
+
+	def get(self, request: HttpRequest):
+
+		if request.GET.get('id'):
+			return Response(agentModel.objects.filter(pk = request.GET.get('id')).values()[0])
+
+		agents = agentModel.objects.all()
+
+		serializer = agentModelSerializer(agents, many=True)
+
+		return Response(serializer.data)
+	
+	
+	
 
 def agentView(request: HttpRequest):
 
@@ -54,6 +77,7 @@ def agentView(request: HttpRequest):
 
 
 def test(request: HttpRequest):
-	print(request.method)
-	print(request.body)
-	return HttpResponse("Hello")
+
+	print(request.GET.dict())
+
+	return JsonResponse(request.GET.dict())
