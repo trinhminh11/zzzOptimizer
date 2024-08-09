@@ -3,33 +3,6 @@ import os
 dirname = os.path.dirname(__file__)
 baseStatFile = dirname + "/agentBaseStat.json"
 
-# "agents": [
-# 	{
-# 		"name": "…",
-# 		"promotion": int,
-# 		"level": int,
-# 		"mindScape": int,
-#		"core": int,
-# 		"basic": int,
-# 		"dash": int,
-# 		"assist": int,
-# 		"special": int,
-# 		"ultimate": int
-# 	},
-# 	{
-# 		"name": "…",
-# 		"promotion": int,
-# 		"level": int,
-# 		"mindScape": int,
-#		"core": int,
-# 		"basic": int,
-# 		"dash": int,
-# 		"assist": int,
-# 		"special": int,
-# 		"ultimate": int
-# 	}
-# ]
-
 class Agent:
 	name: str
 	realName: str
@@ -48,19 +21,19 @@ class Agent:
 	atk_: float = 0
 	_def: float = 0
 	def_: float = 0
-	impact: float = 0
-	critRate_: float = 0
-	critDmg_: float = 0
+	imp: float = 0
+	criRate_: float = 0
+	criDmg_: float = 0
 	anoMas: float = 0
 	anoPro: float = 0
 	pen: float = 0
 	pen_: float = 0
-	enerGen: float = 0
-	electricDMG_: float = 0
-	physicalDMG_: float = 0
-	fierDMG_: float = 0
+	eneGen: float = 0
+	eleDMG_: float = 0
+	phyDMG_: float = 0
+	firDMG_: float = 0
 	iceDMG_: float = 0
-	etherDMG_: float = 0
+	ethDMG_: float = 0
 
 	atkBuff: float
 
@@ -128,7 +101,7 @@ class Agent:
 
 
 	def loadBaseStat(self, data):
-		self.baseStatLevel = data
+		self.baseStat = data
 
 	def setLevel(self, value):
 		self.level = value

@@ -1,29 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from Processing.agent import load_agent
-from .models import agentDatabase
+from .models import agentModel
 
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializer import agentDatabaseSerializer
+from .serializer import agentModelSerializer
+
+from Processing.agent import load_agent
 
 
 # Create your views here.
-class agentDatabaseView(generics.ListAPIView):
-	queryset = agentDatabase.objects.all()
-	serializer_class = agentDatabaseSerializer
+class agentModelView(generics.ListAPIView):
+	queryset = agentModel.objects.all()
+	serializer_class = agentModelSerializer
 
 def agentView(request: HttpRequest):
 
-	print(request.body)
-
-	agentDatabase.objects.all().delete()
+	agentModel.objects.all().delete()
 	iconFolder = ""
 	agents = load_agent()
 
 	for agent in agents.values():
-		new_agent = agentDatabase(
+		new_agent = agentModel(
 			name = agent.name, 
 			realName = agent.realName,
 			rank = agent.rank,
@@ -37,17 +36,24 @@ def agentView(request: HttpRequest):
 			fightingStyleIcon = f'{iconFolder}/fightingStyle/{agent.fightingStyle}.png',
 			factionIcon = f'{iconFolder}/faction/{agent.faction.replace(" ", "_")}.png',
 			moduleTypeIcon = f'{iconFolder}/moduleType/{agent.moduleType}.png',
+			baseStat = agent.baseStat
 		)
 
 		new_agent.save()
 
-	return agentDatabaseView.as_view()(request)
+	return agentModelView.as_view()(request)
 
-def optimize(request: HttpRequest):
-	pass
+# def optimize(request: HttpRequest):
+# 	pass
 
-def optimize_(data: dict):
-	agents = load_agent()
-	agent = agents[data['name']]
-	agent.fromJson(data)
+# def optimize_(data: dict):
+# 	agents = load_agent()
+# 	agent = agents[data['name']]
+# 	agent.fromJson(data)
 
+
+
+def test(request: HttpRequest):
+	print(request.method)
+	print(request.body)
+	return HttpResponse("Hello")

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import agentDatabase
+from .models import agentModel
 # Register your models here.
 
-admin.site.register(agentDatabase)
+admin.site.register(agentModel)

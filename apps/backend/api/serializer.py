@@ -1,10 +1,9 @@
 from rest_framework import serializers
-from .models import agentDatabase
+from .models import agentModel
 
-class agentDatabaseSerializer(serializers.ModelSerializer):
+class agentModelSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = agentDatabase
-		fields = []
-		for field in model._meta.fields:
-			fields.append(field.name)
+		model = agentModel
+		# fields = [field.name for field in model._meta.fields]
+		fields = ['id', 'name', 'realName', 'rank', 'attribute', 'fightingStyle', 'faction', 'moduleType', 'nameIcon', 'rankIcon', 'attributeIcon', 'fightingStyleIcon', 'factionIcon', 'moduleTypeIcon']
 		# fields = ('id', 'name', 'realName', 'rank', 'attribute', 'fightingStyle', 'faction', 'moduleType', 'nameIcon', 'attributeIcon')

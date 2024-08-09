@@ -1,15 +1,15 @@
 from django.db import models
 
 def auto_increment():
-	largest = agentDatabase.objects.all().order_by('id').last()
+	largest = agentModel.objects.all().order_by('id').last()
 	if not largest:
 		return 1
 	return largest.id + 1
 
 # Create your models here.
-class agentDatabase(models.Model):
+class agentModel(models.Model):
 
-	id = models.IntegerField(primary_key=True, default=auto_increment)
+	id = models.IntegerField(primary_key=True, default=auto_increment, editable=False)
 
 	name = models.CharField(max_length=50, default="", unique=True)
 
@@ -52,7 +52,9 @@ class agentDatabase(models.Model):
 		("Strike", "Strike")
 	))
 
-	nameIcon = models.ImageField(default="", upload_to ='media/agents/')
+	baseStat = models.JSONField(default=dict)
+
+	nameIcon = models.ImageField(default="", upload_to ='agents/')
 
 	rankIcon = models.ImageField(editable=False, default='')
 
