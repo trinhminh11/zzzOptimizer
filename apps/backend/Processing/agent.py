@@ -258,7 +258,7 @@ class Yuan(Agent):
 		pass
 
 
-def main():
+def load_agent():
 	agents: dict[str, Agent] = {
 		"Rina": Rina(),
 		"Anby": Anby(),
