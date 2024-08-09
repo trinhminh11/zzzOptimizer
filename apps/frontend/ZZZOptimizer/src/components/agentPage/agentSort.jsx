@@ -29,6 +29,10 @@ export default function AgentSort() {
         <img alt="A rank Icon" src={aRankIcon} className="nav-icon" />
       </a>
 
+      <div className="filters-divider">
+        <h2>|</h2>
+      </div>
+
       {/* Element */}
       <a className="element-sort">
         <img alt="Electric Icon" src={electricIcon} className="nav-icon" />
@@ -49,6 +53,10 @@ export default function AgentSort() {
       <a className="element-sort">
         <img alt="Ether Icon" src={etherIcon} className="nav-icon" />
       </a>
+
+      <div className="filters-divider">
+        <h2>|</h2>
+      </div>
 
       {/* Fighting Style */}
       <a className="element-sort">
