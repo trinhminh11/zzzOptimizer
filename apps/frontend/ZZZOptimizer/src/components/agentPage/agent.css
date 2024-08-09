@@ -216,3 +216,49 @@ th.fighting-style th.attribute {
 th.faction {
   width: 250px;
 }
+
+/* Styling ModalEditAgent */
+.modal-container .modal-content {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #404258;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  border: none !important;
+}
+.modal-header {
+  border: none !important;
+}
+
+.modal-footer {
+  border: none !important;
+}
+
+.modal-left,
+.modal-right {
+  flex: 1;
+}
+
+.modal-right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.item-card {
+  background-color: #6b728e;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-header h4 {
+  font-family: "Merienda", cursive;
+
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+}

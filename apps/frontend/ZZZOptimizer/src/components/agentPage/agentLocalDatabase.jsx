@@ -1,9 +1,9 @@
 import React from "react";
-import fireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
-import electricIcon from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
-import etherIcon from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
-import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
-import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
+import FireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
+import Electric from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
+import Ether from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
+import Ice from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
+import Physical from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
 import agentRinaIcon from "../../assets/icon/agents/Rina.jpg";
 import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
 import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
@@ -14,16 +14,27 @@ import victoriaFacton from "../../assets/icon/agentFactions/Victoria_Housekeepin
 import { useEffect, useState } from "react";
 
 import "./agent.css";
+import ModalEditAgent from "./ModalEditAgent";
 
 export default function AgentLocalDatabase({
   listSelectedAgents,
   setListSelectedAgents,
 }) {
-  // const [listSelectedAgents, setListSelectedAgents] = useState(() => {
-  //   // Check local storage and initialize list
-  //   const storedAgents = localStorage.getItem("selected agent");
-  //   return storedAgents ? JSON.parse(storedAgents) : [];
-  // });
+  // Init variable for agent edit show function
+  const [isShowModalEdit, setShowModalEdit] = useState(false);
+  const [dataAgentEdit, setDataAgentEdit] = useState([]);
+
+  // Closing function for ModalEditAgent
+  const handleClose = () => {
+    setShowModalEdit(false);
+  };
+
+  // Edit agent function
+  const handleEditAgent = (agent) => {
+    console.log(agent);
+    setDataAgentEdit(agent);
+    setShowModalEdit(true);
+  };
 
   useEffect(() => {
     const handleStorageChange = (event) => {
@@ -59,23 +70,25 @@ export default function AgentLocalDatabase({
             <th>Rank</th>
             <th className="attibute">Attribute</th>
             <th className="fighting-style">Fighting Style</th>
-            <th className="faction">Faction</th>
+            <th className="faction">Weapon</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {listSelectedAgents.map((item) => {
             return (
-              <tr key={`users-${item.name}`}>
+              <tr
+                key={`users-${item.name}`}
+                onClick={() => handleEditAgent(item)}
+              >
                 <td>
                   <img src={item.icon} alt="demo"></img>
                 </td>
                 <td>{item.realName}</td>
                 <td>{item.rank}</td>
-                {/* <td>{item.attribute}</td> */}
-                <td>TBD</td>
+                <td>{/* <img src={item.attribute} alt="" /> */}</td>
                 <td>{item.fightingStyle}</td>
-                <td>{item.faction}</td>
+                <td>Default weapon</td>
                 <td>
                   <button
                     className="btn btn-danger"
@@ -89,6 +102,11 @@ export default function AgentLocalDatabase({
           })}
         </tbody>
       </table>
+      <ModalEditAgent
+        show={isShowModalEdit}
+        dataAgentEdit={dataAgentEdit}
+        handleClose={handleClose}
+      />
     </div>
   );
 }
