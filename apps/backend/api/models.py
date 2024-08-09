@@ -54,7 +54,15 @@ class agentDatabase(models.Model):
 		("Strike", "Strike")
 	))
 
-	icon = models.ImageField(default="", upload_to ='media/agents/')
+	nameIcon = models.ImageField(default="", upload_to ='media/agents/')
+
+	attributeIcon = models.ImageField(editable=False, default='')
+
+	fightingStyleIcon = models.ImageField(editable=False, default='')
+
+	factionIcon = models.ImageField(editable=False, default='')
+	
+	moduleTypeIcon = models.ImageField(editable=False, default='')
 
 	def __str__(self):
 		return f'{self.name}'

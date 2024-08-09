@@ -4,4 +4,7 @@ from .models import agentDatabase
 class agentDatabaseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = agentDatabase
-		fields = ('id', 'name', 'realName', 'rank', 'attribute', 'fightingStyle', 'faction', 'moduleType', 'icon')
+		fields = []
+		for field in model._meta.fields:
+			fields.append(field.name)
+		# fields = ('id', 'name', 'realName', 'rank', 'attribute', 'fightingStyle', 'faction', 'moduleType', 'nameIcon', 'attributeIcon')
