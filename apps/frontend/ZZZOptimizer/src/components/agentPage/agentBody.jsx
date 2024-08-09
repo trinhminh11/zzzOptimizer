@@ -24,6 +24,18 @@ function AgentBody() {
   const getAgents = async () => {
     let res = await AgentsService();
     if (res) {
+      // Add new mindScape attribute
+      for (let i = 0; i < res.length; i++) {
+        res[i].mindScape = 0;
+        res[i].promotion = 0;
+        res[i].level = 1;
+        res[i].core = 1;
+        res[i].basic = 1;
+        res[i].dodge = 1;
+        res[i].assist = 1;
+        res[i].special = 1;
+        res[i].chain = 1;
+      }
       setListAgents(res);
     }
   };

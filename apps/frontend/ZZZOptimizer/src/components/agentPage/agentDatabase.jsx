@@ -17,27 +17,6 @@ function AgentDatabase({
   listSelectedAgents,
   setListSelectedAgents,
 }) {
-  // // set up list for store agent from api
-  // const [listAgents, setListAgents] = useState([]);
-
-  // // set up localstorage to store infomation
-  // const [listSelectedAgents, setListSelectedAgents] = useState(() => {
-  //   // Check local storage and initialize list
-  //   const storedAgents = localStorage.getItem("selected agent");
-  //   return storedAgents ? JSON.parse(storedAgents) : [];
-  // });
-
-  // // Set up function to store data from api into the list
-  // useEffect(() => {
-  //   getAgents();
-  // }, []);
-
-  // const getAgents = async () => {
-  //   let res = await AgentsService();
-  //   if (res) {
-  //     setListAgents(res);
-  //   }
-  // };
   useEffect(() => {
     const handleStorageChange = (event) => {
       if (event.key === "selected agent") {
@@ -125,7 +104,7 @@ function AgentDatabase({
       <div className="agent-grid">
         {listAgents.map((agent) => (
           <div
-            className="agent"
+            className={"agent agent-" + agent.rank}
             key={agent.id}
             onClick={() => handleAgentClick(agent)}
           >

@@ -47,6 +47,7 @@ export default function AgentLocalDatabase({
     );
     setListSelectedAgents(updatedAgents);
     localStorage.setItem("selected agent", JSON.stringify(updatedAgents));
+    handleClose();
   };
 
   return (
@@ -58,8 +59,8 @@ export default function AgentLocalDatabase({
             <th className="center-column">Rank</th>
             <th className="attibute center-column">Attribute</th>
             <th className="fighting-style center-column">Fighting Style</th>
-            <th className="faction">Weapon</th>
-            <th></th>
+            <th className="faction center-column">Weapon</th>
+            <th className="center-column">Mind Scape</th>
           </tr>
         </thead>
         <tbody>
@@ -78,7 +79,11 @@ export default function AgentLocalDatabase({
                   className="center-column"
                   onClick={() => handleEditAgent(item)}
                 >
-                  {item.rank}
+                  <img
+                    src={item.rankIcon}
+                    alt="demo"
+                    style={{ width: "30px", height: "30px" }}
+                  ></img>
                 </td>
                 <td
                   className="center-column"
@@ -93,13 +98,8 @@ export default function AgentLocalDatabase({
                   <img src={item.fightingStyleIcon} alt="demo"></img>
                 </td>
                 <td onClick={() => handleEditAgent(item)}>Default weapon</td>
-                <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => removeAgent(item.name)}
-                  >
-                    Delete
-                  </button>
+                <td className="center-column">
+                  <span> M{item.mindScape}</span>
                 </td>
               </tr>
             );
@@ -110,6 +110,7 @@ export default function AgentLocalDatabase({
         show={isShowModalEdit}
         dataAgentEdit={dataAgentEdit}
         handleClose={handleClose}
+        removeAgent={removeAgent}
       />
     </div>
   );

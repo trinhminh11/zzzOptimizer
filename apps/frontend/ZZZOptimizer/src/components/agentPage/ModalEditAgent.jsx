@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "./agent.css";
 
 export default function ModalEditAgent(props) {
-  const { show, handleClose, dataAgentEdit } = props;
+  const { show, handleClose, dataAgentEdit, removeAgent } = props;
   return (
     <div>
       <Modal
@@ -14,10 +14,17 @@ export default function ModalEditAgent(props) {
         keyboard={false}
         className="modal-container"
       >
-        <Modal.Header closeButton className="modal-header no-border">
+        <Modal.Header className="modal-header">
           <h4>{dataAgentEdit.realName}</h4>
+          <button
+            className="btn btn-danger"
+            onClick={() => removeAgent(dataAgentEdit.name)}
+          >
+            Delete Agent
+          </button>
         </Modal.Header>
-        <Modal.Body className="modal-body no-border">
+
+        <Modal.Body className="modal-body">
           <div className="modal-left">{/* Character Image and Stats */}</div>
           <div className="modal-right">
             {/* Artifact Slots */}
