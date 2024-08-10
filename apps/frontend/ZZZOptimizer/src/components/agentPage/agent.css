@@ -13,9 +13,10 @@
 }
 
 .agent-sorting-container {
-  width: 70%;
+  width: 75%;
   border-radius: 5px;
-  margin: 40px;
+  margin: 30px;
+  margin-top: 10px;
   padding: 0px;
   height: 100%;
   gap: 15px;
@@ -29,11 +30,15 @@
 }
 
 .element-sort {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.2s ease-in-out;
   flex-basis: 10px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  height: 100%;
+  padding: 10px;
 }
 
 .element-sort:hover {
@@ -52,14 +57,41 @@
   background-color: #6b728e;
 }
 
-.filters-divider {
-  display: initial;
-  width: 10px;
-  height: 30px;
-  background: #4d5fc4;
-  margin: 0 20px;
+.sorting-categories {
+  display: flex;
+  gap: 0px;
+  background-color: #404258;
+  flex: 0 0;
+  padding: 0;
+  border-radius: 6px;
 }
 
+.select-all {
+  color: white;
+  height: 30px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.rank-sort a,
+.rank-sort div,
+.attribute-sort a,
+.attribute-sort div,
+.fighting-sort a,
+.fighting-sort div {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: solid #1c1c1f;
+  border-width: 1px;
+}
+
+.rank-sort a:last-child {
+  border-radius: 6px;
+  border: none;
+}
 /* Styling the under columns */
 .agent-body {
   width: 90%;
@@ -112,6 +144,30 @@
   cursor: pointer;
 }
 
+.agent-S img {
+  background-image: linear-gradient(
+    to bottom,
+    #ffb500,
+    #f6c02f,
+    #eeca4c,
+    #e8d365,
+    #e3db7e
+  );
+  border-radius: 4px;
+}
+
+.agent-A img {
+  background-image: linear-gradient(
+    to bottom,
+    #e900ff,
+    #eb41f4,
+    #eb5feb,
+    #e877e2,
+    #e48cda
+  );
+  border-radius: 4px;
+}
+
 .agent-name-showcase {
   overflow: hidden;
   white-space: nowrap;
@@ -122,8 +178,11 @@
   width: 50px;
   height: 50px;
   border-radius: 4px;
-  border: solid white;
   border-width: 1px;
+}
+
+.agent img:hover {
+  border: solid white;
 }
 
 .agent-name-showcase {
@@ -134,7 +193,7 @@
   overflow: hidden;
 }
 
-/* Styling the right column */
+/* Styling the right table */
 
 .agent-local-database {
   background-color: #404258;
@@ -215,4 +274,61 @@ th.fighting-style th.attribute {
 
 th.faction {
   width: 250px;
+}
+
+.center-column {
+  text-align: center;
+}
+
+.agentImg {
+  margin-right: 10px;
+}
+
+/* Styling ModalEditAgent */
+.modal-container .modal-content {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #404258;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  border: none !important;
+}
+.modal-header {
+  border: none !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-footer {
+  border: none !important;
+}
+
+.modal-left,
+.modal-right {
+  flex: 1;
+}
+
+.modal-right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.item-card {
+  background-color: #6b728e;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-header h4 {
+  font-family: "Merienda", cursive;
+
+  font-weight: 700;
+  font-style: normal;
+  color: white;
 }

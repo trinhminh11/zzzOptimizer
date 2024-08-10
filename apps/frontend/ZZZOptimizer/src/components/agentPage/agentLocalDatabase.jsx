@@ -1,32 +1,53 @@
 import React from "react";
-import fireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
-import electricIcon from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
-import etherIcon from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
-import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
-import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
-import agentRinaIcon from "../../assets/icon/agents/Rina.jpg";
-import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
-import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
-import anomalyRole from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
-import attackRole from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
-import supportRole from "../../assets/icon/agentsRoles/Icon_Support.jpg";
-import victoriaFacton from "../../assets/icon/agentFactions/Victoria_Housekeeping_Icon.jpg";
+
 import { useEffect, useState } from "react";
 
 import "./agent.css";
+import ModalEditAgent from "./ModalEditAgent";
 
-export default function AgentLocalDatabase() {
-  const [agents, setAgents] = useState([]);
+export default function AgentLocalDatabase({
+  listSelectedAgents,
+  setListSelectedAgents,
+}) {
+  // Init variable for agent edit show function
+  const [isShowModalEdit, setShowModalEdit] = useState(false);
+  const [dataAgentEdit, setDataAgentEdit] = useState([]);
+
+  // Closing function for ModalEditAgent
+  const handleClose = () => {
+    setShowModalEdit(false);
+  };
+
+  // Edit agent function
+  const handleEditAgent = (agent) => {
+    console.log(agent);
+    setDataAgentEdit(agent);
+    setShowModalEdit(true);
+  };
 
   useEffect(() => {
-    storedAgent();
+    const handleStorageChange = (event) => {
+      if (event.key === "selected agent") {
+        setListSelectedAgents(event.newValue ? JSON.parse(event.newValue) : []);
+      }
+    };
+
+    // Add event listener for storage event
+    window.addEventListener("storage", handleStorageChange);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
-  const storedAgent = async () => {
-    let res = await localStorage.getItem("selectedAgent");
-    if (res) {
-      setAgents(JSON.parse(res));
-    }
+  const removeAgent = (name) => {
+    const updatedAgents = listSelectedAgents.filter(
+      (agent) => agent.name !== name
+    );
+    setListSelectedAgents(updatedAgents);
+    localStorage.setItem("selected agent", JSON.stringify(updatedAgents));
+    handleClose();
   };
 
   return (
@@ -34,67 +55,63 @@ export default function AgentLocalDatabase() {
       <table>
         <thead>
           <tr>
-            <th>Icon</th>
-            <th>Name</th>
-            <th>Rank</th>
-            <th className="attibute">Attribute</th>
-            <th className="fighting-style">Fighting Style</th>
-            <th className="faction">Faction</th>
-            <th></th>
+            <th>Agent</th>
+            <th className="center-column">Rank</th>
+            <th className="attibute center-column">Attribute</th>
+            <th className="fighting-style center-column">Fighting Style</th>
+            <th className="faction center-column">Weapon</th>
+            <th className="center-column">Mind Scape</th>
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <td>
-              <img alt="Rina Icon" src={agentRinaIcon} className="nav-icon" />
-            </td>
-            <td>Alexandrina Sebastiane</td>
-            <td>
-              <img src={sRankIcon} alt="S Rank"></img>
-            </td>
-            <td>
-              <img
-                alt="Electric Icon"
-                src={electricIcon}
-                className="nav-icon"
-              />
-              <span>Electric</span>
-            </td>
-            <td>
-              <img src={supportRole} alt="Support"></img>
-              <span>Support</span>
-            </td>
-            <td>
-              <img src={victoriaFacton} alt="Victoria"></img>
-              <span>Victoria Housekeeping</span>
-            </td>
-            <td>
-              <button>Remove</button>
-            </td>
-          </tr> */}
-          {console.log(agents)}
-
-          {agents &&
-            agents.length > 0 &&
-            agents.map((item) => {
-              return (
-                <tr key={`users-${item.characterName}`}>
-                  <td>
-                    <img src={item.icon} alt="demo"></img>
-                  </td>
-                  <td>{item.characterName}</td>
-                  <td>{item.rank}</td>
-                  <td>{item.attribute}</td>
-                  <td>{item.style}</td>
-                  <td>{item.faction}</td>
-                  <td>
-                    <button className="btn btn-danger">Delete</button>
-                  </td>
-                </tr>
-              );
-            })}
+          {listSelectedAgents.map((item) => {
+            return (
+              <tr key={`users-${item.name}`}>
+                <td onClick={() => handleEditAgent(item)}>
+                  <img
+                    src={item.nameIcon}
+                    alt="demo"
+                    className="agentImg"
+                  ></img>
+                  <span>{item.realName}</span>
+                </td>
+                <td
+                  className="center-column"
+                  onClick={() => handleEditAgent(item)}
+                >
+                  <img
+                    src={item.rankIcon}
+                    alt="demo"
+                    style={{ width: "30px", height: "30px" }}
+                  ></img>
+                </td>
+                <td
+                  className="center-column"
+                  onClick={() => handleEditAgent(item)}
+                >
+                  <img src={item.attributeIcon} alt="demo"></img>
+                </td>
+                <td
+                  className="center-column"
+                  onClick={() => handleEditAgent(item)}
+                >
+                  <img src={item.fightingStyleIcon} alt="demo"></img>
+                </td>
+                <td onClick={() => handleEditAgent(item)}>Default weapon</td>
+                <td className="center-column">
+                  <span> M{item.mindScape}</span>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
+      <ModalEditAgent
+        show={isShowModalEdit}
+        dataAgentEdit={dataAgentEdit}
+        handleClose={handleClose}
+        removeAgent={removeAgent}
+      />
     </div>
   );
 }
