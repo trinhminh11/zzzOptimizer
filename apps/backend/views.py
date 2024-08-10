@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from config.config import *
 from models.agent import AgentModel
 
-from .main import app, agents
+from main import app, agents
 
 
 @app.post("/agents/", response_model=AgentModel)

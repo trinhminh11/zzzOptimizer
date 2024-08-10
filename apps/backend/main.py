@@ -1,4 +1,3 @@
-import base64
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from config.config import *
@@ -6,15 +5,12 @@ import uvicorn
 from models.agent import AgentModel
 import json
 
-from fastapi.responses import FileResponse, HTMLResponse
-
 from fastapi.staticfiles import StaticFiles
-
-
-
 
 app = FastAPI()
 app.mount("/media", StaticFiles(directory = MEDIA_DIR), name = 'media')
+
+import views
 
 origins = ["*"]
 
