@@ -1,11 +1,12 @@
+import base64
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from config.config import *
 import uvicorn
 from models.agent import AgentModel
 import json
-import api.views
 
+from fastapi.responses import FileResponse, HTMLResponse
 
 from fastapi.staticfiles import StaticFiles
 
@@ -13,16 +14,16 @@ from fastapi.staticfiles import StaticFiles
 
 
 app = FastAPI()
-app.mount("/media", StaticFiles(directory = MEDIA_DIR))
+app.mount("/media", StaticFiles(directory = MEDIA_DIR), name = 'media')
 
 origins = ["*"]
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+	CORSMiddleware,
+	allow_origins=origins,
+	allow_credentials=True,
+	allow_methods=["*"],
+	allow_headers=["*"],
 )
 
 agents: list[AgentModel] = []

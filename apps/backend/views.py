@@ -2,22 +2,20 @@ from fastapi import HTTPException
 from config.config import *
 from models.agent import AgentModel
 
-from main import app, agents
-
-APP_DIR = "/api"
+from .main import app, agents
 
 
-@app.post(APP_DIR+"/agents/", response_model=AgentModel)
+@app.post("/agents/", response_model=AgentModel)
 def addAgent(agent: AgentModel):
 	agents.append(agent)
 
 	return agent
 
-@app.get(APP_DIR+"/agents/", response_model=list[AgentModel])
+@app.get("/agents/", response_model=list[AgentModel])
 def getAgents():
 	return agents
 
-@app.get(APP_DIR+"/agents/{agent_id}", response_model=AgentModel)
+@app.get("/agents/{agent_id}", response_model=AgentModel)
 def getAgent(agent_id: int):
 	for agent in agents:
 		if agent.id == agent_id:
