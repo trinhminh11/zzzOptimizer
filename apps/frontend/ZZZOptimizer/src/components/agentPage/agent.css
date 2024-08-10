@@ -94,6 +94,9 @@
   border-radius: 6px;
   border: none;
 }
+.selected {
+  background-color: #50577a;
+}
 /* Styling the under columns */
 .agent-body {
   width: 90%;
