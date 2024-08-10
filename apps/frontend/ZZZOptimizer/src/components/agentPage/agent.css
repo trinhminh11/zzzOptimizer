@@ -197,6 +197,9 @@
   color: #b0b3b8;
   overflow: hidden;
 }
+.btn.selected {
+  background-color: #7b7b7b;
+}
 
 /* Styling the right table */
 

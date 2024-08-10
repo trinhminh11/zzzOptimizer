@@ -11,6 +11,7 @@ function AgentPage() {
     attribute: null,
     fighting: null,
   });
+
   return (
     <div className="agent-page-container">
       <NavBar />
@@ -18,7 +19,10 @@ function AgentPage() {
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-      <AgentBody selectedOptions={selectedOptions} />
+      <AgentBody
+        selectedOptions={selectedOptions}
+        setSelectedOptions={setSelectedOptions}
+      />
     </div>
   );
 }

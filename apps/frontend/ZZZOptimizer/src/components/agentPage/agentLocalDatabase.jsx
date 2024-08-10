@@ -9,6 +9,8 @@ export default function AgentLocalDatabase({
   listSelectedAgents,
   setListSelectedAgents,
   selectedOptions,
+  handleSelect,
+  isSelected,
 }) {
   // Init variable for agent edit show function
   const [isShowModalEdit, setShowModalEdit] = useState(false);

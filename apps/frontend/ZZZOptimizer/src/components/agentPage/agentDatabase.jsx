@@ -17,6 +17,11 @@ function AgentDatabase({
   listSelectedAgents,
   setListSelectedAgents,
 }) {
+  // Initialize for search bar
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedAttribute, setSelectedAttribute] = useState(null);
+  const [selectedFightingStyle, setSelectedFightingStyle] = useState(null);
+
   useEffect(() => {
     const handleStorageChange = (event) => {
       if (event.key === "selected agent") {
@@ -45,33 +50,95 @@ function AgentDatabase({
     }
   };
 
+  const handleAttributeClick = (attribute) => {
+    setSelectedAttribute((prev) => (prev === attribute ? null : attribute));
+  };
+
+  const handleFightingStyleClick = (style) => {
+    setSelectedFightingStyle((prev) => (prev === style ? null : style));
+  };
+
+  // // Filter agents based on search input
+  // const filteredAgents = listAgents.filter((agent) =>
+  //   agent.name.toLowerCase().includes(searchInput.toLowerCase())
+  // );
+
+  // Filter agents based on search input, selected attribute, and fighting style
+  const filteredAgents = listAgents.filter((agent) => {
+    const matchesSearch = agent.name
+      .toLowerCase()
+      .includes(searchInput.toLowerCase());
+    const matchesAttribute = selectedAttribute
+      ? agent.attribute === selectedAttribute
+      : true;
+    const matchesFightingStyle = selectedFightingStyle
+      ? agent.fightingStyle === selectedFightingStyle
+      : true;
+    return matchesSearch && matchesAttribute && matchesFightingStyle;
+  });
+
   return (
     <div className="row left-table">
       {/* Search Bar  */}
       <div className="search-bar">
-        <input type="text" placeholder="Search an agent"></input>
+        <input
+          type="text"
+          placeholder="Search an agent"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        ></input>
       </div>
 
       {/* Attribute Filter Bar  */}
       <div className="filter-bar">
         {/* Elements */}
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedAttribute === "Electric" ? "selected" : ""
+          }`}
+          onClick={() => handleAttributeClick("Electric")}
+        >
           <img alt="Electric Icon" src={electricIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedAttribute === "Fire" ? "selected" : ""
+          }`}
+          onClick={() => handleAttributeClick("Fire")}
+        >
           <img alt="Fire Icon" src={fireIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedAttribute === "Physical" ? "selected" : ""
+          }`}
+          onClick={() => handleAttributeClick("Physical")}
+        >
           <img alt="Physical Icon" src={physicalIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedAttribute === "Ice" ? "selected" : ""
+          }`}
+          onClick={() => handleAttributeClick("Ice")}
+        >
           <img alt="Ice Icon" src={iceIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedAttribute === "Ether" ? "selected" : ""
+          }`}
+          onClick={() => handleAttributeClick("Ether")}
+        >
           <img alt="Ether Icon" src={etherIcon} className="nav-icon" />
         </button>
       </div>
@@ -79,30 +146,60 @@ function AgentDatabase({
       {/* Fighting style Filter Bar  */}
       <div className="filter-bar">
         {/* Elements */}
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedFightingStyle === "Anomaly" ? "selected" : ""
+          }`}
+          onClick={() => handleFightingStyleClick("Anomaly")}
+        >
           <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedFightingStyle === "Attack" ? "selected" : ""
+          }`}
+          onClick={() => handleFightingStyleClick("Attack")}
+        >
           <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedFightingStyle === "Defense" ? "selected" : ""
+          }`}
+          onClick={() => handleFightingStyleClick("Defense")}
+        >
           <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedFightingStyle === "Stun" ? "selected" : ""
+          }`}
+          onClick={() => handleFightingStyleClick("Stun")}
+        >
           <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className={`btn btn-secondary ${
+            selectedFightingStyle === "Support" ? "selected" : ""
+          }`}
+          onClick={() => handleFightingStyleClick("Support")}
+        >
           <img alt="Support Icon" src={supportIcon} className="nav-icon" />
         </button>
       </div>
 
       {/* Champion display */}
       <div className="agent-grid">
-        {listAgents.map((agent) => (
+        {filteredAgents.map((agent) => (
           <div
             className={"agent agent-" + agent.rank}
             key={agent.id}

@@ -5,7 +5,7 @@ import AgentDatabase from "./agentDatabase";
 import { AgentsService } from "../../services/AgentService";
 import { useState, useEffect } from "react";
 
-function AgentBody({ selectedOptions }) {
+function AgentBody({ selectedOptions, setSelectedOptions }) {
   // set up list for store agent from api
   const [listAgents, setListAgents] = useState([]);
 
@@ -47,6 +47,8 @@ function AgentBody({ selectedOptions }) {
           listAgents={listAgents}
           listSelectedAgents={listSelectedAgents}
           setListSelectedAgents={setListSelectedAgents}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
         />
       </div>
       <div className="col-lg-9">
