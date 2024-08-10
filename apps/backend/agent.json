@@ -1,0 +1,3046 @@
+[
+	{
+		"id": 1,
+		"name": "Rina",
+		"realName": "Alexandrina Sebastiane",
+		"rank": "S",
+		"attribute": "Electric",
+		"fightingStyle": "Support",
+		"faction": "Victoria Housekeeping",
+		"moduleType": "Strike",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 692,
+					"atk": 103,
+					"def": 48,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1537,
+					"atk": 157,
+					"def": 106,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 2012,
+					"atk": 194,
+					"def": 139,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2951,
+					"atk": 254,
+					"def": 205,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3426,
+					"atk": 291,
+					"def": 238,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4366,
+					"atk": 351,
+					"def": 304,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4841,
+					"atk": 388,
+					"def": 337,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5780,
+					"atk": 448,
+					"def": 402,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 6255,
+					"atk": 484,
+					"def": 436,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 7194,
+					"atk": 544,
+					"def": 502,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7669,
+					"atk": 581,
+					"def": 535,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8609,
+					"atk": 642,
+					"def": 600,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 2,
+		"name": "Anby",
+		"realName": "Anby Demara",
+		"rank": "A",
+		"attribute": "Electric",
+		"fightingStyle": "Stun",
+		"faction": "Cunning Hares",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 603,
+					"atk": 95,
+					"def": 49,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1339,
+					"atk": 143,
+					"def": 109,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1753,
+					"atk": 177,
+					"def": 143,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2572,
+					"atk": 232,
+					"def": 210
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2986,
+					"atk": 266,
+					"def": 244,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3804,
+					"atk": 320,
+					"def": 310
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4218,
+					"atk": 354,
+					"def": 343,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5036,
+					"atk": 408,
+					"def": 410,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5450,
+					"atk": 441,
+					"def": 444,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6269,
+					"atk": 495,
+					"def": 511,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6682,
+					"atk": 529,
+					"def": 545,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7500,
+					"atk": 583,
+					"def": 612,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 118,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 3,
+		"name": "Anton",
+		"realName": "Anton Ivanove",
+		"rank": "A",
+		"attribute": "Electric",
+		"fightingStyle": "Attack",
+		"faction": "Belobog Heavy Industries",
+		"moduleType": "Pierce",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 580,
+					"atk": 114,
+					"def": 50,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1288,
+					"atk": 174,
+					"def": 111,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1686,
+					"atk": 215,
+					"def": 145,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2474,
+					"atk": 283,
+					"def": 213,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2873,
+					"atk": 323,
+					"def": 248,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3661,
+					"atk": 391,
+					"def": 315,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4059,
+					"atk": 432,
+					"def": 349,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 4846,
+					"atk": 500,
+					"def": 417,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5244,
+					"atk": 541,
+					"def": 451,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6032,
+					"atk": 608,
+					"def": 519,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6431,
+					"atk": 648,
+					"def": 554,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7219,
+					"atk": 716,
+					"def": 622,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 4,
+		"name": "Ben",
+		"realName": "Ben Bigger",
+		"rank": "A",
+		"attribute": "Fire",
+		"fightingStyle": "Defense",
+		"faction": "Belobog Heavy Industries",
+		"moduleType": "Strike",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 690,
+					"atk": 94,
+					"def": 58,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1532,
+					"atk": 142,
+					"def": 129,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 2005,
+					"atk": 176,
+					"def": 169,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2941,
+					"atk": 229,
+					"def": 248,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3415,
+					"atk": 262,
+					"def": 288,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4350,
+					"atk": 316,
+					"def": 367,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4823,
+					"atk": 350,
+					"def": 407,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5759,
+					"atk": 403,
+					"def": 486,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 6232,
+					"atk": 436,
+					"def": 526,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 7168,
+					"atk": 490,
+					"def": 605,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7641,
+					"atk": 524,
+					"def": 645,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8577,
+					"atk": 578,
+					"def": 724,
+					"anoPro": 86,
+					"anoMas": 90,
+					"imp": 95,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 5,
+		"name": "Billy",
+		"realName": "Billy Kid",
+		"rank": "A",
+		"attribute": "Physical",
+		"fightingStyle": "Attack",
+		"faction": "Cunning Hares",
+		"moduleType": "Pierce",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 555,
+					"atk": 113,
+					"def": 49,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1233,
+					"atk": 173,
+					"def": 108,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1614,
+					"atk": 213,
+					"def": 141,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2367,
+					"atk": 280,
+					"def": 207,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2748,
+					"atk": 321,
+					"def": 241,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3502,
+					"atk": 389,
+					"def": 307,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 3883,
+					"atk": 429,
+					"def": 340,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 4637,
+					"atk": 496,
+					"def": 407,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5018,
+					"atk": 537,
+					"def": 441,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 5771,
+					"atk": 604,
+					"def": 507,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6153,
+					"atk": 644,
+					"def": 540,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 6907,
+					"atk": 712,
+					"def": 606,
+					"anoPro": 92,
+					"anoMas": 91,
+					"imp": 91,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 6,
+		"name": "Corin",
+		"realName": "Corin Wickes",
+		"rank": "A",
+		"attribute": "Physical",
+		"fightingStyle": "Attack",
+		"faction": "Victoria Housekeeping",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 561,
+					"atk": 116,
+					"def": 49,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1246,
+					"atk": 178,
+					"def": 108,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1631,
+					"atk": 219,
+					"def": 141,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2392,
+					"atk": 288,
+					"def": 207,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2777,
+					"atk": 330,
+					"def": 241,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3538,
+					"atk": 400,
+					"def": 307,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 3923,
+					"atk": 441,
+					"def": 340,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 4684,
+					"atk": 510,
+					"def": 405,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5069,
+					"atk": 552,
+					"def": 438,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 5830,
+					"atk": 621,
+					"def": 504,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6215,
+					"atk": 662,
+					"def": 538,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 6976,
+					"atk": 732,
+					"def": 604,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 7,
+		"name": "Ellen",
+		"realName": "Ellen Joe",
+		"rank": "S",
+		"attribute": "Ice",
+		"fightingStyle": "Attack",
+		"faction": "Victoria Housekeeping",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 617,
+					"atk": 135,
+					"def": 49,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1370,
+					"atk": 209,
+					"def": 108,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1793,
+					"atk": 257,
+					"def": 141,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2630,
+					"atk": 339,
+					"def": 207,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3054,
+					"atk": 387,
+					"def": 241,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3891,
+					"atk": 470,
+					"def": 307,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4314,
+					"atk": 519,
+					"def": 340,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5152,
+					"atk": 602,
+					"def": 407,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5576,
+					"atk": 650,
+					"def": 441,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6413,
+					"atk": 732,
+					"def": 507,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6836,
+					"atk": 780,
+					"def": 540,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7673,
+					"atk": 863,
+					"def": 606,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 8,
+		"name": "Grace",
+		"realName": "Grace Howard",
+		"rank": "S",
+		"attribute": "Electric",
+		"fightingStyle": "Anomaly",
+		"faction": "Belobog Heavy Industries",
+		"moduleType": "Pierce",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 602,
+					"atk": 119,
+					"def": 48,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1336,
+					"atk": 183,
+					"def": 106,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1749,
+					"atk": 225,
+					"def": 139,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2566,
+					"atk": 296,
+					"def": 205,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2979,
+					"atk": 339,
+					"def": 238,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3795,
+					"atk": 410,
+					"def": 304,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4208,
+					"atk": 452,
+					"def": 337,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5024,
+					"atk": 523,
+					"def": 402,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5436,
+					"atk": 566,
+					"def": 436,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6253,
+					"atk": 637,
+					"def": 502,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6666,
+					"atk": 679,
+					"def": 535,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7482,
+					"atk": 750,
+					"def": 600,
+					"anoPro": 115,
+					"anoMas": 116,
+					"imp": 83,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 9,
+		"name": "Koleda",
+		"realName": "Koleda Belobog",
+		"rank": "S",
+		"attribute": "Fire",
+		"fightingStyle": "Stun",
+		"faction": "Belobog Heavy Industries",
+		"moduleType": "Strike",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 653,
+					"atk": 106,
+					"def": 48,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1451,
+					"atk": 161,
+					"def": 106,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1899,
+					"atk": 199,
+					"def": 139,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2785,
+					"atk": 261,
+					"def": 204,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3234,
+					"atk": 299,
+					"def": 237,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4121,
+					"atk": 361,
+					"def": 302,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4569,
+					"atk": 398,
+					"def": 334,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5456,
+					"atk": 460,
+					"def": 398,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5905,
+					"atk": 498,
+					"def": 431,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6792,
+					"atk": 560,
+					"def": 496,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7240,
+					"atk": 598,
+					"def": 529,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8127,
+					"atk": 660,
+					"def": 594,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 116,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 10,
+		"name": "Lucy",
+		"realName": "Luciana de Montefio",
+		"rank": "A",
+		"attribute": "Fire",
+		"fightingStyle": "Support",
+		"faction": "Sons of Calydon",
+		"moduleType": "Strike",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 645,
+					"atk": 95,
+					"def": 49,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1433,
+					"atk": 143,
+					"def": 109,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1876,
+					"atk": 177,
+					"def": 143,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2751,
+					"atk": 232,
+					"def": 210,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3194,
+					"atk": 266,
+					"def": 244,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4070,
+					"atk": 320,
+					"def": 310,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4513,
+					"atk": 354,
+					"def": 343,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5389,
+					"atk": 408,
+					"def": 410,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5832,
+					"atk": 441,
+					"def": 444,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6708,
+					"atk": 495,
+					"def": 511,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7150,
+					"atk": 529,
+					"def": 545,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8025,
+					"atk": 583,
+					"def": 612,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 11,
+		"name": "Nekomata",
+		"realName": "Nekomiya Mana",
+		"rank": "S",
+		"attribute": "Physical",
+		"fightingStyle": "Attack",
+		"faction": "Cunning Hares",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 608,
+					"atk": 131,
+					"def": 47,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1350,
+					"atk": 202,
+					"def": 104,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1767,
+					"atk": 249,
+					"def": 136,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2592,
+					"atk": 329,
+					"def": 200,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3009,
+					"atk": 376,
+					"def": 233,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3833,
+					"atk": 456,
+					"def": 298,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4250,
+					"atk": 502,
+					"def": 330,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5075,
+					"atk": 582,
+					"def": 394,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5492,
+					"atk": 629,
+					"def": 427,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6317,
+					"atk": 708,
+					"def": 491,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6735,
+					"atk": 755,
+					"def": 523,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7560,
+					"atk": 835,
+					"def": 587,
+					"anoPro": 97,
+					"anoMas": 96,
+					"imp": 92,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 12,
+		"name": "Nicole",
+		"realName": "Nicole Demara",
+		"rank": "A",
+		"attribute": "Ether",
+		"fightingStyle": "Support",
+		"faction": "Cunning Hares",
+		"moduleType": "Strike",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 655,
+					"atk": 93,
+					"def": 50,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1454,
+					"atk": 140,
+					"def": 111,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1903,
+					"atk": 173,
+					"def": 145,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2792,
+					"atk": 227,
+					"def": 213,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3242,
+					"atk": 261,
+					"def": 248,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4131,
+					"atk": 314,
+					"def": 315,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4580,
+					"atk": 347,
+					"def": 349,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5469,
+					"atk": 400,
+					"def": 417,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5919,
+					"atk": 433,
+					"def": 451,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6808,
+					"atk": 486,
+					"def": 519,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7257,
+					"atk": 520,
+					"def": 554,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8145,
+					"atk": 574,
+					"def": 622,
+					"anoPro": 90,
+					"anoMas": 93,
+					"imp": 88,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 13,
+		"name": "Piper",
+		"realName": "Piper Wheel",
+		"rank": "A",
+		"attribute": "Physical",
+		"fightingStyle": "Anomaly",
+		"faction": "Sons of Calydon",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 561,
+					"atk": 109,
+					"def": 49,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1246,
+					"atk": 166,
+					"def": 109,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1631,
+					"atk": 205,
+					"def": 143,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2392,
+					"atk": 270,
+					"def": 210,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2777,
+					"atk": 309,
+					"def": 244,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3538,
+					"atk": 373,
+					"def": 310,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 3923,
+					"atk": 412,
+					"def": 343,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 4684,
+					"atk": 476,
+					"def": 410,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5069,
+					"atk": 515,
+					"def": 444,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 5830,
+					"atk": 580,
+					"def": 511,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6215,
+					"atk": 619,
+					"def": 545,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 6976,
+					"atk": 683,
+					"def": 612,
+					"anoPro": 116,
+					"anoMas": 118,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 14,
+		"name": "Soldier11",
+		"realName": "Soldier11",
+		"rank": "S",
+		"attribute": "Fire",
+		"fightingStyle": "Attack",
+		"faction": "Obol Squad",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 617,
+					"atk": 128,
+					"def": 49,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1370,
+					"atk": 197,
+					"def": 109,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1793,
+					"atk": 243,
+					"def": 143,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2630,
+					"atk": 321,
+					"def": 210,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3054,
+					"atk": 366,
+					"def": 244,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3891,
+					"atk": 443,
+					"def": 310,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4314,
+					"atk": 489,
+					"def": 343,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5152,
+					"atk": 567,
+					"def": 410,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5576,
+					"atk": 613,
+					"def": 444,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6413,
+					"atk": 691,
+					"def": 511,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6836,
+					"atk": 736,
+					"def": 545,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7673,
+					"atk": 813,
+					"def": 612,
+					"anoPro": 94,
+					"anoMas": 93,
+					"imp": 93,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 15,
+		"name": "Soukaku",
+		"realName": "Soukaku",
+		"rank": "A",
+		"attribute": "Ice",
+		"fightingStyle": "Support",
+		"faction": "Section 6",
+		"moduleType": "Slash",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 645,
+					"atk": 96,
+					"def": 48,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1433,
+					"atk": 145,
+					"def": 106,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1876,
+					"atk": 179,
+					"def": 139,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2751,
+					"atk": 234,
+					"def": 204,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3194,
+					"atk": 268,
+					"def": 237,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4070,
+					"atk": 323,
+					"def": 303,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4513,
+					"atk": 358,
+					"def": 336,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5389,
+					"atk": 413,
+					"def": 401,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5832,
+					"atk": 447,
+					"def": 434,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6708,
+					"atk": 501,
+					"def": 499,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7150,
+					"atk": 535,
+					"def": 532,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8025,
+					"atk": 590,
+					"def": 597,
+					"anoPro": 93,
+					"anoMas": 96,
+					"imp": 86,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 16,
+		"name": "Lycaon",
+		"realName": "Von Lycaon",
+		"rank": "S",
+		"attribute": "Ice",
+		"fightingStyle": "Stun",
+		"faction": "Victoria Housekeeping",
+		"moduleType": "Strike",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 677,
+					"atk": 105,
+					"def": 49,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1503,
+					"atk": 160,
+					"def": 108,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1967,
+					"atk": 197,
+					"def": 141,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2885,
+					"atk": 258,
+					"def": 207,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 3350,
+					"atk": 296,
+					"def": 241,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 4268,
+					"atk": 357,
+					"def": 307,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4732,
+					"atk": 394,
+					"def": 340,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5650,
+					"atk": 456,
+					"def": 407,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 6114,
+					"atk": 494,
+					"def": 441,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 7033,
+					"atk": 555,
+					"def": 507,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 7498,
+					"atk": 592,
+					"def": 540,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 8416,
+					"atk": 653,
+					"def": 606,
+					"anoPro": 91,
+					"anoMas": 90,
+					"imp": 119,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	},
+	{
+		"id": 17,
+		"name": "Yuan",
+		"realName": "Zhu Yuan",
+		"rank": "S",
+		"attribute": "Ether",
+		"fightingStyle": "Attack",
+		"faction": "Criminal Investigation Special Response Team",
+		"moduleType": "Pierce",
+		"baseStat": {
+			"0": {
+				"1": {
+					"hp": 602,
+					"atk": 132,
+					"def": 48,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"10": {
+					"hp": 1336,
+					"atk": 204,
+					"def": 106,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"1": {
+				"10": {
+					"hp": 1749,
+					"atk": 251,
+					"def": 139,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"20": {
+					"hp": 2566,
+					"atk": 332,
+					"def": 205,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"2": {
+				"20": {
+					"hp": 2979,
+					"atk": 380,
+					"def": 238,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"30": {
+					"hp": 3795,
+					"atk": 461,
+					"def": 304,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"3": {
+				"30": {
+					"hp": 4208,
+					"atk": 508,
+					"def": 337,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"40": {
+					"hp": 5024,
+					"atk": 588,
+					"def": 402,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"4": {
+				"40": {
+					"hp": 5436,
+					"atk": 635,
+					"def": 436,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"50": {
+					"hp": 6253,
+					"atk": 716,
+					"def": 502,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			},
+			"5": {
+				"50": {
+					"hp": 6666,
+					"atk": 763,
+					"def": 535,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				},
+				"60": {
+					"hp": 7482,
+					"atk": 844,
+					"def": 600,
+					"anoPro": 93,
+					"anoMas": 92,
+					"imp": 90,
+					"criRate_": 5,
+					"criDMG_": 50,
+					"pen": 0,
+					"pen_": 0,
+					"eneRegen": 1.2
+				}
+			}
+		}
+	}
+]
