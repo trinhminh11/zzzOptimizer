@@ -88,7 +88,9 @@
   border-width: 1px;
 }
 
-.rank-sort a:last-child {
+.rank-sort a:last-child,
+.attribute-sort a:last-child,
+.fighting-sort a:last-child {
   border-radius: 6px;
   border: none;
 }
