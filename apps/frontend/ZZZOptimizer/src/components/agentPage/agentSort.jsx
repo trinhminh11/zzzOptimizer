@@ -14,13 +14,7 @@ import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 import { useState, useEffect } from "react";
 
-export default function AgentSort() {
-  const [selectedOptions, setSelectedOptions] = useState({
-    rank: null,
-    attribute: null,
-    fighting: null,
-  });
-
+export default function AgentSort({ selectedOptions, setSelectedOptions }) {
   const handleSelect = (category, option) => {
     setSelectedOptions((prevSelectedOptions) => ({
       ...prevSelectedOptions,

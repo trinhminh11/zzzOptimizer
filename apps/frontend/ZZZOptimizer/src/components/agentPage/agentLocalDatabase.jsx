@@ -8,6 +8,7 @@ import ModalEditAgent from "./ModalEditAgent";
 export default function AgentLocalDatabase({
   listSelectedAgents,
   setListSelectedAgents,
+  selectedOptions,
 }) {
   // Init variable for agent edit show function
   const [isShowModalEdit, setShowModalEdit] = useState(false);
@@ -50,6 +51,21 @@ export default function AgentLocalDatabase({
     handleClose();
   };
 
+  // Filter agents based on selectedOptions
+  const filteredAgents = listSelectedAgents.filter((agent) => {
+    return (
+      (selectedOptions.rank === "all" ||
+        !selectedOptions.rank ||
+        agent.rank === selectedOptions.rank) &&
+      (selectedOptions.attribute === "all" ||
+        !selectedOptions.attribute ||
+        agent.attribute === selectedOptions.attribute) &&
+      (selectedOptions.fighting === "all" ||
+        !selectedOptions.fighting ||
+        agent.fightingStyle === selectedOptions.fighting)
+    );
+  });
+
   return (
     <div className="agent-local-database">
       <table>
@@ -64,15 +80,11 @@ export default function AgentLocalDatabase({
           </tr>
         </thead>
         <tbody>
-          {listSelectedAgents.map((item) => {
+          {filteredAgents.map((item) => {
             return (
               <tr key={`users-${item.name}`}>
                 <td onClick={() => handleEditAgent(item)}>
-                  <img
-                    src={item.nameIcon}
-                    alt="demo"
-                    className="agentImg"
-                  ></img>
+                  <img src={item.nameIcon} alt="demo" className="agentImg" />
                   <span>{item.realName}</span>
                 </td>
                 <td
@@ -83,23 +95,23 @@ export default function AgentLocalDatabase({
                     src={item.rankIcon}
                     alt="demo"
                     style={{ width: "30px", height: "30px" }}
-                  ></img>
+                  />
                 </td>
                 <td
                   className="center-column"
                   onClick={() => handleEditAgent(item)}
                 >
-                  <img src={item.attributeIcon} alt="demo"></img>
+                  <img src={item.attributeIcon} alt="demo" />
                 </td>
                 <td
                   className="center-column"
                   onClick={() => handleEditAgent(item)}
                 >
-                  <img src={item.fightingStyleIcon} alt="demo"></img>
+                  <img src={item.fightingStyleIcon} alt="demo" />
                 </td>
                 <td onClick={() => handleEditAgent(item)}>Default weapon</td>
                 <td className="center-column">
-                  <span> M{item.mindScape}</span>
+                  <span>M{item.mindScape}</span>
                 </td>
               </tr>
             );
