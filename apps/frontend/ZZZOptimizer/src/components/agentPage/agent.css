@@ -15,7 +15,8 @@
 .agent-sorting-container {
   width: 75%;
   border-radius: 5px;
-  margin: 40px;
+  margin: 30px;
+  margin-top: 10px;
   padding: 0px;
   height: 100%;
   gap: 15px;
@@ -29,11 +30,15 @@
 }
 
 .element-sort {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.2s ease-in-out;
   flex-basis: 10px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  height: 100%;
+  padding: 10px;
 }
 
 .element-sort:hover {
@@ -52,15 +57,41 @@
   background-color: #6b728e;
 }
 
-.filters-divider {
+.sorting-categories {
   display: flex;
+  gap: 0px;
+  background-color: #404258;
   flex: 0 0;
-  width: 1px;
-  height: 30px;
-  align-items: center;
-  color: #1c1c1f;
+  padding: 0;
+  border-radius: 6px;
 }
 
+.select-all {
+  color: white;
+  height: 30px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.rank-sort a,
+.rank-sort div,
+.attribute-sort a,
+.attribute-sort div,
+.fighting-sort a,
+.fighting-sort div {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: solid #1c1c1f;
+  border-width: 1px;
+}
+
+.rank-sort a:last-child {
+  border-radius: 6px;
+  border: none;
+}
 /* Styling the under columns */
 .agent-body {
   width: 90%;
