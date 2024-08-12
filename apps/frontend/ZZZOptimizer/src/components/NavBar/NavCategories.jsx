@@ -19,8 +19,8 @@ function NavCategories() {
 
         {/* W-Engine */}
         <li className="nav-item">
-          <a href="#" className="nav-link collapsed">
-            <img alt="W-Engin Icon" src={engineIcon} className="nav-icon" />
+          <a href="/deploy-github/w-engine" className="nav-link collapsed">
+            <img alt="W-Engine Icon" src={engineIcon} className="nav-icon" />
             <span>W-Engines</span>
           </a>
         </li>
