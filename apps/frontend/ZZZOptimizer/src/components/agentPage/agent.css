@@ -88,9 +88,14 @@
   border-width: 1px;
 }
 
-.rank-sort a:last-child {
+.rank-sort a:last-child,
+.attribute-sort a:last-child,
+.fighting-sort a:last-child {
   border-radius: 6px;
   border: none;
+}
+.selected {
+  background-color: #50577a;
 }
 /* Styling the under columns */
 .agent-body {
@@ -191,6 +196,9 @@
   font-size: 12px;
   color: #b0b3b8;
   overflow: hidden;
+}
+.btn.selected {
+  background-color: #7b7b7b;
 }
 
 /* Styling the right table */

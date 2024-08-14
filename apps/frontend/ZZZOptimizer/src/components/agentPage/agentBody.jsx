@@ -5,7 +5,7 @@ import AgentDatabase from "./agentDatabase";
 import { AgentsService } from "../../services/AgentService";
 import { useState, useEffect } from "react";
 
-function AgentBody() {
+function AgentBody({ selectedOptions, setSelectedOptions }) {
   // set up list for store agent from api
   const [listAgents, setListAgents] = useState([]);
 
@@ -47,12 +47,15 @@ function AgentBody() {
           listAgents={listAgents}
           listSelectedAgents={listSelectedAgents}
           setListSelectedAgents={setListSelectedAgents}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
         />
       </div>
       <div className="col-lg-9">
         <AgentLocalDatabase
           listSelectedAgents={listSelectedAgents}
           setListSelectedAgents={setListSelectedAgents}
+          selectedOptions={selectedOptions}
         />
       </div>
     </div>
