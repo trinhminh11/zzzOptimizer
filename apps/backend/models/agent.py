@@ -1,15 +1,8 @@
 from pydantic import BaseModel, Json
 from typing import Literal, Any, Optional
 
-# def auto_increment():
-# 	largest = agentModel.objects.all().order_by('id').last()
-# 	if not largest:
-# 		return 1
-# 	return largest.id + 1
-
 # Create your models here.
 class AgentModel(BaseModel):
-	id: int
 	name: str
 	realName: str
 	rank: Literal['S', 'A'] = 'S'
@@ -18,7 +11,6 @@ class AgentModel(BaseModel):
 	faction: Literal['Victoria Housekeeping', 'Belobog Heavy Industries', 'Criminal Investigation Special Response Team', 'Cunning Hares', 'Obol Squad', 'Section 6', 'Sons of Calydon'] = 'Victoria Housekeeping'
 	moduleType: Literal['Slash', 'Pierce', 'Strike'] = 'Slash'
 
-	baseStat: dict = {}
 
 	nameIcon: Optional[str]
 	rankIcon: Optional[str]
@@ -26,6 +18,9 @@ class AgentModel(BaseModel):
 	fightingStyleIcon: Optional[str]
 	factionIcon: Optional[str]
 	moduleTypeIcon: Optional[str]
+
+	baseStatLevel: dict = {}
+
 
 
 	def __str__(self):

@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from config.config import *
+from config import *
 import uvicorn
-from models.agent import AgentModel
+from models import AgentModel, WEngineModel
 import json
+
+from Processing import load_wengine, load_agent
 
 from fastapi.staticfiles import StaticFiles
 
@@ -22,39 +24,9 @@ app.add_middleware(
 	allow_headers=["*"],
 )
 
-agents: list[AgentModel] = []
 
-with open('agent.json', 'r') as f:
-	agentsJSON = json.load(f)
-
-for agent in agentsJSON:
-	id = agent['id']
-	name = agent['name']
-	realName = agent['realName']
-	rank = agent['rank']
-	attribute = agent['attribute']
-	fightingStyle = agent['fightingStyle']
-	faction = agent['faction']
-	moduleType = agent['moduleType']
-	baseStat = agent['baseStat']
-
-	agents.append(AgentModel(
-		id = id, 
-		name = name, 
-		realName = realName, 
-		rank = rank,
-		attribute=attribute,
-		fightingStyle=fightingStyle,
-		faction = faction,
-		moduleType = moduleType,
-		baseStat = baseStat, 
-		nameIcon = f'{BASE_DIR}/{MEDIA_DIR}/agents/{name}.png',
-		rankIcon = f'{BASE_DIR}/{MEDIA_DIR}/rank/{rank}.png',
-		attributeIcon = f'{BASE_DIR}/{MEDIA_DIR}/attributes/{attribute}.png',
-		fightingStyleIcon = f'{BASE_DIR}/{MEDIA_DIR}/fightingStyle/{fightingStyle}.png',
-		factionIcon = f'{BASE_DIR}/{MEDIA_DIR}/faction/{faction.replace(" ", "_")}.png',
-		moduleTypeIcon = f'{BASE_DIR}/{MEDIA_DIR}/moduleType/{moduleType}.png',
-	))
+agents = load_agent()
+wengines = load_wengine()
 
 
 def main():
@@ -62,3 +34,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
+

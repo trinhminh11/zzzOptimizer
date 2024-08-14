@@ -1,16 +1,11 @@
 from fastapi import HTTPException
-from config.config import *
-from models.agent import AgentModel
+from config import *
 
-from main import app, agents
+from models import AgentModel, WEngineModel
 
+from main import app, agents, wengines
 
-@app.post("/agents/", response_model=AgentModel)
-def addAgent(agent: AgentModel):
-	agents.append(agent)
-
-	return agent
-
+# Agent
 @app.get("/agents/", response_model=list[AgentModel])
 def getAgents():
 	return agents
@@ -19,7 +14,20 @@ def getAgents():
 def getAgent(agent_id: int):
 	for agent in agents:
 		if agent.id == agent_id:
-			print(agent.id)
 			return agent
 
 	return HTTPException(404, "Agent Not Found")
+
+
+# WEngine
+@app.get("/wengines/", response_model=list[WEngineModel])
+def getWEngines():
+	return wengines
+
+@app.get("/wengines/{wengine_id}", response_model=WEngineModel)
+def getWEngine(wengine_id: int):
+	for wengine in wengines:
+		if wengine.id == wengine_id:
+			return wengine
+
+	return HTTPException(404, "W-Engine Not Found")
