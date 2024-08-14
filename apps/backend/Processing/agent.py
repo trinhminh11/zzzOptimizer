@@ -693,13 +693,7 @@ def load_agent():
 			fightingStyle = agent.fightingStyle,
 			faction = agent.faction,
 			moduleType = agent.moduleType,
-			baseStatLevel = agent.baseStatLevel, 
-			nameIcon = f'{BASE_DIR}/{MEDIA_DIR}/agents/{agent.name}.png',
-			rankIcon = f'{BASE_DIR}/{MEDIA_DIR}/rank/{agent.rank}.png',
-			attributeIcon = f'{BASE_DIR}/{MEDIA_DIR}/attributes/{agent.attribute}.png',
-			fightingStyleIcon = f'{BASE_DIR}/{MEDIA_DIR}/fightingStyle/{agent.fightingStyle}.png',
-			factionIcon = f'{BASE_DIR}/{MEDIA_DIR}/faction/{agent.faction.replace(" ", "_")}.png',
-			moduleTypeIcon = f'{BASE_DIR}/{MEDIA_DIR}/moduleType/{agent.moduleType}.png',
+			baseStatLevel = agent.baseStatLevel
 		))
 
 

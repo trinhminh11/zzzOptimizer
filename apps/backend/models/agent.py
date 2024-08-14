@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Json
 from typing import Literal, Any, Optional
+from config import *
 
 # Create your models here.
 class AgentModel(BaseModel):
@@ -12,14 +13,24 @@ class AgentModel(BaseModel):
 	moduleType: Literal['Slash', 'Pierce', 'Strike'] = 'Slash'
 
 
-	nameIcon: Optional[str]
-	rankIcon: Optional[str]
-	attributeIcon: Optional[str]
-	fightingStyleIcon: Optional[str]
-	factionIcon: Optional[str]
-	moduleTypeIcon: Optional[str]
+	nameIcon: Optional[str] = ""
+	rankIcon: Optional[str] = ""
+	attributeIcon: Optional[str] = ""
+	fightingStyleIcon: Optional[str] = ""
+	factionIcon: Optional[str] = ""
+	moduleTypeIcon: Optional[str] = ""
 
 	baseStatLevel: dict = {}
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+
+		self.nameIcon = f'{BASE_DIR}/{MEDIA_DIR}/agents/{self.name}.png'
+		self.rankIcon = f'{BASE_DIR}/{MEDIA_DIR}/rank/{self.rank}.png'
+		self.attributeIcon = f'{BASE_DIR}/{MEDIA_DIR}/attributes/{self.attribute}.png'
+		self.fightingStyleIcon = f'{BASE_DIR}/{MEDIA_DIR}/fightingStyle/{self.fightingStyle}.png'
+		self.factionIcon = f'{BASE_DIR}/{MEDIA_DIR}/faction/{self.faction.replace(" ", "_")}.png'
+		self.moduleTypeIcon = f'{BASE_DIR}/{MEDIA_DIR}/moduleType/{self.moduleType}.png'
 
 
 
