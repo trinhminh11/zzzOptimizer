@@ -6,10 +6,10 @@ import { AgentsService } from "../../services/AgentService";
 import { useState, useEffect } from "react";
 
 function AgentBody({ selectedOptions, setSelectedOptions }) {
-  // set up list for store agent from api
+  // set up list for storing agent from api
   const [listAgents, setListAgents] = useState([]);
 
-  // set up localstorage to store infomation
+  // set up localstorage for storing infomation
   const [listSelectedAgents, setListSelectedAgents] = useState(() => {
     // Check local storage and initialize list
     const storedAgents = localStorage.getItem("selected agent");

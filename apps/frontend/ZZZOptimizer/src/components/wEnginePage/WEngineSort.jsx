@@ -7,6 +7,7 @@ import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
 import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
 import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
+import "./wEngine.css";
 
 function WEngineSort() {
   return (
