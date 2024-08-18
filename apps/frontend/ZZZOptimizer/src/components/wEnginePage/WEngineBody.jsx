@@ -38,7 +38,10 @@ function WEngineBody() {
         />
       </div>
       <div className="col-lg-9">
-        <WEngineLocalDatabase />
+        <WEngineLocalDatabase
+          listSelectedWEngines={listSelectedWEngines}
+          setListSelectedWEngines={setListSelectedWEngines}
+        />
       </div>
     </div>
   );

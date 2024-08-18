@@ -46,10 +46,6 @@ function WEngineDatabase({
     }
   };
 
-  const handleRankClick = (rank) => {
-    setSelectedRank((prev) => (prev === rank ? null : rank));
-  };
-
   const handleFightingStyleClick = (style) => {
     setSelectedFightingStyle((prev) => (prev === style ? null : style));
   };

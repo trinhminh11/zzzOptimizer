@@ -98,3 +98,75 @@
 .selected {
   background-color: #50577a;
 }
+
+/* Styling the right table */
+.card-container {
+  width: 350px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: #36373d;
+  color: #fff;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-rarity {
+  font-size: 14px;
+  color: #aaa;
+  margin-left: auto;
+}
+
+.card-body {
+  margin-bottom: 12px;
+}
+
+.card-description {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ice-dmg {
+  color: #00f;
+  font-weight: bold;
+}
+
+.card-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-level {
+  background-color: #333;
+  border-radius: 5px;
+  padding: 8px;
+  width: 48%;
+}
+
+.stat-level p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.wEngine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
