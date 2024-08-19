@@ -661,30 +661,30 @@ class Yuan(Agent):
 		pass
 
 
+agentObjects: dict[str, Agent] = {
+	"Rina": Rina(),
+	"Anby": Anby(),
+	"Anton": Anton(),
+	"Ben": Ben(),
+	"Billy": Billy(),
+	"Corin": Corin(),
+	"Ellen": Ellen(),
+	"Grace": Grace(),
+	"Koleda": Koleda(),
+	"Lucy": Lucy(),
+	"Nekomata": Nekomata(),
+	"Nicole": Nicole(),
+	"Piper": Piper(),
+	"Soldier11": Soldier11(),
+	"Soukaku": Soukaku(),
+	"Lycaon": Lycaon(),
+	"Yuan": Yuan(),
+}
+
 def load_agent():
-	agentObjects: list[Agent] = [
-		Rina(),
-		Anby(),
-		Anton(),
-		Ben(),
-		Billy(),
-		Corin(),
-		Ellen(),
-		Grace(),
-		Koleda(),
-		Lucy(),
-		Nekomata(),
-		Nicole(),
-		Piper(),
-		Soldier11(),
-		Soukaku(),
-		Lycaon(),
-		Yuan(),
-	]
+	agents: list[AgentModel] = []
 
-	agents: list[Agent] = []
-
-	for agent in agentObjects:
+	for agent in agentObjects.values():
 		agents.append(AgentModel(
 			name = agent.name, 
 			realName = agent.realName, 
@@ -693,9 +693,7 @@ def load_agent():
 			fightingStyle = agent.fightingStyle,
 			faction = agent.faction,
 			moduleType = agent.moduleType,
-			baseStatLevel = agent.baseStatLevel
 		))
 
 
 	return agents
-

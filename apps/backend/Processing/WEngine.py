@@ -708,46 +708,45 @@ class VortexRevolver(WEngine):
 		super().__init__("[Vortex] Revolver", "B", "Stun", Stat("atk"), Stat("atk_"))
 
 
+wengineObjects: dict[str, WEngine] = {
+	"Deep Sea Visitor": DeepSeaVisitor(),
+	"Fusion Compiler": FusionCompiler(),
+	"Hellfire Gears": HellfireGears(),
+	"Riot Suppressor Mark VI": RiotSuppressorMarkVI(),
+	"Steel Cushion": SteelCushion(),
+	"The Brimstone": TheBrimstone(),
+	"The Restrained": TheRestrained(),
+	"Weeping Cradle": WeepingCradle(),
+	"Bashful Demon": BashfulDemon(),
+	"Big Cylinder": BigCylinder(),
+	"Bunny Band": BunnyBand(),
+	"Cannon Rotor": CannonRotor(),
+	"Demara Battery Mark II": DemaraBatteryMarkII(),
+	"Drill Rig - Red Axis": DrillRigRedAxis(),
+	"Electro-Lip Gloss": ElectroLipGloss(),
+	"Housekeeper": Housekeeper(),
+	"Kaboom the Cannon": KaboomtheCannon(),
+	"Original Transmorpher": OriginalTransmorpher(),
+	"Precious Fossilized Core": PreciousFossilizedCore(),
+	"Rainforest Gourmet": RainforestGourmet(),
+	"Roaring Ride": RoaringRide(),
+	"Six Shooter": SixShooter(),
+	"Slice of Time": SliceofTime(),
+	"Spring Embrace": SpringEmbrace(),
+	"Starlight Engine": StarlightEngine(),
+	"Starlight Engine Replica": StarlightEngineReplica(),
+	"Steam Oven": SteamOven(),
+	"Street Superstar": StreetSuperstar(),
+	"The Vault": TheVault(),
+	"Unfettered Game Ball": UnfetteredGameBall(),
+	"Weeping Gemini": WeepingGemini(),
+}
+
 
 def load_wengine():
-	wengines: list[WEngine] = []
+	wengines: list[WEngineModel] = []
 
-	wengineObjects: list[WEngine] = [
-		DeepSeaVisitor(), 
-		FusionCompiler(), 
-		HellfireGears(), 
-		RiotSuppressorMarkVI(), 
-		SteelCushion(), 
-		TheBrimstone(),
-		TheRestrained(),
-		WeepingCradle(),
-		BashfulDemon(),
-		BigCylinder(),
-		BunnyBand(),
-		CannonRotor(),
-		DemaraBatteryMarkII(),
-		DrillRigRedAxis(),
-		ElectroLipGloss(),
-		Housekeeper(),
-		KaboomtheCannon(),
-		OriginalTransmorpher(),
-		PreciousFossilizedCore(),
-		RainforestGourmet(),
-		RoaringRide(),
-		SixShooter(),
-		SliceofTime(),
-		SpringEmbrace(),
-		StarlightEngine(),
-		StarlightEngineReplica(),
-		SteamOven(),
-		StreetSuperstar(),
-		TheVault(),
-		UnfetteredGameBall(),
-		WeepingGemini()
-
-	]
-
-	for wengine in wengineObjects:
+	for wengine in wengineObjects.values():
 		wengines.append(WEngineModel(
 			name = wengine.name,
 			rank = wengine.rank,
@@ -755,7 +754,6 @@ def load_wengine():
 			subStat=wengine.subStat.key,
 			nameIcon=f'{BASE_DIR}/{MEDIA_DIR}/wengines/{wengine.name.replace(" ", "_")}.png',
 			rankIcon = f'{BASE_DIR}/{MEDIA_DIR}/rank/{wengine.rank}.png',
-			baseStatLevel=wengine.baseStatLevel,
 		))
 
 

@@ -6,11 +6,11 @@ from config import *
 class AgentModel(BaseModel):
 	name: str
 	realName: str
-	rank: Literal['S', 'A'] = 'S'
-	attribute: Literal['Physical', 'Electric', 'Fire', 'Ice', 'Ether'] = 'Physical'
-	fightingStyle: Literal['Attack', 'Stun', 'Anomaly', 'Support', 'Defense'] = 'Attack'
-	faction: Literal['Victoria Housekeeping', 'Belobog Heavy Industries', 'Criminal Investigation Special Response Team', 'Cunning Hares', 'Obol Squad', 'Section 6', 'Sons of Calydon'] = 'Victoria Housekeeping'
-	moduleType: Literal['Slash', 'Pierce', 'Strike'] = 'Slash'
+	rank: Literal['S', 'A']
+	attribute: Literal['Physical', 'Electric', 'Fire', 'Ice', 'Ether']
+	fightingStyle: Literal['Attack', 'Stun', 'Anomaly', 'Support', 'Defense']
+	faction: Literal['Victoria Housekeeping', 'Belobog Heavy Industries', 'Criminal Investigation Special Response Team', 'Cunning Hares', 'Obol Squad', 'Section 6', 'Sons of Calydon']
+	moduleType: Literal['Slash', 'Pierce', 'Strike']
 
 
 	nameIcon: Optional[str] = ""
@@ -19,8 +19,6 @@ class AgentModel(BaseModel):
 	fightingStyleIcon: Optional[str] = ""
 	factionIcon: Optional[str] = ""
 	moduleTypeIcon: Optional[str] = ""
-
-	baseStatLevel: dict = {}
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
