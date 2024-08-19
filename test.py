@@ -74,8 +74,15 @@
 
 import os
 
-f = 'media/wengines/'
+f = 'apps/backend/media/wengines/'
 
 for name in os.listdir(f):
-	os.rename(f+name, f + name[9:-4] + "png")
-	# print(name[9:-4]+"png")
+	if name[-4:] == "webp":
+		new_name = ""
+		for c in name[9:]:
+			if c == ".":
+				break
+			if c.isalpha() or c == "_":
+				new_name += c
+		
+		os.rename(f+name, f+new_name + ".png")

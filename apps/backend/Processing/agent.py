@@ -204,6 +204,7 @@ class Agent:
 		'critRate_': 0,
 		'critDMG_': 0,
 		'anomalyMastery': 0,
+		'anomalyMastery_': 0,
 		'anomalyProficiency': 0,
 		'pen': 0,
 		'pen_': 0,
@@ -662,23 +663,27 @@ class Yuan(Agent):
 
 
 agentObjects: dict[str, Agent] = {
+	# S rank
 	"Rina": Rina(),
+	"Ellen": Ellen(),
+	"Grace": Grace(),
+	"Koleda": Koleda(),
+	"Nekomata": Nekomata(),
+	"Soldier11": Soldier11(),
+	"Lycaon": Lycaon(),
+	"Yuan": Yuan(),
+
+	# A rank
 	"Anby": Anby(),
 	"Anton": Anton(),
 	"Ben": Ben(),
 	"Billy": Billy(),
 	"Corin": Corin(),
-	"Ellen": Ellen(),
-	"Grace": Grace(),
-	"Koleda": Koleda(),
 	"Lucy": Lucy(),
-	"Nekomata": Nekomata(),
 	"Nicole": Nicole(),
 	"Piper": Piper(),
-	"Soldier11": Soldier11(),
 	"Soukaku": Soukaku(),
-	"Lycaon": Lycaon(),
-	"Yuan": Yuan(),
+
 }
 
 def load_agent():

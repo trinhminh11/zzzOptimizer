@@ -45,6 +45,7 @@ function AgentDatabase({
 
     if (!check) {
       const updatedAgents = [...listSelectedAgents, agent];
+      console.log(updatedAgents);
       setListSelectedAgents(updatedAgents);
       localStorage.setItem("selected agent", JSON.stringify(updatedAgents));
     }

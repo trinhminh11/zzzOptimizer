@@ -11,7 +11,7 @@ baseStatFile = dirname + "/wenginetBaseStat.json"
 class WEngine:
 	name: str
 	rank: str
-	fightingType: str
+	fightingStyle: str
 	modificationLevel: int = 0
 	level: int = 0
 	upgradeLevel: int = 1
@@ -75,6 +75,10 @@ class WEngine:
 		}
 	}
 
+
+	passiveDescription: str = ""
+	passiveStats: dict
+
 	def __init__(self, name: str, rank: str, fightingStyle: str, mainStat: Stat, subStat: Stat):
 		self.name = name
 		if rank not in ['S', 'A', 'B']:
@@ -85,7 +89,7 @@ class WEngine:
 		if fightingStyle not in ['Attack', 'Stun', 'Anomaly', 'Defense', 'Support']:
 			raise ValueError()
 		
-		self.fightingType = fightingStyle
+		self.fightingStyle = fightingStyle
 
 		self.mainStat = mainStat
 		self.subStat = subStat
@@ -117,7 +121,8 @@ class DeepSeaVisitor(WEngine):
 		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][5][50] = 638, 24.0
 		self.baseStatLevel['mainStat'][4][60], self.baseStatLevel['subStat'][5][60] = 713, 24.0
 
-	
+		self.passiveDescription = "<p>Increases <p style=\"color: rgb(140,216,218)\">Ice DMG</p> by <p style=\"color: rgb(237,197,84)\">25/31.5/38/44.5/50%</p>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <p style=\"color: rgb(140,216,218)\">10/12.5.15/17.5/20%</p> for 8s. When dealing <p style=\"color: rgb(140,216,218)\">Ice DM</p>G with a Dash Attack, the equipper's CRIT Rate increases by an additional <p style=\"color: rgb(140,216,218)\">10/12.5.15/17.5/20%</p> for 15s. The duration of each effect is calculated separately.</p>"
+		
 
 class FusionCompiler(WEngine):
 	def __init__(self):
@@ -653,62 +658,257 @@ class WeepingGemini(WEngine):
 
 class IdentityBase(WEngine):
 	def __init__(self):
-		super().__init__("Identity] Base", "B", "Defense", Stat("atk"), Stat("def_"))
+		super().__init__("[Identity] Base", "B", "Defense", Stat("atk"), Stat("def_"))
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 12.8
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 12.8
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 16.6
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 16.6
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 20.5
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 20.5
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 24.3
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 24.3
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 28.2
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 28.2
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 32.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 32.0
+
 
 class IdentityInflection(WEngine):
 	def __init__(self):
 		super().__init__("[Identity] Inflection", "B", "Defense", Stat("atk"), Stat("def_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 12.8
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 12.8
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 16.6
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 16.6
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 20.5
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 20.5
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 24.3
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 24.3
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 28.2
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 28.2
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 32.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 32.0
+
+
 class LunarDecrescent(WEngine):
 	def __init__(self):
 		super().__init__("[Lunar] Decrescent", "B", "Attack", Stat("atk"), Stat("atk_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 10.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 10.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 12.8
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 12.8
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 15.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 15.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 17.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 17.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
+
+
 class LunarNoviluna(WEngine):
 	def __init__(self):
-		super().__init__("[Lunar] Noviluna", "B", "Attack", Stat("atk"), Stat("criteRate_"))
+		super().__init__("[Lunar] Noviluna", "B", "Attack", Stat("atk"), Stat("critRate_"))
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 6.4
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 6.4
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 8.3
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 8.3
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 10.2
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 10.2
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 12.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 12.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 14.1
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 14.1
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 16.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 16.0
+
 
 class LunarPleniluna(WEngine):
 	def __init__(self):
 		super().__init__("[Lunar] Pleniluna", "B", "Attack", Stat("atk"), Stat("atk_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 10.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 10.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 12.8
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 12.8
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 15.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 15.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 17.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 17.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
+
+
 class MagneticStormAlpha(WEngine):
 	def __init__(self):
 		super().__init__("[Magnetic Storm] Alpha", "B", "Anomaly", Stat("atk"), Stat("atk_"))
+		
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 10.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 10.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 12.8
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 12.8
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 15.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 15.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 17.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 17.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
+
 
 class MagneticStormBravo(WEngine):
 	def __init__(self):
 		super().__init__("[Magnetic Storm] Bravo", "B", "Anomaly", Stat("atk"), Stat("anomalyProficiency"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 24.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 24.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 31.2
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 31.2
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 38.4
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 38.4
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 45.6
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 45.6
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 52.8
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 52.8
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 60.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 60.0
+
+
 class MagneticStormCharlie(WEngine):
 	def __init__(self):
 		super().__init__("[Magnetic Storm] Charlie", "B", "Anomaly", Stat("atk"), Stat("pen_"))
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 6.4
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 6.4
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 8.3
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 8.3
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 10.2
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 10.2
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 12.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 12.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 14.1
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 14.1
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 16.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 16.0
+
 
 class ReverbMarkI(WEngine):
 	def __init__(self):
 		super().__init__("[Reverb] Mark I", "B", "Support", Stat("atk"), Stat("atk_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 10.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 10.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 12.8
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 12.8
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 15.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 15.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 17.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 17.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
+
+
 class ReverbMarkII(WEngine):
 	def __init__(self):
 		super().__init__("[Reverb] Mark II", "B", "Support", Stat("atk"), Stat("energyRegen_"))
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 16.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 16.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 20.8
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 20.8
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 25.6
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 25.6
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 30.4
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 30.4
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 35.2
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 35.2
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 40.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 40.0
+
 
 class ReverbMarkIII(WEngine):
 	def __init__(self):
 		super().__init__("[Reverb] Mark III", "B", "Support", Stat("atk"), Stat("hp_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 10.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 10.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 12.8
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 12.8
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 15.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 15.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 17.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 17.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
+
+
 class VortexArrow(WEngine):
 	def __init__(self):
 		super().__init__("[Vortex] Arrow", "B", "Stun", Stat("atk"), Stat("impact_"))
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 4.8
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 4.8
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 6.2
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 6.2
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 7.7
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 7.7
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 9.1
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 9.1
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 10.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 10.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 12.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 12.0
+
 
 class VortexHatchet(WEngine):
 	def __init__(self):
 		super().__init__("[Vortex] Hatchet", "B", "Stun", Stat("atk"), Stat("energyRegen_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 16.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 16.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 20.8
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 20.8
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 25.6
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 25.6
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 30.4
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 30.4
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 35.2
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 35.2
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 40.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 40.0
+
+
 class VortexRevolver(WEngine):
 	def __init__(self):
 		super().__init__("[Vortex] Revolver", "B", "Stun", Stat("atk"), Stat("atk_"))
 
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 110 , 10.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 160 , 10.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 189 , 12.8
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 239 , 12.8
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 268 , 15.2
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 318 , 15.2
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 346 , 17.6
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 17.6
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
 wengineObjects: dict[str, WEngine] = {
+	# S rank
 	"Deep Sea Visitor": DeepSeaVisitor(),
 	"Fusion Compiler": FusionCompiler(),
 	"Hellfire Gears": HellfireGears(),
@@ -717,6 +917,9 @@ wengineObjects: dict[str, WEngine] = {
 	"The Brimstone": TheBrimstone(),
 	"The Restrained": TheRestrained(),
 	"Weeping Cradle": WeepingCradle(),
+
+
+	# A rank
 	"Bashful Demon": BashfulDemon(),
 	"Big Cylinder": BigCylinder(),
 	"Bunny Band": BunnyBand(),
@@ -740,6 +943,23 @@ wengineObjects: dict[str, WEngine] = {
 	"The Vault": TheVault(),
 	"Unfettered Game Ball": UnfetteredGameBall(),
 	"Weeping Gemini": WeepingGemini(),
+
+	# B rank
+	"[Identity] Base": IdentityBase(),
+	"[Identity] Inflection": IdentityInflection(),
+	"[Lunar] Decrescent": LunarDecrescent(),
+	"[Lunar] Noviluna": LunarNoviluna(),
+	"[Lunar] Pleniluna": LunarPleniluna(),
+	"[Magnetic Storm] Alpha": MagneticStormAlpha(),
+	"[Magnetic Storm] Bravo": MagneticStormBravo(),
+	"[Magnetic Storm] Charlie": MagneticStormCharlie(),
+	"[Reverb] Mark I": ReverbMarkI(),
+	"[Reverb] Mark II": ReverbMarkII(),
+	"[Reverb] Mark III": ReverbMarkIII(),
+	"[Vortex] Arrow": VortexArrow(),
+	"[Vortex] Hatchet": VortexHatchet(),
+	"[Vortex] Revolver": VortexRevolver(),
+
 }
 
 
@@ -750,11 +970,11 @@ def load_wengine():
 		wengines.append(WEngineModel(
 			name = wengine.name,
 			rank = wengine.rank,
-			mainStat= wengine.mainStat.key,
-			subStat=wengine.subStat.key,
-			nameIcon=f'{BASE_DIR}/{MEDIA_DIR}/wengines/{wengine.name.replace(" ", "_")}.png',
-			rankIcon = f'{BASE_DIR}/{MEDIA_DIR}/rank/{wengine.rank}.png',
+			fightingStyle= wengine.fightingStyle,
+			nameIcon=f'{BASE_DIR}/{MEDIA_DIR}/wengines/{wengine.name.replace(" ", "_").replace("[", "").replace("]", "")}.png',
 		))
 
 
 	return wengines
+
+

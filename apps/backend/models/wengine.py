@@ -7,12 +7,8 @@ from typing import Literal, Any, Optional
 class WEngineModel(BaseModel):
 	name: str
 	rank: Literal['S', 'A', 'B']
-
-	mainStat: str
-	subStat: str
-
+	fightingStyle: Literal["Attack", "Stun", "Anomaly", "Support", "Defense"]
 	nameIcon: Optional[str]
-	rankIcon: Optional[str]
 
 	def __str__(self):
 		return f'{self.name}'

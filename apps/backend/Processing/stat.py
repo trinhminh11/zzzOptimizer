@@ -12,6 +12,7 @@ class Stat:
 		'critRate_',
 		'critDMG_',
 		'anomalyMastery',
+		'anomalyMastery_',
 		'anomalyProficiency',
 		'pen',
 		'pen_',
@@ -26,7 +27,7 @@ class Stat:
 
 	def __init__(self, key: str = "", value: float = 0.0):
 		if key not in self.availableStat:
-			raise ValueError()
+			raise ValueError(f'{key}')
 		
 		self.key = key
 		self.value = value
