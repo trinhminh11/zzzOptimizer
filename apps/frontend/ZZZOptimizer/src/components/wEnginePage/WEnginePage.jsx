@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import WEngineBody from "./WEngineBody";
 import "./wEngine.css";
 import NavBar from "../NavBar/NavBar";
+import WEngineSort from "./WEngineSort";
 
 function WEnginePage() {
+  const [selectedOptions, setSelectedOptions] = useState({
+    rank: null,
+    fighting: null,
+  });
   return (
-    <div>
+    <div className="wEngine-page-container">
       <NavBar />
-      <WEngineBody />
+      <WEngineSort
+        selectedOptions={selectedOptions}
+        setSelectedOptions={setSelectedOptions}
+      />
+      <WEngineBody
+        selectedOptions={selectedOptions}
+        setSelectedOptions={setSelectedOptions}
+      />
     </div>
   );
 }
