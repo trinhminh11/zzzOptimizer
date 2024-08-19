@@ -99,27 +99,85 @@
   background-color: #50577a;
 }
 
+.top-search-bar {
+  background-color: #404258;
+  padding: 10px;
+  border-radius: 4px;
+  width: 380px;
+}
+.search-input {
+  width: 350px;
+  background-color: #2c2f36;
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+  padding: 10px;
+  color: white;
+}
+
 /* Styling the right table */
+.wEngine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
 .card-container {
   width: 350px;
-  border: 1px solid #333;
+  border: 2px solid #484950;
   border-radius: 10px;
-  background-color: #36373d;
+  background-color: #2c2d33;
   color: #fff;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
   font-family: Arial, sans-serif;
 }
 
 .card-header {
-  display: flex;
+  height: 80px;
+  grid-gap: 0;
   align-items: center;
-  margin-bottom: 12px;
+  background-color: #36373d;
+  border-bottom: 1px solid #484950;
+  display: grid;
+  grid-template-columns: 90px calc(100% - 90px);
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 100px;
 }
 
 .card-icon {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  width: 80px;
+}
+
+.rarity-S {
+  background-image: linear-gradient(
+    to bottom,
+    #ffb500,
+    #f6c02f,
+    #eeca4c,
+    #e8d365,
+    #e3db7e
+  );
+  border-radius: 4px;
+}
+
+.rarity-A {
+  background-image: linear-gradient(
+    to bottom,
+    #e900ff,
+    #eb41f4,
+    #eb5feb,
+    #e877e2,
+    #e48cda
+  );
+  border-radius: 4px;
 }
 
 .card-title {
@@ -135,6 +193,7 @@
 
 .card-body {
   margin-bottom: 12px;
+  margin-top: 12px;
 }
 
 .card-description {
@@ -163,10 +222,4 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.4;
-}
-
-.wEngine-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
 }

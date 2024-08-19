@@ -5,7 +5,7 @@ import "./wEngine.css";
 import { useState, useEffect } from "react";
 import { WEngineService } from "../../services/WEngineService";
 
-function WEngineBody() {
+function WEngineBody({ selectedOptions, setSelectedOptions }) {
   // set up list for storing wEngine from api
   const [listWEngines, setListWEngines] = useState([]);
 
@@ -35,12 +35,16 @@ function WEngineBody() {
           listWEngines={listWEngines}
           listSelectedWEngines={listSelectedWEngines}
           setListSelectedWEngines={setListSelectedWEngines}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
         />
       </div>
       <div className="col-lg-9">
         <WEngineLocalDatabase
           listSelectedWEngines={listSelectedWEngines}
           setListSelectedWEngines={setListSelectedWEngines}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
         />
       </div>
     </div>
