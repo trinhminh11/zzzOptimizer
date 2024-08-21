@@ -10,10 +10,10 @@ from main import app, agents, wengines
 def getAgents():
 	return agents
 
-@app.get("/agents/{agent_id}", response_model=AgentModel)
-def getAgent(agent_id: int):
+@app.get("/agent/{agent_name}", response_model=AgentModel)
+def getAgent(agent_name: str, promotion = 0, level = 1):
 	for agent in agents:
-		if agent.id == agent_id:
+		if agent.name == agent_name:
 			return agent
 
 	return HTTPException(404, "Agent Not Found")
@@ -24,10 +24,11 @@ def getAgent(agent_id: int):
 def getWEngines():
 	return wengines
 
-@app.get("/wengines/{wengine_id}", response_model=WEngineModel)
-def getWEngine(wengine_id: int):
+@app.get("/wengines/{wengine_name}", response_model=WEngineModel)
+def getWEngine(wengine_name: str):
 	for wengine in wengines:
-		if wengine.id == wengine_id:
+		if wengine.name == wengine_name:
 			return wengine
+	
 
 	return HTTPException(404, "W-Engine Not Found")

@@ -23,13 +23,12 @@ class AgentModel(BaseModel):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 
-		self.nameIcon = f'{BASE_DIR}/{MEDIA_DIR}/agents/{self.name}.png'
+		self.nameIcon = f'{BASE_DIR}/{MEDIA_DIR}/agents/Icon/{self.name}.png'
 		self.rankIcon = f'{BASE_DIR}/{MEDIA_DIR}/rank/{self.rank}.png'
 		self.attributeIcon = f'{BASE_DIR}/{MEDIA_DIR}/attributes/{self.attribute}.png'
 		self.fightingStyleIcon = f'{BASE_DIR}/{MEDIA_DIR}/fightingStyle/{self.fightingStyle}.png'
 		self.factionIcon = f'{BASE_DIR}/{MEDIA_DIR}/faction/{self.faction.replace(" ", "_")}.png'
 		self.moduleTypeIcon = f'{BASE_DIR}/{MEDIA_DIR}/moduleType/{self.moduleType}.png'
-
 
 
 	def __str__(self):

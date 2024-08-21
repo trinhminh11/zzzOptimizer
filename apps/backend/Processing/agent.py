@@ -700,5 +700,4 @@ def load_agent():
 			moduleType = agent.moduleType,
 		))
 
-
 	return agents
