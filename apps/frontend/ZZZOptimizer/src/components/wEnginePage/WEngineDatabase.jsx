@@ -17,7 +17,7 @@ function WEngineDatabase({
   // Initialize for search bar
   const [searchInput, setSearchInput] = useState("");
   const [selectedRank, setSelectedRank] = useState(null);
-  const [selectedFightingStyle, setSelectedFightingStyle] = useState(null);
+  const [selectedSpecialty, setSelectedSpecialty] = useState(null);
 
   useEffect(() => {
     const handleStorageChange = (event) => {
@@ -46,19 +46,19 @@ function WEngineDatabase({
     }
   };
 
-  const handleFightingStyleClick = (style) => {
-    setSelectedFightingStyle((prev) => (prev === style ? null : style));
+  const handleSpecialtyClick = (style) => {
+    setSelectedSpecialty((prev) => (prev === style ? null : style));
   };
 
-  // Filter wEngine based on search input and fighting style
+  // Filter wEngine based on search input and specialty
   const filteredWEngines = listWEngines.filter((wEngine) => {
     const matchesSearch = wEngine.name
       .toLowerCase()
       .includes(searchInput.toLowerCase());
-    const matchesFightingStyle = selectedFightingStyle
-      ? wEngine.fightingStyle === selectedFightingStyle
+    const matchesSpecialty = selectedSpecialty
+      ? wEngine.specialty === selectedSpecialty
       : true;
-    return matchesSearch && matchesFightingStyle;
+    return matchesSearch && matchesSpecialty;
   });
 
   return (
@@ -73,14 +73,14 @@ function WEngineDatabase({
         ></input>
       </div>
 
-      {/* Fighting Style Fitler Bar */}
+      {/* Specialty Fitler Bar */}
       <div className="filter-bar">
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Attack" ? "selected" : ""
+            selectedSpecialty === "Attack" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Attack")}
+          onClick={() => handleSpecialtyClick("Attack")}
         >
           <img src={attackIcon} alt="attack icon" />
         </button>
@@ -88,9 +88,9 @@ function WEngineDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Anomaly" ? "selected" : ""
+            selectedSpecialty === "Anomaly" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Anomaly")}
+          onClick={() => handleSpecialtyClick("Anomaly")}
         >
           <img src={anomalyIcon} alt="anomaly icon" />
         </button>
@@ -98,9 +98,9 @@ function WEngineDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Defense" ? "selected" : ""
+            selectedSpecialty === "Defense" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Defense")}
+          onClick={() => handleSpecialtyClick("Defense")}
         >
           <img src={defenseIcon} alt="defense icon" />
         </button>
@@ -108,9 +108,9 @@ function WEngineDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Stun" ? "selected" : ""
+            selectedSpecialty === "Stun" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Stun")}
+          onClick={() => handleSpecialtyClick("Stun")}
         >
           <img src={stunIcon} alt="stun icon" />
         </button>
@@ -118,9 +118,9 @@ function WEngineDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Support" ? "selected" : ""
+            selectedSpecialty === "Support" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Support")}
+          onClick={() => handleSpecialtyClick("Support")}
         >
           <img src={supportIcon} alt="support icon" />
         </button>

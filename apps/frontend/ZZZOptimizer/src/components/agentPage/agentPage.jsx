@@ -9,7 +9,7 @@ function AgentPage() {
   const [selectedOptions, setSelectedOptions] = useState({
     rank: null,
     attribute: null,
-    fighting: null,
+    specialty: null,
   });
 
   return (

@@ -55,9 +55,9 @@ function WEngineLocalDatabase({
       (selectedOptions.rank === "all" ||
         !selectedOptions.rank ||
         wEngine.rank === selectedOptions.rank) &&
-      (selectedOptions.fighting === "all" ||
-        !selectedOptions.fighting ||
-        wEngine.fightingStyle === selectedOptions.fighting)
+      (selectedOptions.specialty === "all" ||
+        !selectedOptions.specialty ||
+        wEngine.specialty === selectedOptions.specialty)
     );
   });
 
@@ -81,7 +81,7 @@ function WEngineLocalDatabase({
               <div className="card-info">
                 <div className="card-title">{item.name}</div>
                 <div className="card-rarity"></div>
-                Rarity: {item.rank} | Type: Attack
+                Rarity: {item.rank} | Specialty: Attack
               </div>
             </div>
 

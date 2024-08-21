@@ -60,9 +60,9 @@ export default function AgentLocalDatabase({
       (selectedOptions.attribute === "all" ||
         !selectedOptions.attribute ||
         agent.attribute === selectedOptions.attribute) &&
-      (selectedOptions.fighting === "all" ||
-        !selectedOptions.fighting ||
-        agent.fightingStyle === selectedOptions.fighting)
+      (selectedOptions.specialty === "all" ||
+        !selectedOptions.specialty ||
+        agent.specialty === selectedOptions.specialty)
     );
   });
 
@@ -74,7 +74,7 @@ export default function AgentLocalDatabase({
             <th>Agent</th>
             <th className="center-column">Rank</th>
             <th className="attibute center-column">Attribute</th>
-            <th className="fighting-style center-column">Fighting Style</th>
+            <th className="specialty center-column">Specialty</th>
             <th className="faction center-column">Weapon</th>
             <th className="center-column">Mind Scape</th>
           </tr>
@@ -107,7 +107,7 @@ export default function AgentLocalDatabase({
                   className="center-column"
                   onClick={() => handleEditAgent(item)}
                 >
-                  <img src={item.fightingStyleIcon} alt="demo" />
+                  <img src={item.specialtyIcon} alt="demo" />
                 </td>
                 <td onClick={() => handleEditAgent(item)}>Default weapon</td>
                 <td className="center-column">

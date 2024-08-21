@@ -20,7 +20,7 @@ function AgentDatabase({
   // Initialize for search bar
   const [searchInput, setSearchInput] = useState("");
   const [selectedAttribute, setSelectedAttribute] = useState(null);
-  const [selectedFightingStyle, setSelectedFightingStyle] = useState(null);
+  const [selectedSpecialty, setSelectedSpecialty] = useState(null);
 
   useEffect(() => {
     const handleStorageChange = (event) => {
@@ -55,8 +55,8 @@ function AgentDatabase({
     setSelectedAttribute((prev) => (prev === attribute ? null : attribute));
   };
 
-  const handleFightingStyleClick = (style) => {
-    setSelectedFightingStyle((prev) => (prev === style ? null : style));
+  const handleSpecialtyClick = (style) => {
+    setSelectedSpecialty((prev) => (prev === style ? null : style));
   };
 
   // // Filter agents based on search input
@@ -64,7 +64,7 @@ function AgentDatabase({
   //   agent.name.toLowerCase().includes(searchInput.toLowerCase())
   // );
 
-  // Filter agents based on search input, selected attribute, and fighting style
+  // Filter agents based on search input, selected attribute, and specialty
   const filteredAgents = listAgents.filter((agent) => {
     const matchesSearch = agent.name
       .toLowerCase()
@@ -72,10 +72,10 @@ function AgentDatabase({
     const matchesAttribute = selectedAttribute
       ? agent.attribute === selectedAttribute
       : true;
-    const matchesFightingStyle = selectedFightingStyle
-      ? agent.fightingStyle === selectedFightingStyle
+    const matchesSpecialty = selectedSpecialty
+      ? agent.specialty === selectedSpecialty
       : true;
-    return matchesSearch && matchesAttribute && matchesFightingStyle;
+    return matchesSearch && matchesAttribute && matchesSpecialty;
   });
 
   return (
@@ -144,15 +144,15 @@ function AgentDatabase({
         </button>
       </div>
 
-      {/* Fighting style Filter Bar  */}
+      {/* Specialty Filter Bar  */}
       <div className="filter-bar">
         {/* Elements */}
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Anomaly" ? "selected" : ""
+            selectedSpecialty === "Anomaly" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Anomaly")}
+          onClick={() => handleSpecialtyClick("Anomaly")}
         >
           <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
         </button>
@@ -160,9 +160,9 @@ function AgentDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Attack" ? "selected" : ""
+            selectedSpecialty === "Attack" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Attack")}
+          onClick={() => handleSpecialtyClick("Attack")}
         >
           <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
         </button>
@@ -170,9 +170,9 @@ function AgentDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Defense" ? "selected" : ""
+            selectedSpecialty === "Defense" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Defense")}
+          onClick={() => handleSpecialtyClick("Defense")}
         >
           <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
         </button>
@@ -180,9 +180,9 @@ function AgentDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Stun" ? "selected" : ""
+            selectedSpecialty === "Stun" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Stun")}
+          onClick={() => handleSpecialtyClick("Stun")}
         >
           <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
         </button>
@@ -190,9 +190,9 @@ function AgentDatabase({
         <button
           type="button"
           className={`btn btn-secondary ${
-            selectedFightingStyle === "Support" ? "selected" : ""
+            selectedSpecialty === "Support" ? "selected" : ""
           }`}
-          onClick={() => handleFightingStyleClick("Support")}
+          onClick={() => handleSpecialtyClick("Support")}
         >
           <img alt="Support Icon" src={supportIcon} className="nav-icon" />
         </button>

@@ -113,58 +113,58 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
       </div>
 
-      {/* Fighting Style */}
-      <div className="sorting-categories fighting-sort">
+      {/* Specialty */}
+      <div className="sorting-categories specialty-sort">
         <div
           className={`element-sort ${
-            isSelected("fighting", "all") ? "selected" : ""
+            isSelected("specialty", "all") ? "selected" : ""
           }`}
-          onClick={() => handleSelect("fighting", "all")}
+          onClick={() => handleSelect("specialty", "all")}
         >
           <i class="bi bi-asterisk select-all"></i>
         </div>
 
         <a
           className={`element-sort ${
-            isSelected("fighting", "Attack") ? "selected" : ""
+            isSelected("specialty", "Attack") ? "selected" : ""
           }`}
-          onClick={() => handleSelect("fighting", "Attack")}
+          onClick={() => handleSelect("specialty", "Attack")}
         >
           <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
         </a>
 
         <a
           className={`element-sort ${
-            isSelected("fighting", "Anomaly") ? "selected" : ""
+            isSelected("specialty", "Anomaly") ? "selected" : ""
           }`}
-          onClick={() => handleSelect("fighting", "Anomaly")}
+          onClick={() => handleSelect("specialty", "Anomaly")}
         >
           <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
         </a>
 
         <a
           className={`element-sort ${
-            isSelected("fighting", "Defense") ? "selected" : ""
+            isSelected("specialty", "Defense") ? "selected" : ""
           }`}
-          onClick={() => handleSelect("fighting", "Defense")}
+          onClick={() => handleSelect("specialty", "Defense")}
         >
           <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
         </a>
 
         <a
           className={`element-sort ${
-            isSelected("fighting", "Stun") ? "selected" : ""
+            isSelected("specialty", "Stun") ? "selected" : ""
           }`}
-          onClick={() => handleSelect("fighting", "Stun")}
+          onClick={() => handleSelect("specialty", "Stun")}
         >
           <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
         </a>
 
         <a
           className={`element-sort ${
-            isSelected("fighting", "Support") ? "selected" : ""
+            isSelected("specialty", "Support") ? "selected" : ""
           }`}
-          onClick={() => handleSelect("fighting", "Support")}
+          onClick={() => handleSelect("specialty", "Support")}
         >
           <img alt="Support Icon" src={supportIcon} className="nav-icon" />
         </a>

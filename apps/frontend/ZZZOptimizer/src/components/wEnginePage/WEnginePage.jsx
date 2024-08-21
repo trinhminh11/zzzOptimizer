@@ -7,7 +7,7 @@ import WEngineSort from "./WEngineSort";
 function WEnginePage() {
   const [selectedOptions, setSelectedOptions] = useState({
     rank: null,
-    fighting: null,
+    specialty: null,
   });
   return (
     <div className="wEngine-page-container">

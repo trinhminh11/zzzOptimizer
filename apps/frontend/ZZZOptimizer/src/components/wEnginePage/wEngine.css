@@ -81,8 +81,8 @@
 .rank-sort div,
 .attribute-sort a,
 .attribute-sort div,
-.fighting-sort a,
-.fighting-sort div {
+.specialty-sort a,
+.specialty-sort div {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: solid #1c1c1f;
@@ -91,7 +91,7 @@
 
 .rank-sort a:last-child,
 .attribute-sort a:last-child,
-.fighting-sort a:last-child {
+.specialty-sort a:last-child {
   border-radius: 6px;
   border: none;
 }
