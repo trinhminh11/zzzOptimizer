@@ -1,98 +1,102 @@
-import json		
-import os
 from .stat import Stat
-from config import *
+import config
 
-from models import WEngineModel
 
-dirname = os.path.dirname(__file__)
-baseStatFile = dirname + "/wenginetBaseStat.json"
+from typing import Literal
+
 
 class WEngine:
 	name: str
-	rank: str
-	fightingStyle: str
-	modificationLevel: int = 0
-	level: int = 0
-	upgradeLevel: int = 1
+	rank: config.RANKS
+	specialty: config.SPECIALTY
+	modificationLevel: Literal[0, 1, 2, 3, 4, 5]
+	level: int 
+	upgradeLevel: Literal[1, 2, 3, 4, 5]
 
+	mainStat: str
+	subStat: str
 
-	mainStat: Stat = Stat()
-	subStat: Stat = Stat()
+	baseStatLevel: dict[
+		Literal['mainStat', 'subStat'], dict[
+			Literal[0, 1, 2, 3, 4, 5], dict[
+				Literal[0, 10, 20, 30, 40, 50, 60], float
+			]
+		]
+	]
 
-	baseStatLevel: dict = {
-		'mainStat': {
-			0: {
-				0: None,
-				10: None
+	passiveDescription: str
+	passiveStats: list
+
+	def __init__(self, name: str, rank: str, specialty: str, mainStat: str, subStat: str):
+		self.modificationLevel = 0
+		self.levl = 0
+		self.upgradeLevel = 1
+
+		self.baseStatLevel = {
+			'mainStat': {
+				0: {
+					0: None,
+					10: None
+				},
+				1: {
+					10: None,
+					20: None
+				},
+				2: {
+					20: None,
+					30: None
+				},
+				3: {
+					30: None,
+					40: None
+				},
+				4: {
+					40: None,
+					50: None
+				},
+				5: {
+					50: None,
+					60: None
+				},
 			},
-			1: {
-				10: None,
-				20: None
-			},
-			2: {
-				20: None,
-				30: None
-			},
-			3: {
-				30: None,
-				40: None
-			},
-			4: {
-				40: None,
-				50: None
-			},
-			5: {
-				50: None,
-				60: None
-			},
-		},
-		'subStat': {
-			0: {
-				0: None,
-				10: None
-			},
-			1: {
-				10: None,
-				20: None
-			},
-			2: {
-				20: None,
-				30: None
-			},
-			3: {
-				30: None,
-				40: None
-			},
-			4: {
-				40: None,
-				50: None
-			},
-			5: {
-				50: None,
-				60: None
-			},
+			'subStat': {
+				0: {
+					0: None,
+					10: None
+				},
+				1: {
+					10: None,
+					20: None
+				},
+				2: {
+					20: None,
+					30: None
+				},
+				3: {
+					30: None,
+					40: None
+				},
+				4: {
+					40: None,
+					50: None
+				},
+				5: {
+					50: None,
+					60: None
+				},
+			}
 		}
-	}
-
-
-	passiveDescription: str = ""
-	passiveStats: dict
-
-	def __init__(self, name: str, rank: str, fightingStyle: str, mainStat: Stat, subStat: Stat):
 		self.name = name
-		if rank not in ['S', 'A', 'B']:
-			raise ValueError()
-		
 		self.rank = rank
 		
-		if fightingStyle not in ['Attack', 'Stun', 'Anomaly', 'Defense', 'Support']:
-			raise ValueError()
-		
-		self.fightingStyle = fightingStyle
+		self.specialty = specialty
 
 		self.mainStat = mainStat
 		self.subStat = subStat
+
+		self.passiveDescription = ""
+		self.passiveStats = []
+
 
 	def fromJson(self, data: dict):
 		pass
@@ -103,10 +107,30 @@ class WEngine:
 	def setLevel(self, value):
 		self.level = value
 
+	def getStat(self, promotion: Literal[0,1,2,3,4,5] = 0, level: int = 0):
+		levelmin = promotion*10
+		levelmax = levelmin+10
+		mainStatmin = self.baseStatLevel['mainStat'][promotion][levelmin]
+		mainStatmax = self.baseStatLevel['mainStat'][promotion][levelmax]
+
+		subStatmin = self.baseStatLevel['subStat'][promotion][levelmin]
+		subStatmax = self.baseStatLevel['subStat'][promotion][levelmax]
+
+		mainStat = (mainStatmax-mainStatmin)*(level-levelmin) / 10 + mainStatmin
+		subStat = (subStatmax-subStatmin)*(level-levelmin) / 10 + subStatmin
+
+		return {"mainStat": [self.mainStat, mainStat], "subStat": [self.subStat, subStat]}
+
+	def getPassive(self, upgrade: Literal[1,2,3,4,5] = 1):
+		passive = self.passiveDescription.format(*[passiveStat[upgrade-1] for passiveStat in self.passiveStats])
+
+		return {"passive": passive}
+		
+
 
 class DeepSeaVisitor(WEngine):
 	def __init__(self):
-		super().__init__("Deep Sea Visitor", "S", "Attack", Stat("atk"), Stat("critRate_"))
+		super().__init__("Deep Sea Visitor", "S", "Attack", "atk", "critRate_")
 
 		self.baseStatLevel['mainStat'][0][00], self.baseStatLevel['subStat'][0][0] = 48 , 9.6
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 123, 9.6
@@ -121,12 +145,14 @@ class DeepSeaVisitor(WEngine):
 		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][5][50] = 638, 24.0
 		self.baseStatLevel['mainStat'][4][60], self.baseStatLevel['subStat'][5][60] = 713, 24.0
 
-		self.passiveDescription = "<p>Increases <p style=\"color: rgb(140,216,218)\">Ice DMG</p> by <p style=\"color: rgb(237,197,84)\">25/31.5/38/44.5/50%</p>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <p style=\"color: rgb(140,216,218)\">10/12.5.15/17.5/20%</p> for 8s. When dealing <p style=\"color: rgb(140,216,218)\">Ice DM</p>G with a Dash Attack, the equipper's CRIT Rate increases by an additional <p style=\"color: rgb(140,216,218)\">10/12.5.15/17.5/20%</p> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 		
 
 class FusionCompiler(WEngine):
 	def __init__(self):
-		super().__init__("Fusion Compiler", "S", "Anomaly", Stat("atk"), Stat("pen_"))
+		super().__init__("Fusion Compiler", "S", "Anomaly", "atk", "pen_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 46 , 9.6
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 118 , 9.6
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 159 , 12.5
@@ -140,10 +166,14 @@ class FusionCompiler(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 24.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 24.0
 
+		self.passiveStats = [[12, 15, 18, 21, 24], [25, 31, 37, 43, 50]]
 
+		self.passiveDescription = "<p>Increases ATK by <span style=\"color: rgb(237,197,84)\">{0}%</span>. When using a Special Attack or EX Special Attack, the equipper's Anomaly Proficiency is increased by <span style=\"color: rgb(237,197,84)\">{1}</span> for <span style=\"color: rgb(237,197,84)\">8</span>, stacking up to <span style=\"color: rgb(237,197,84)\">3</span> times. The duration of each stack is calculated separately.</p>"
+
+		# <span style=\"color: rgb(237,197,84)\"></span>
 class HellfireGears(WEngine):
 	def __init__(self):
-		super().__init__("Hellfire Gears", "S", "Stun", Stat("atk"), Stat("impact_"))
+		super().__init__("Hellfire Gears", "S", "Stun", "atk", "impact_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 46 , 7.2
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 118 , 7.2
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 159 , 9.4
@@ -157,11 +187,14 @@ class HellfireGears(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 18.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 18.0
 
-		
+		self.passiveStats = [[0.6, 0.75, 0.9, 1.5, 1.2], [10, 12.5, 15, 17.5, 20]]
+
+
+		self.passiveDescription = "<p>When off-field, the equipper's Energy Regen increases by <span style=\"color: rgb(237,197,84)\">{0}</span> per second. When using an EX Special Attack, the equipper's Impact is increased by <span style=\"color: rgb(237,197,84)\">{1}</span> for <span style=\"color: rgb(237,197,84)\">10s</span>, stacking up to <span style=\"color: rgb(237,197,84)\">2</span> times. The duration of each stack is calculated separately.</p>"
 
 class RiotSuppressorMarkVI(WEngine):
 	def __init__(self):
-		super().__init__("Riot Suppressor Mark VI", "S", "Attack", Stat("atk"), Stat("critDMG_"))
+		super().__init__("Riot Suppressor Mark VI", "S", "Attack", "atk", "critDMG_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 48 , 19.2
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 123 , 19.2
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 166 , 25.0
@@ -175,10 +208,14 @@ class RiotSuppressorMarkVI(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 638 , 48.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 713 , 48.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class SteelCushion(WEngine):
 	def __init__(self):
-		super().__init__("Steel Cushion", "S", "Attack", Stat("atk"), Stat("critRate_"))
+		super().__init__("Steel Cushion", "S", "Attack", "atk", "critRate_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 46 , 9.6
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 118 , 9.6
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 159 , 12.5
@@ -192,10 +229,14 @@ class SteelCushion(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 24.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 24.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class TheBrimstone(WEngine):
 	def __init__(self):
-		super().__init__("The Brimstone", "S", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("The Brimstone", "S", "Attack", "atk", "atk_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 46 , 12.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 118 , 12.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 159 , 15.6
@@ -209,10 +250,14 @@ class TheBrimstone(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 30.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 30.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class TheRestrained(WEngine):
 	def __init__(self):
-		super().__init__("The Restrained", "S", "Stun", Stat("atk"), Stat("impact_"))
+		super().__init__("The Restrained", "S", "Stun", "atk", "impact_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 46 , 7.2
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 118 , 7.2
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 159 , 9.4
@@ -226,10 +271,14 @@ class TheRestrained(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 18.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 18.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class WeepingCradle(WEngine):
 	def __init__(self):
-		super().__init__("Weeping Cradle", "S", "Support", Stat("atk"), Stat("pen_"))
+		super().__init__("Weeping Cradle", "S", "Support", "atk", "pen_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 46 , 9.6
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 118 , 9.6
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 159 , 12.5
@@ -243,10 +292,14 @@ class WeepingCradle(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 24.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 24.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class BashfulDemon(WEngine):
 	def __init__(self):
-		super().__init__("Bashful Demon", "A", "Support", Stat("atk"), Stat("atk_"))
+		super().__init__("Bashful Demon", "A", "Support", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 10.0
@@ -261,11 +314,15 @@ class BashfulDemon(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 
 class BigCylinder(WEngine):
 	def __init__(self):
-		super().__init__("Big Cylinder", "A", "Defense", Stat("atk"), Stat("def_"))
+		super().__init__("Big Cylinder", "A", "Defense", "atk", "def_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 16.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 16.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 145 , 20.8
@@ -279,11 +336,15 @@ class BigCylinder(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 40.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 40.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 
 class BunnyBand(WEngine):
 	def __init__(self):
-		super().__init__("Bunny Band", "A", "Defense", Stat("atk"), Stat("def_"))
+		super().__init__("Bunny Band", "A", "Defense", "atk", "def_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 16.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 16.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 138 , 20.8
@@ -297,10 +358,14 @@ class BunnyBand(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 40.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 40.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class CannonRotor(WEngine):
 	def __init__(self):
-		super().__init__("Cannon Rotor", "A", "Attack", Stat("atk"), Stat("critRate_"))
+		super().__init__("Cannon Rotor", "A", "Attack", "atk", "critRate_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 8.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 138 , 10.4
@@ -314,10 +379,14 @@ class CannonRotor(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 20.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class DemaraBatteryMarkII(WEngine):
 	def __init__(self):
-		super().__init__("Demara Battery Mark II", "A", "Stun", Stat("atk"), Stat("impact_"))
+		super().__init__("Demara Battery Mark II", "A", "Stun", "atk", "impact_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 6.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 6.0
@@ -332,10 +401,14 @@ class DemaraBatteryMarkII(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 15.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 15.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class DrillRigRedAxis(WEngine):
 	def __init__(self):
-		super().__init__("Drill Rig - Red Axis", "A", "Attack", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("Drill Rig - Red Axis", "A", "Attack", "atk", "energyRegen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 20.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 20.0
@@ -350,10 +423,14 @@ class DrillRigRedAxis(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 50.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 50.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class ElectroLipGloss(WEngine):
 	def __init__(self):
-		super().__init__("Electro-Lip Gloss", "A", "Anomaly", Stat("atk"), Stat("anomalyProficiency"))
+		super().__init__("Electro-Lip Gloss", "A", "Anomaly", "atk", "anomalyProficiency")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 30.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 30.0
@@ -368,10 +445,14 @@ class ElectroLipGloss(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 75.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 75.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class Housekeeper(WEngine):
 	def __init__(self):
-		super().__init__("Housekeeper", "A", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("Housekeeper", "A", "Attack", "atk", "atk_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 10.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 145 , 13.0
@@ -385,10 +466,14 @@ class Housekeeper(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class KaboomtheCannon(WEngine):
 	def __init__(self):
-		super().__init__("Kaboom the Cannon", "A", "Support", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("Kaboom the Cannon", "A", "Support", "atk", "energyRegen_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 20.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 20.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 145 , 26.0
@@ -402,10 +487,14 @@ class KaboomtheCannon(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 50.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 50.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class OriginalTransmorpher(WEngine):
 	def __init__(self):
-		super().__init__("Original Transmorpher", "A", "Defense", Stat("atk"), Stat("hp_"))
+		super().__init__("Original Transmorpher", "A", "Defense", "atk", "hp_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 10.0
@@ -420,10 +509,14 @@ class OriginalTransmorpher(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class PreciousFossilizedCore(WEngine):
 	def __init__(self):
-		super().__init__("Precious Fossilized Core", "A", "Stun", Stat("atk"), Stat("impact_"))
+		super().__init__("Precious Fossilized Core", "A", "Stun", "atk", "impact_")
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 6.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 6.0
 		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 138 , 7.8
@@ -437,10 +530,14 @@ class PreciousFossilizedCore(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 15.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 15.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class RainforestGourmet(WEngine):
 	def __init__(self):
-		super().__init__("Rainforest Gourmet", "A", "Anomaly", Stat("atk"), Stat("anomalyProficiency"))
+		super().__init__("Rainforest Gourmet", "A", "Anomaly", "atk", "anomalyProficiency")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 30.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 30.0
@@ -455,10 +552,14 @@ class RainforestGourmet(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 75.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 75.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class RoaringRide(WEngine):
 	def __init__(self):
-		super().__init__("Roaring Ride", "A", "Anomaly", Stat("atk"), Stat("atk_"))
+		super().__init__("Roaring Ride", "A", "Anomaly", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 10.0
@@ -473,10 +574,14 @@ class RoaringRide(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class SixShooter(WEngine):
 	def __init__(self):
-		super().__init__("Six Shooter", "A", "Stun", Stat("atk"), Stat("impact_"))
+		super().__init__("Six Shooter", "A", "Stun", "atk", "impact_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 6.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 6.0
@@ -491,10 +596,14 @@ class SixShooter(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 15.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 15.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class SliceofTime(WEngine):
 	def __init__(self):
-		super().__init__("Slice of Time", "A", "Support", Stat("atk"), Stat("pen_"))
+		super().__init__("Slice of Time", "A", "Support", "atk", "pen_")
 
 		# this motherfucker is fucking wrong
 
@@ -511,10 +620,14 @@ class SliceofTime(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class SpringEmbrace(WEngine):
 	def __init__(self):
-		super().__init__("Spring Embrace", "A", "Defense", Stat("atk"), Stat("atk_"))
+		super().__init__("Spring Embrace", "A", "Defense", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 10.0
@@ -528,11 +641,15 @@ class SpringEmbrace(WEngine):
 		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 496 , 22.0
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 25.0
+
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class StarlightEngine(WEngine):
 	def __init__(self):
-		super().__init__("Starlight Engine", "A", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("Starlight Engine", "A", "Attack", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 10.0
@@ -547,10 +664,14 @@ class StarlightEngine(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class StarlightEngineReplica(WEngine):
 	def __init__(self):
-		super().__init__("Starlight Engine Replica", "A", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("Starlight Engine Replica", "A", "Attack", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 10.0
@@ -565,10 +686,14 @@ class StarlightEngineReplica(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class SteamOven(WEngine):
 	def __init__(self):
-		super().__init__("Steam Oven", "A", "Stun", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("Steam Oven", "A", "Stun", "atk", "energyRegen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 20.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 20.0
@@ -583,10 +708,14 @@ class SteamOven(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 50.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 50.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class StreetSuperstar(WEngine):
 	def __init__(self):
-		super().__init__("Street Superstar", "A", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("Street Superstar", "A", "Attack", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 10.0
@@ -601,10 +730,14 @@ class StreetSuperstar(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class TheVault(WEngine):
 	def __init__(self):
-		super().__init__("The Vault", "A", "Support", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("The Vault", "A", "Support", "atk", "energyRegen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 42 , 20.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 107 , 20.0
@@ -619,10 +752,14 @@ class TheVault(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 50.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 50.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class UnfetteredGameBall(WEngine):
 	def __init__(self):
-		super().__init__("Unfettered Game Ball", "A", "Support", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("Unfettered Game Ball", "A", "Support", "atk", "energyRegen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 20.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 20.0
@@ -637,10 +774,14 @@ class UnfetteredGameBall(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 50.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 50.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class WeepingGemini(WEngine):
 	def __init__(self):
-		super().__init__("Weeping Gemini", "A", "Anomaly", Stat("atk"), Stat("atk_"))
+		super().__init__("Weeping Gemini", "A", "Anomaly", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 40 , 10.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 102 , 10.0
@@ -655,10 +796,14 @@ class WeepingGemini(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 532 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 594 , 25.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class IdentityBase(WEngine):
 	def __init__(self):
-		super().__init__("[Identity] Base", "B", "Defense", Stat("atk"), Stat("def_"))
+		super().__init__("[Identity] Base", "B", "Defense", "atk", "def_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 12.8
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 12.8
@@ -672,11 +817,15 @@ class IdentityBase(WEngine):
 		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 397 , 28.2
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 32.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 32.0
+
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class IdentityInflection(WEngine):
 	def __init__(self):
-		super().__init__("[Identity] Inflection", "B", "Defense", Stat("atk"), Stat("def_"))
+		super().__init__("[Identity] Inflection", "B", "Defense", "atk", "def_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 12.8
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 12.8
@@ -691,10 +840,14 @@ class IdentityInflection(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 32.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 32.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class LunarDecrescent(WEngine):
 	def __init__(self):
-		super().__init__("[Lunar] Decrescent", "B", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("[Lunar] Decrescent", "B", "Attack", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
@@ -709,10 +862,14 @@ class LunarDecrescent(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class LunarNoviluna(WEngine):
 	def __init__(self):
-		super().__init__("[Lunar] Noviluna", "B", "Attack", Stat("atk"), Stat("critRate_"))
+		super().__init__("[Lunar] Noviluna", "B", "Attack", "atk", "critRate_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 6.4
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 6.4
@@ -727,10 +884,14 @@ class LunarNoviluna(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 16.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 16.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class LunarPleniluna(WEngine):
 	def __init__(self):
-		super().__init__("[Lunar] Pleniluna", "B", "Attack", Stat("atk"), Stat("atk_"))
+		super().__init__("[Lunar] Pleniluna", "B", "Attack", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
@@ -745,10 +906,14 @@ class LunarPleniluna(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class MagneticStormAlpha(WEngine):
 	def __init__(self):
-		super().__init__("[Magnetic Storm] Alpha", "B", "Anomaly", Stat("atk"), Stat("atk_"))
+		super().__init__("[Magnetic Storm] Alpha", "B", "Anomaly", "atk", "atk_")
 		
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
@@ -763,10 +928,14 @@ class MagneticStormAlpha(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class MagneticStormBravo(WEngine):
 	def __init__(self):
-		super().__init__("[Magnetic Storm] Bravo", "B", "Anomaly", Stat("atk"), Stat("anomalyProficiency"))
+		super().__init__("[Magnetic Storm] Bravo", "B", "Anomaly", "atk", "anomalyProficiency")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 24.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 24.0
@@ -781,10 +950,14 @@ class MagneticStormBravo(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 60.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 60.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class MagneticStormCharlie(WEngine):
 	def __init__(self):
-		super().__init__("[Magnetic Storm] Charlie", "B", "Anomaly", Stat("atk"), Stat("pen_"))
+		super().__init__("[Magnetic Storm] Charlie", "B", "Anomaly", "atk", "pen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 6.4
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 6.4
@@ -799,10 +972,14 @@ class MagneticStormCharlie(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 16.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 16.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class ReverbMarkI(WEngine):
 	def __init__(self):
-		super().__init__("[Reverb] Mark I", "B", "Support", Stat("atk"), Stat("atk_"))
+		super().__init__("[Reverb] Mark I", "B", "Support", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
@@ -817,10 +994,14 @@ class ReverbMarkI(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class ReverbMarkII(WEngine):
 	def __init__(self):
-		super().__init__("[Reverb] Mark II", "B", "Support", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("[Reverb] Mark II", "B", "Support", "atk", "energyRegen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 16.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 16.0
@@ -835,10 +1016,14 @@ class ReverbMarkII(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 40.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 40.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class ReverbMarkIII(WEngine):
 	def __init__(self):
-		super().__init__("[Reverb] Mark III", "B", "Support", Stat("atk"), Stat("hp_"))
+		super().__init__("[Reverb] Mark III", "B", "Support", "atk", "hp_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
@@ -853,10 +1038,14 @@ class ReverbMarkIII(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class VortexArrow(WEngine):
 	def __init__(self):
-		super().__init__("[Vortex] Arrow", "B", "Stun", Stat("atk"), Stat("impact_"))
+		super().__init__("[Vortex] Arrow", "B", "Stun", "atk", "impact_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 4.8
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 4.8
@@ -871,10 +1060,14 @@ class VortexArrow(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 12.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 12.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class VortexHatchet(WEngine):
 	def __init__(self):
-		super().__init__("[Vortex] Hatchet", "B", "Stun", Stat("atk"), Stat("energyRegen_"))
+		super().__init__("[Vortex] Hatchet", "B", "Stun", "atk", "energyRegen_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 16.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 16.0
@@ -889,10 +1082,14 @@ class VortexHatchet(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 40.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 40.0
 
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
 
 class VortexRevolver(WEngine):
 	def __init__(self):
-		super().__init__("[Vortex] Revolver", "B", "Stun", Stat("atk"), Stat("atk_"))
+		super().__init__("[Vortex] Revolver", "B", "Stun", "atk", "atk_")
 
 		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 32 , 8.0
 		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 82 , 8.0
@@ -907,7 +1104,11 @@ class VortexRevolver(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-wengineObjects: dict[str, WEngine] = {
+		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+
+		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+
+wengines: dict[str, WEngine] = {
 	# S rank
 	"Deep Sea Visitor": DeepSeaVisitor(),
 	"Fusion Compiler": FusionCompiler(),
@@ -962,19 +1163,5 @@ wengineObjects: dict[str, WEngine] = {
 
 }
 
-
-def load_wengine():
-	wengines: list[WEngineModel] = []
-
-	for wengine in wengineObjects.values():
-		wengines.append(WEngineModel(
-			name = wengine.name,
-			rank = wengine.rank,
-			fightingStyle= wengine.fightingStyle,
-			nameIcon=f'{BASE_DIR}/{MEDIA_DIR}/wengines/{wengine.name.replace(" ", "_").replace("[", "").replace("]", "")}.png',
-		))
-
-
-	return wengines
 
 

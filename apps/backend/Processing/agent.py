@@ -1,237 +1,242 @@
-import json		
-import os
-from models import AgentModel
-from config import *
-
-dirname = os.path.dirname(__file__)
-baseStatFile = dirname + "/agentBaseStat.json"
+# baseStat: dict = {
+	# 	'hp': 0,
+	# 	'hp_': 0,
+	# 	'atk': 0,
+	# 	'atk_': 0,
+	# 	'def': 0,
+	# 	'def_': 0,
+	# 	'impact': 0,
+	# 	'impact_': 0,
+	# 	'critRate_': 0,
+	# 	'critDMG_': 0,
+	# 	'anomalyMastery': 0,
+	# 	'anomalyMastery_': 0,
+	# 	'anomalyProficiency': 0,
+	# 	'pen': 0,
+	# 	'pen_': 0,
+	# 	'energyRegen': 0,
+	# 	'energyRegen_': 0,
+	# 	'electricDMG_': 0,
+	# 	'physicalDMG_': 0,
+	# 	'fireDMG_': 0,
+	# 	'iceDMG_': 0,
+	# 	'etherDMG_': 0,
+	# }
+import config
+from typing import Literal
 
 class Agent:
 	name: str
 	realName: str
-	rank: str
-	mindScape: int = 0
-	promotion: int = 0
-	level: int = 1
-	attribute: str
-	fightingStyle: str
-	faction: str
-	moduleType: str
+	rank: config.RANKS
+	mindScape: Literal[0, 1, 2, 3, 4, 5, 6]
+	promotion: Literal[0, 1, 2, 3, 4, 5]
+	level: int
+	attribute: config.ATTRIBUTES
+	specialty: config.SPECIALTY
+	faction: config.FACTIONS
+	attackType: config.ATTACKTYPE
 
 	atkBuff: float
 
-	baseStatLevel: dict = {
-		0: {
-			1: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			},
-			10: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			}
-		},
-		1: {
-			10: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			},
-			20: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			}
-		},
-		2: {
-			20: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			},
-			30: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			}
-		},
-		3: {
-			30: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			},
-			40: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			}
-		},
-		4: {
-			40: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			},
-			50: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			}
-		},
-		5: {
-			50: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			},
-			60: {
-				"hp": None,
-				"atk": None,
-				"def": None,
-				"anomalyProficiency": None,
-				"anomalyMastery": None,
-				"impact": None,
-				"critRate_": 5,
-				"critDMG_": 50,
-				"pen": 0,
-				"pen_": 0,
-				"energyRegen": 1.2
-			}
-		},
-	}
+	baseStatLevel: dict
 
-
-	baseStat: dict = {
-		'hp': 0,
-		'hp_': 0,
-		'atk': 0,
-		'atk_': 0,
-		'def': 0,
-		'def_': 0,
-		'impact': 0,
-		'impact_': 0,
-		'critRate_': 0,
-		'critDMG_': 0,
-		'anomalyMastery': 0,
-		'anomalyMastery_': 0,
-		'anomalyProficiency': 0,
-		'pen': 0,
-		'pen_': 0,
-		'energyRegen': 0,
-		'energyRegen_': 0,
-		'electricDMG_': 0,
-		'physicalDMG_': 0,
-		'fireDMG_': 0,
-		'iceDMG_': 0,
-		'etherDMG_': 0,
-	}
-
-	core: int = 1
-	basic: int = 1
-	dogde: int = 1
-	assist: int = 1
-	special: int = 1
-	chain: int = 1
+	core: int
+	basic: int
+	dogde: int
+	assist: int
+	special: int
+	chain: int
 	
-	def __init__(self, name: str, realName: str, rank: str, attribute: str, fightingStyle: str, faction: str, moduleType: str):
+	def __init__(self, name: str, realName: str, rank: str, attribute: str, specialty: str, faction: str, attackType: str):
+			self.mindScape = 0
+			self.promotion = 0
+			self.level = 1
+			self.baseStatLevel: dict = {
+				0: {
+					1: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					},
+					10: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					}
+				},
+				1: {
+					10: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					},
+					20: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					}
+				},
+				2: {
+					20: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					},
+					30: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					}
+				},
+				3: {
+					30: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					},
+					40: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					}
+				},
+				4: {
+					40: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					},
+					50: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					}
+				},
+				5: {
+					50: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					},
+					60: {
+						"hp": None,
+						"atk": None,
+						"def": None,
+						"anomalyProficiency": None,
+						"anomalyMastery": None,
+						"impact": None,
+						"critRate_": 5,
+						"critDMG_": 50,
+						"pen": 0,
+						"pen_": 0,
+						"energyRegen": 1.2
+					}
+				},
+			}
+			
+			self.core = 1
+			self.basic = 1
+			self.dodge = 1
+			self.assist = 1
+			self.special = 1
+			self.chain = 1
+			
 			self.name = name
 			self.realName = realName
 			self.rank = rank
 			self.attribute = attribute
-			self.fightingStyle = fightingStyle
+			self.specialty = specialty
 			self.faction = faction
-			self.moduleType = moduleType
+			self.attackType = attackType
 	
 	def fromJson(self, data: dict):
 		self.mindScape = data['mindScape']
@@ -662,7 +667,7 @@ class Yuan(Agent):
 		pass
 
 
-agentObjects: dict[str, Agent] = {
+agents: dict[str, Agent] = {
 	# S rank
 	"Rina": Rina(),
 	"Ellen": Ellen(),
@@ -686,18 +691,4 @@ agentObjects: dict[str, Agent] = {
 
 }
 
-def load_agent():
-	agents: list[AgentModel] = []
 
-	for agent in agentObjects.values():
-		agents.append(AgentModel(
-			name = agent.name, 
-			realName = agent.realName, 
-			rank = agent.rank,
-			attribute = agent.attribute,
-			fightingStyle = agent.fightingStyle,
-			faction = agent.faction,
-			moduleType = agent.moduleType,
-		))
-
-	return agents

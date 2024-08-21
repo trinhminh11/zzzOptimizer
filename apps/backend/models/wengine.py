@@ -1,14 +1,19 @@
-from pydantic import BaseModel, Json
-from typing import Literal, Any, Optional
-
+from pydantic import BaseModel
+from typing import Optional
+import config
 
 
 # Create your models here.
 class WEngineModel(BaseModel):
 	name: str
-	rank: Literal['S', 'A', 'B']
-	fightingStyle: Literal["Attack", "Stun", "Anomaly", "Support", "Defense"]
+	rank: config.RANKS
+	specialty: config.SPECIALTY
 	nameIcon: Optional[str]
+
+	mainStat: tuple[str, float]
+	subStat: tuple[str, float]
+
+	passive: str
 
 	def __str__(self):
 		return f'{self.name}'
