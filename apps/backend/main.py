@@ -5,8 +5,6 @@ import uvicorn
 from models import AgentModel, WEngineModel
 import json
 
-from Processing import load_wengine, load_agent
-
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
@@ -24,9 +22,6 @@ app.add_middleware(
 	allow_headers=["*"],
 )
 
-
-agents = load_agent()
-wengines = load_wengine()
 
 
 def main():
