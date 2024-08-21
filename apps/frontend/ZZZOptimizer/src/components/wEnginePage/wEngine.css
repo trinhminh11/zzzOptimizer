@@ -180,6 +180,18 @@
   border-radius: 4px;
 }
 
+.rarity-B {
+  background-image: linear-gradient(
+    to bottom,
+    #252fd8,
+    #3f44d8,
+    #5457d7,
+    #666ad4,
+    #787bd1
+  );
+  border-radius: 4px;
+}
+
 .card-title {
   font-size: 18px;
   font-weight: bold;
@@ -222,4 +234,31 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.4;
+}
+
+/* Styling the ModalEditWEngine */
+
+.wEngine-modal-container .modal-content {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #404258;
+}
+
+.wEngine-modal-body {
+  color: white;
+}
+
+.wEngine-left-img {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.wEngine-left-img img {
+  width: 200px;
+  height: 200px;
 }
