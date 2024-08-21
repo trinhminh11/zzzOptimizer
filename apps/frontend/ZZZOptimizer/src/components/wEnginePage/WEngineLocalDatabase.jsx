@@ -8,6 +8,35 @@ function WEngineLocalDatabase({
   setListSelectedWEngines,
   selectedOptions,
 }) {
+  // Init hashmap for SubStat display
+  let subStatMap = new Map([
+    ["hp", "HP"],
+    ["hp_", "% HP"],
+    ["atk", "Attack"],
+    ["atk_", "% Attack"],
+    ["def", "Defense"],
+    ["def_", "% Defense"],
+    ["impact", "Impact"],
+    ["impact_", "% Impact"],
+    ["critRate", "Crit Rate"],
+    ["critRate_", "% Crit Rate"],
+    ["critDMG", "Crit Damage"],
+    ["critDMG_", "% Crit Damage"],
+    ["anomalyMastery", "Anomaly Mastery"],
+    ["anomalyMastery_", "% Anomaly Mastery"],
+    ["anomalyProficiency", "Anomaly Proficiency"],
+    ["anomalyProficiency_", "% Anomaly Proficiency"],
+    ["pen", "Pen"],
+    ["pen_", "Pen Ratio"],
+    ["energyRegen", "Energy Regen"],
+    ["energyRegen_", "% Energy Regen"],
+    ["electricDMG_", "% Electric Damage"],
+    ["physicalDMG_", "% Physical Damage"],
+    ["fireDMG_", "% Fire Damage"],
+    ["iceDMG_", "% Ice Damage"],
+    ["etherDMG_", "% Ether Damage"],
+  ]);
+
   // Init variable for wEngine edit show function
   const [isShowModalEdit, setShowModalEdit] = useState(false);
   const [dataWEngineEdit, setDataWEnigineEdit] = useState([]);
@@ -19,7 +48,6 @@ function WEngineLocalDatabase({
 
   // Edit agent function
   const handleEditWEngine = (wEngine) => {
-    console.log(wEngine);
     setDataWEnigineEdit(wEngine);
     setShowModalEdit(true);
   };
@@ -80,37 +108,14 @@ function WEngineLocalDatabase({
               </div>
               <div className="card-info">
                 <div className="card-title">{item.name}</div>
-                <div className="card-rarity"></div>
-                Rarity: {item.rank} | Specialty: Attack
+                <div className="card-rarity">
+                  Rarity: {item.rank} | Specialty: Attack
+                </div>
+                <div className="card-rarity">
+                  Sub Stat: <b>{subStatMap.get(item.subStat[0])}</b>
+                </div>
               </div>
             </div>
-
-            {/* Body */}
-            {/* <div className="card-body">
-              <p className="card-description">
-                Increases <span className="ice-dmg">Ice DMG</span> by
-                25/31.5/38/44.5/50%. Upon hitting an enemy with a Basic Attack,
-                the equipper's CRIT Rate increases by 10/12.5/15/17.5/20% for
-                8s. When dealing <span className="ice-dmg">Ice DMG</span> with a
-                Dash Attack, the equipper's CRIT Rate increases by an additional
-                10/12.5/15/17.5/20% for 15s. The duration of each effect is
-                calculated separately.
-              </p>
-            </div> */}
-
-            {/*Stat */}
-            {/* <div className="card-stats">
-              <div className="stat-level">
-                <p>Level 1:</p>
-                <p>Base ATK: 55</p>
-                <p>Crit Rate: 9.6%</p>
-              </div>
-              <div className="stat-level">
-                <p>Level 60:</p>
-                <p>Base ATK: 713</p>
-                <p>Crit Rate: 24%</p>
-              </div>
-            </div> */}
           </div>
         );
       })}

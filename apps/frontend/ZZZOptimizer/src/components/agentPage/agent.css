@@ -173,6 +173,18 @@
   border-radius: 4px;
 }
 
+.agent-B img {
+  background-image: linear-gradient(
+    to bottom,
+    #252fd8,
+    #3f44d8,
+    #5457d7,
+    #666ad4,
+    #787bd1
+  );
+  border-radius: 4px;
+}
+
 .agent-name-showcase {
   overflow: hidden;
   white-space: nowrap;
