@@ -191,6 +191,27 @@ class HellfireGears(WEngine):
 
 		self.passiveDescription = "<p>When off-field, the equipper's Energy Regen increases by <span style=\"color: rgb(237,197,84)\">{0}</span> per second. When using an EX Special Attack, the equipper's Impact is increased by <span style=\"color: rgb(237,197,84)\">{1}</span> for 10s, stacking up to 2 times. The duration of each stack is calculated separately.</p>"
 
+class IceJadeTeapot(WEngine):
+	def __init__(self):
+		super().__init__("Ice-Jade Teapot", "S", "Stun", "atk", "impact_")
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 48 , 7.2
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 123 , 7.2
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 166 , 9.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 241 , 9.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 284 , 11.5
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 359 , 11.5
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 402 , 13.7
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 477 , 13.7
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 520 , 15.8
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 595 , 15.8
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 638 , 18.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 713 , 18.0
+
+		self.passiveStats = [[0.7, 0.88, 1.05, 1.22, 1.4], [20, 23, 26, 29, 32]]
+		self.passiveDescription = "<p>When a Basic Attack hits an enemy, gain 1 stack of Tea-riffic. Each stack of Tea-riffic increases the user's Impact by <span style=\"color: rgb(237,197,84)\">{0}%</span>, stacking up to 30 times, and lasting for 8s. The duration of each stack is calculated separately. Upon acquiring Tea-riffic, if the equipper possesses stacks of Tea-riffic greater than or equal to 15, all squad members' DMG is increased by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 10s. Passive effects of the same name do not stack.</p>"
+
+
 class RiotSuppressorMarkVI(WEngine):
 	def __init__(self):
 		super().__init__("Riot Suppressor Mark VI", "S", "Attack", "atk", "critDMG_")
@@ -1105,6 +1126,7 @@ wengines: dict[str, WEngine] = {
 	"Deep Sea Visitor": DeepSeaVisitor(),
 	"Fusion Compiler": FusionCompiler(),
 	"Hellfire Gears": HellfireGears(),
+	"Ice-Jade Teapot": IceJadeTeapot(),
 	"Riot Suppressor Mark VI": RiotSuppressorMarkVI(),
 	"Steel Cushion": SteelCushion(),
 	"The Brimstone": TheBrimstone(),
