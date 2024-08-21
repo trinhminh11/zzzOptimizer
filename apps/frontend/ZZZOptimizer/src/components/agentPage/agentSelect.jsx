@@ -14,7 +14,7 @@ import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
 import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 import { useState, useEffect } from "react";
 
-export default function AgentSort({ selectedOptions, setSelectedOptions }) {
+export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
   const handleSelect = (category, option) => {
     setSelectedOptions((prevSelectedOptions) => ({
       ...prevSelectedOptions,
@@ -24,11 +24,11 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
 
   const isSelected = (category, option) => selectedOptions[category] === option;
   return (
-    <div className=" agent-sorting-container">
+    <div className=" agent-selecting-container">
       {/* Rank  */}
-      <div className="sorting-categories rank-sort">
+      <div className="selecting-categories rank-select">
         <div
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("rank", "all") ? "selected" : ""
           }`}
           onClick={() => handleSelect("rank", "all")}
@@ -37,7 +37,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </div>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("rank", "S") ? "selected" : ""
           }`}
           onClick={() => handleSelect("rank", "S")}
@@ -46,7 +46,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("rank", "A") ? "selected" : ""
           }`}
           onClick={() => handleSelect("rank", "A")}
@@ -57,9 +57,9 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
 
       {/* Element */}
 
-      <div className="sorting-categories attribute-sort">
+      <div className="selecting-categories attribute-select">
         <div
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("attribute", "all") ? "selected" : ""
           }`}
           onClick={() => handleSelect("attribute", "all")}
@@ -68,7 +68,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </div>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("attribute", "Electric") ? "selected" : ""
           }`}
           onClick={() => handleSelect("attribute", "Electric")}
@@ -77,7 +77,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("attribute", "Fire") ? "selected" : ""
           }`}
           onClick={() => handleSelect("attribute", "Fire")}
@@ -86,7 +86,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("attribute", "Physical") ? "selected" : ""
           }`}
           onClick={() => handleSelect("attribute", "Physical")}
@@ -95,7 +95,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("attribute", "Ice") ? "selected" : ""
           }`}
           onClick={() => handleSelect("attribute", "Ice")}
@@ -104,7 +104,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("attribute", "Ether") ? "selected" : ""
           }`}
           onClick={() => handleSelect("attribute", "Ether")}
@@ -114,9 +114,9 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
       </div>
 
       {/* Specialty */}
-      <div className="sorting-categories specialty-sort">
+      <div className="selecting-categories specialty-select">
         <div
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("specialty", "all") ? "selected" : ""
           }`}
           onClick={() => handleSelect("specialty", "all")}
@@ -125,7 +125,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </div>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("specialty", "Attack") ? "selected" : ""
           }`}
           onClick={() => handleSelect("specialty", "Attack")}
@@ -134,7 +134,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("specialty", "Anomaly") ? "selected" : ""
           }`}
           onClick={() => handleSelect("specialty", "Anomaly")}
@@ -143,7 +143,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("specialty", "Defense") ? "selected" : ""
           }`}
           onClick={() => handleSelect("specialty", "Defense")}
@@ -152,7 +152,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("specialty", "Stun") ? "selected" : ""
           }`}
           onClick={() => handleSelect("specialty", "Stun")}
@@ -161,7 +161,7 @@ export default function AgentSort({ selectedOptions, setSelectedOptions }) {
         </a>
 
         <a
-          className={`element-sort ${
+          className={`element-select ${
             isSelected("specialty", "Support") ? "selected" : ""
           }`}
           onClick={() => handleSelect("specialty", "Support")}
