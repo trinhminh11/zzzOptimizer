@@ -6,13 +6,13 @@
   background-color: #1c1c1f;
 }
 
-/* Styling the sorting bar */
+/* Styling the selecting bar */
 
 .row {
   background-color: #404258;
 }
 
-.agent-sorting-container {
+.agent-selecting-container {
   width: 75%;
   border-radius: 5px;
   margin: 30px;
@@ -29,7 +29,7 @@
   line-height: 1.5;
 }
 
-.element-sort {
+.element-select {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@
   padding: 10px;
 }
 
-.element-sort:hover {
+.element-select:hover {
   background-color: #7b7b7b;
 }
 
@@ -50,14 +50,14 @@
   height: 30px;
 }
 
-.agent-sorting-container button {
+.agent-selecting-container button {
   width: 110px;
   height: 40px;
   font-size: 13px;
   background-color: #6b728e;
 }
 
-.sorting-categories {
+.selecting-categories {
   display: flex;
   gap: 0px;
   background-color: #404258;
@@ -76,21 +76,21 @@
   text-decoration: none;
 }
 
-.rank-sort a,
-.rank-sort div,
-.attribute-sort a,
-.attribute-sort div,
-.specialty-sort a,
-.specialty-sort div {
+.rank-select a,
+.rank-select div,
+.attribute-select a,
+.attribute-select div,
+.specialty-select a,
+.specialty-select div {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: solid #1c1c1f;
   border-width: 1px;
 }
 
-.rank-sort a:last-child,
-.attribute-sort a:last-child,
-.specialty-sort a:last-child {
+.rank-select a:last-child,
+.attribute-select a:last-child,
+.specialty-select a:last-child {
   border-radius: 6px;
   border: none;
 }
@@ -355,7 +355,7 @@ th.faction {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .agent-sorting-container {
+  .agent-selecting-container {
     flex-direction: column;
     gap: 10px;
     width: 90%;
@@ -375,7 +375,7 @@ th.faction {
 }
 
 @media (max-width: 480px) {
-  .agent-sorting-container {
+  .agent-selecting-container {
     width: 100%;
     margin: 10px;
   }

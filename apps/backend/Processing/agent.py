@@ -580,6 +580,25 @@ class Piper(Agent):
 	def calculationStat(self):
 		pass
 
+
+class Qingyi(Agent):
+	def __init__(self):
+		super().__init__("Qingyi", "Qingyi", "S", "Electric", "Stun", "Criminal Investigation Special Response Team", "Strike")
+
+		self.baseStatLevel[0][1]['hp'], self.baseStatLevel[0][1]['atk'], self.baseStatLevel[0][1]['def'], self.baseStatLevel[0][1]['anomalyProficiency'], self.baseStatLevel[0][1]['anomalyMastery'], self.baseStatLevel[0][1]['impact'] = (663, 109, 49, 93, 94, 118)
+		self.baseStatLevel[0][10]['hp'], self.baseStatLevel[0][10]['atk'], self.baseStatLevel[0][10]['def'], self.baseStatLevel[0][10]['anomalyProficiency'], self.baseStatLevel[0][10]['anomalyMastery'], self.baseStatLevel[0][10]['impact'] = (1473, 166, 109, 93, 94, 118)
+		self.baseStatLevel[1][10]['hp'], self.baseStatLevel[1][10]['atk'], self.baseStatLevel[1][10]['def'], self.baseStatLevel[1][10]['anomalyProficiency'], self.baseStatLevel[1][10]['anomalyMastery'], self.baseStatLevel[1][10]['impact'] = (1928, 205, 143, 93, 94, 118)
+		self.baseStatLevel[1][20]['hp'], self.baseStatLevel[1][20]['atk'], self.baseStatLevel[1][20]['def'], self.baseStatLevel[1][20]['anomalyProficiency'], self.baseStatLevel[1][20]['anomalyMastery'], self.baseStatLevel[1][20]['impact'] = (2828, 270, 210, 93, 94, 118)
+		self.baseStatLevel[2][20]['hp'], self.baseStatLevel[2][20]['atk'], self.baseStatLevel[2][20]['def'], self.baseStatLevel[2][20]['anomalyProficiency'], self.baseStatLevel[2][20]['anomalyMastery'], self.baseStatLevel[2][20]['impact'] = (3284, 309, 244, 93, 94, 118)
+		self.baseStatLevel[2][30]['hp'], self.baseStatLevel[2][30]['atk'], self.baseStatLevel[2][30]['def'], self.baseStatLevel[2][30]['anomalyProficiency'], self.baseStatLevel[2][30]['anomalyMastery'], self.baseStatLevel[2][30]['impact'] = (4184, 373, 310, 93, 94, 118)
+		self.baseStatLevel[3][30]['hp'], self.baseStatLevel[3][30]['atk'], self.baseStatLevel[3][30]['def'], self.baseStatLevel[3][30]['anomalyProficiency'], self.baseStatLevel[3][30]['anomalyMastery'], self.baseStatLevel[3][30]['impact'] = (4639, 412, 343, 93, 94, 118)
+		self.baseStatLevel[3][40]['hp'], self.baseStatLevel[3][40]['atk'], self.baseStatLevel[3][40]['def'], self.baseStatLevel[3][40]['anomalyProficiency'], self.baseStatLevel[3][40]['anomalyMastery'], self.baseStatLevel[3][40]['impact'] = (5540, 476, 410, 93, 94, 118)
+		self.baseStatLevel[4][40]['hp'], self.baseStatLevel[4][40]['atk'], self.baseStatLevel[4][40]['def'], self.baseStatLevel[4][40]['anomalyProficiency'], self.baseStatLevel[4][40]['anomalyMastery'], self.baseStatLevel[4][40]['impact'] = (5995, 515, 444, 93, 94, 118)
+		self.baseStatLevel[4][50]['hp'], self.baseStatLevel[4][50]['atk'], self.baseStatLevel[4][50]['def'], self.baseStatLevel[4][50]['anomalyProficiency'], self.baseStatLevel[4][50]['anomalyMastery'], self.baseStatLevel[4][50]['impact'] = (6895, 579, 511, 93, 94, 118)
+		self.baseStatLevel[5][50]['hp'], self.baseStatLevel[5][50]['atk'], self.baseStatLevel[5][50]['def'], self.baseStatLevel[5][50]['anomalyProficiency'], self.baseStatLevel[5][50]['anomalyMastery'], self.baseStatLevel[5][50]['impact'] = (7350, 618, 545, 93, 94, 118)
+		self.baseStatLevel[5][60]['hp'], self.baseStatLevel[5][60]['atk'], self.baseStatLevel[5][60]['def'], self.baseStatLevel[5][60]['anomalyProficiency'], self.baseStatLevel[5][60]['anomalyMastery'], self.baseStatLevel[5][60]['impact'] = (8250, 683, 612, 93, 94, 118)
+
+
 class Soldier11(Agent):
 	def __init__(self):
 		super().__init__("Soldier11", "Soldier11", "S", "Fire", "Attack", "Obol Squad", "Slash")
@@ -674,6 +693,7 @@ agents: dict[str, Agent] = {
 	"Grace": Grace(),
 	"Koleda": Koleda(),
 	"Nekomata": Nekomata(),
+	"Qingyi": Qingyi(),
 	"Soldier11": Soldier11(),
 	"Lycaon": Lycaon(),
 	"Yuan": Yuan(),

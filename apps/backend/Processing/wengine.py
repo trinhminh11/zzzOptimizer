@@ -191,6 +191,27 @@ class HellfireGears(WEngine):
 
 		self.passiveDescription = "<p>When off-field, the equipper's Energy Regen increases by <span style=\"color: rgb(237,197,84)\">{0}</span> per second. When using an EX Special Attack, the equipper's Impact is increased by <span style=\"color: rgb(237,197,84)\">{1}</span> for 10s, stacking up to 2 times. The duration of each stack is calculated separately.</p>"
 
+class IceJadeTeapot(WEngine):
+	def __init__(self):
+		super().__init__("Ice-Jade Teapot", "S", "Stun", "atk", "impact_")
+
+		self.baseStatLevel['mainStat'][0][0], self.baseStatLevel['subStat'][0][0] = 48 , 7.2
+		self.baseStatLevel['mainStat'][0][10], self.baseStatLevel['subStat'][0][10] = 123 , 7.2
+		self.baseStatLevel['mainStat'][1][10], self.baseStatLevel['subStat'][1][10] = 166 , 9.4
+		self.baseStatLevel['mainStat'][1][20], self.baseStatLevel['subStat'][1][20] = 241 , 9.4
+		self.baseStatLevel['mainStat'][2][20], self.baseStatLevel['subStat'][2][20] = 284 , 11.5
+		self.baseStatLevel['mainStat'][2][30], self.baseStatLevel['subStat'][2][30] = 359 , 11.5
+		self.baseStatLevel['mainStat'][3][30], self.baseStatLevel['subStat'][3][30] = 402 , 13.7
+		self.baseStatLevel['mainStat'][3][40], self.baseStatLevel['subStat'][3][40] = 477 , 13.7
+		self.baseStatLevel['mainStat'][4][40], self.baseStatLevel['subStat'][4][40] = 520 , 15.8
+		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][4][50] = 595 , 15.8
+		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 638 , 18.0
+		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 713 , 18.0
+
+		self.passiveStats = [[0.7, 0.88, 1.05, 1.22, 1.4], [20, 23, 26, 29, 32]]
+		self.passiveDescription = "<p>When a Basic Attack hits an enemy, gain 1 stack of Tea-riffic. Each stack of Tea-riffic increases the user's Impact by <span style=\"color: rgb(237,197,84)\">{0}%</span>, stacking up to 30 times, and lasting for 8s. The duration of each stack is calculated separately. Upon acquiring Tea-riffic, if the equipper possesses stacks of Tea-riffic greater than or equal to 15, all squad members' DMG is increased by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 10s. Passive effects of the same name do not stack.</p>"
+
+
 class RiotSuppressorMarkVI(WEngine):
 	def __init__(self):
 		super().__init__("Riot Suppressor Mark VI", "S", "Attack", "atk", "critDMG_")
@@ -572,10 +593,9 @@ class RoaringRide(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 558 , 25.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 624 , 25.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[8, 9.2, 10.4, 11.6, 12.8], [40, 46, 52, 58, 64], [25, 28, 32, 36, 40]]
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
-
+		self.passiveDescription = "<p>When EX Special Attack hits an enemy, one of three possible effects is randomly triggered for 5 seconds. This effect can trigger once every 0.3s. The same types of effects cannot stack. Repeated triggers reset the duration allowing several effects to be active at once:<ul><li>increases the equipper's ATK by <span style=\"color: rgb(237,197,84)\">{0}%</span>.</li> <li> increases the equipper's Anomaly Proficiency by <span style=\"color: rgb(237,197,84)\">{1}</span>.</li> <li>increases the equipper's Anomaly Buildup Rate by <span style=\"color: rgb(237,197,84)\">{2}%</span>.</li></ul></p>"
 
 class SixShooter(WEngine):
 	def __init__(self):
@@ -816,9 +836,8 @@ class IdentityBase(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 32.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 32.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
-
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[20, 23, 26, 29, 32]]
+		self.passiveDescription = "<p>When attacked, the equipper's DEF increases by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 8s.</p>"
 
 
 class IdentityInflection(WEngine):
@@ -838,9 +857,9 @@ class IdentityInflection(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 32.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 32.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[6, 7, 8, 9, 10]]
+		self.passiveDescription = "<p>When attacked, reduces the attacker's DMG by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 12s.</p>"
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class LunarDecrescent(WEngine):
@@ -860,9 +879,8 @@ class LunarDecrescent(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
-
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[15, 17.5, 20, 22.5, 25]]
+		self.passiveDescription = "<p>Launching a Chain Attack or Ultimate increases the equipper's DMG by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 6s.</p>"
 
 
 class LunarNoviluna(WEngine):
@@ -882,9 +900,9 @@ class LunarNoviluna(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 16.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 16.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[3, 3.5, 4, 4.5, 5]]
+		self.passiveDescription = "<p>Launching an EX Special Attack generates <span style=\"color: rgb(237,197,84)\">{0}</span> Energy for the equipper. This effect can trigger once every 12s.</p>"
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class LunarPleniluna(WEngine):
@@ -904,9 +922,8 @@ class LunarPleniluna(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
-
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[12, 14, 16, 18, 20]]
+		self.passiveDescription = "<p>Basic Attack, Dash Attack, and Dodge Counter DMG increase by <span style=\"color: rgb(237,197,84)\">{0}%</span>.</p>"
 
 
 class MagneticStormAlpha(WEngine):
@@ -926,9 +943,10 @@ class MagneticStormAlpha(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[25, 28, 32, 36, 40]]
+		self.passiveDescription = "<p>Accumulating Anomaly Buildup increases the equipper's Anomaly Mastery by <span style=\"color: rgb(237,197,84)\">{0}</span> for 10s. This effect can trigger once every 20s.</p>"
+	
 
 
 class MagneticStormBravo(WEngine):
@@ -948,9 +966,8 @@ class MagneticStormBravo(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 60.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 60.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
-
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[25, 28, 32, 36, 40]]
+		self.passiveDescription = "<p>Accumulating Anomaly Buildup increases the equipper's Anomaly Proficiency by <span style=\"color: rgb(237,197,84)\">{0}</span> for 10s. This effect can only be triggered once every 20s.</p>"
 
 
 class MagneticStormCharlie(WEngine):
@@ -970,9 +987,9 @@ class MagneticStormCharlie(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 16.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 16.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[3.5, 4, 4.5, 5, 5.5]]
+		self.passiveDescription = "<p>Whenever a squad member inflicts an Attribute Anomaly on an enemy, the equipper generates <span style=\"color: rgb(237,197,84)\">{0}</span> Energy. This effect can trigger once every 12s.</p>"
 
 
 class ReverbMarkI(WEngine):
@@ -992,9 +1009,9 @@ class ReverbMarkI(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[8, 9, 10, 11, 12]]
+		self.passiveDescription = "<p>Launching an EX Special Attack increases all squad members' Impact by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 10s. This effect can trigger once every 20s. Passive effects of the same name do not stack.</p>"
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class ReverbMarkII(WEngine):
@@ -1014,9 +1031,9 @@ class ReverbMarkII(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 40.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 40.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[10, 12, 13, 15, 16]]
+		self.passiveDescription = "<p>Launching an EX Special Attack or Chain Attack increases all squad members' Anomaly Mastery and Anomaly Proficiency by <span style=\"color: rgb(237,197,84)\">{0}</span> for 10s. This effect can trigger once every 20s. Passive effects of the same name do not stack.</p>"
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class ReverbMarkIII(WEngine):
@@ -1036,9 +1053,9 @@ class ReverbMarkIII(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[8, 9, 10, 11, 12]]
+		self.passiveDescription = "<p>Launching a Chain Attack or Ultimate increases all squad members' ATK by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 10s. This effect can trigger once every 20s. Passive effects of the same name do not stack.</p>"
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class VortexArrow(WEngine):
@@ -1058,9 +1075,8 @@ class VortexArrow(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 12.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 12.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
-
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[8, 9, 10, 11, 12]]
+		self.passiveDescription = "<p>The equipper's attacks inflict <span style=\"color: rgb(237,197,84)\">{0}%</span> more Daze on their main target.</p>"
 
 
 class VortexHatchet(WEngine):
@@ -1080,9 +1096,9 @@ class VortexHatchet(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 40.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 40.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = [[9, 10, 11, 12, 13]]
+		self.passiveDescription = "<p>Upon entering combat or switching in, the equipper's Impact increases by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 10s. This effect can trigger once every 20s.</p>"
 
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 
 
 class VortexRevolver(WEngine):
@@ -1102,15 +1118,15 @@ class VortexRevolver(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 425 , 20.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 475 , 20.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
-
-		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
+		self.passiveStats = [[10, 11.5, 13, 14.5, 16]]
+		self.passiveDescription = "<p>EX Special Attacks inflict <span style=\"color: rgb(237,197,84)\">{0}%</span> more Daze.</p>"
 
 wengines: dict[str, WEngine] = {
 	# S rank
 	"Deep Sea Visitor": DeepSeaVisitor(),
 	"Fusion Compiler": FusionCompiler(),
 	"Hellfire Gears": HellfireGears(),
+	"Ice-Jade Teapot": IceJadeTeapot(),
 	"Riot Suppressor Mark VI": RiotSuppressorMarkVI(),
 	"Steel Cushion": SteelCushion(),
 	"The Brimstone": TheBrimstone(),

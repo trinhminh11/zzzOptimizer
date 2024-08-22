@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import AgentBody from "./agentBody";
-import AgentSort from "./agentSort";
+import AgentSelect from "./agentSelect";
 import { useState, useEffect } from "react";
 import "./agent.css";
 
@@ -15,7 +15,7 @@ function AgentPage() {
   return (
     <div className="agent-page-container">
       <NavBar />
-      <AgentSort
+      <AgentSelect
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
