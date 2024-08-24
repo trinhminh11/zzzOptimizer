@@ -279,7 +279,7 @@
 }
 
 .dropdown-button {
-  background-color: #4caf50;
+  background-color: #2980b9;
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -290,7 +290,7 @@
 }
 
 .dropdown-button:hover {
-  background-color: #3e8e41;
+  background-color: #1c6ea4;
 }
 
 .dropdown-content {
@@ -411,4 +411,15 @@
 
 .level-dropdown-content {
   display: block;
+}
+
+.confirm-lv-button {
+  width: 85%;
+  height: 50px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  margin-bottom: 0;
 }
