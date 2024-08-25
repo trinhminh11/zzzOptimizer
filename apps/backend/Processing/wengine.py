@@ -383,7 +383,7 @@ class WeepingCradle(WEngine):
 		self.passiveDescription = "<p>While off-field, Energy Regen increases by <span style=\"color: rgb(237,197,84)\">{0}</span> per second. Attacks from the equipper enhance the squad's DMG against a struck target by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 3 seconds. During this period, this effect is further increased by <span style=\"color: rgb(237,197,84)\">{2}%</span> every 0.5s, up to a maximum additional increase of <span style=\"color: rgb(237,197,84)\">{3}</span>. Repeated triggers only refresh its duration without refreshing the DMG increase effect. Passive effects of the same name do not stack.</p>"
 
 
-class BashfulDemon(WEngine):
+class BashfulDemon(WEngine):	
 	def __init__(self):
 		super().__init__("Bashful Demon", "A", "Support", "atk", "atk_")
 

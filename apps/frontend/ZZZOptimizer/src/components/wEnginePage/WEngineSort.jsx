@@ -39,7 +39,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("rank", "all")}
         >
-          <i class="bi bi-asterisk select-all"></i>
+          <i className="bi bi-asterisk select-all"></i>
         </div>
 
         <a
@@ -78,7 +78,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "all")}
         >
-          <i class="bi bi-asterisk select-all"></i>
+          <i className="bi bi-asterisk select-all"></i>
         </div>
 
         <a
