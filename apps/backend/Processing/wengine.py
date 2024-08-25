@@ -25,7 +25,7 @@ class WEngine:
 	]
 
 	passiveDescription: str
-	passiveStats: list
+	passiveStats: dict[str, list]
 
 	def __init__(self, name: str, rank: str, specialty: str, mainStat: str, subStat: str):
 		self.modificationLevel = 0
@@ -95,7 +95,7 @@ class WEngine:
 		self.subStat = subStat
 
 		self.passiveDescription = ""
-		self.passiveStats = []
+		self.passiveStats = {}
 
 
 	def fromJson(self, data: dict):
@@ -122,7 +122,7 @@ class WEngine:
 		return {"mainStat": [self.mainStat, mainStat], "subStat": [self.subStat, subStat]}
 
 	def getPassive(self, upgrade: Literal[1,2,3,4,5] = 1):
-		passive = self.passiveDescription.format(*[passiveStat[upgrade-1] for passiveStat in self.passiveStats])
+		passive = self.passiveDescription.format(*[passiveStat['value'][upgrade-1] for passiveStat in self.passiveStats.values()])
 
 		return {"passive": passive}
 		
@@ -145,7 +145,19 @@ class DeepSeaVisitor(WEngine):
 		self.baseStatLevel['mainStat'][4][50], self.baseStatLevel['subStat'][5][50] = 638, 24.0
 		self.baseStatLevel['mainStat'][4][60], self.baseStatLevel['subStat'][5][60] = 713, 24.0
 
-		self.passiveStats = [[25, 31.5, 38, 44.5, 50], [10, 12.5, 15, 17.5, 20], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = {
+			"iceDMG_": {
+				"value": [25, 31.5, 38, 44.5, 50]
+			},
+			"combat-critRate_": {
+				"value": [10, 12.5, 15, 17.5, 20],
+				"multiple": 1
+			}, 
+			"combat-critRate_": {
+				"value": [10, 12.5, 15, 17.5, 20],
+				"multiple": 1
+			}, 
+		}
 
 		self.passiveDescription = "<p>Increases <span style=\"color: rgb(140,216,218)\">Ice DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%</span>. Upon hitting an enemy with a Basic Attack, the equipper's CRIT Rate increases by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 8s. When dealing <span style=\"color: rgb(140,216,218)\">Ice DMG</span> with a Dash Attack, the equipper's CRIT Rate increases by an additional <span style=\"color: rgb(237,197,84)\">{2}%</span> for 15s. The duration of each effect is calculated separately.</p>"
 		
@@ -166,7 +178,15 @@ class FusionCompiler(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 24.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 24.0
 
-		self.passiveStats = [[12, 15, 18, 21, 24], [25, 31, 37, 43, 50]]
+		self.passiveStats = {
+			"atk_": {
+				"value": [12, 15, 18, 21, 24]
+			},
+			"combat-anomalyProficiency": {
+				"value": [25, 31, 37, 43, 50],
+				"multiple": 3
+			},
+		}
 
 		self.passiveDescription = "<p>Increases ATK by <span style=\"color: rgb(237,197,84)\">{0}%</span>. When using a Special Attack or EX Special Attack, the equipper's Anomaly Proficiency is increased by <span style=\"color: rgb(237,197,84)\">{1}</span> for 8, stacking up to 3 times. The duration of each stack is calculated separately.</p>"
 
@@ -186,7 +206,16 @@ class HellfireGears(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 18.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 18.0
 
-		self.passiveStats = [[0.6, 0.75, 0.9, 1.5, 1.2], [10, 12.5, 15, 17.5, 20]]
+		self.passiveStats = {
+			"combat-energyRegen": {
+				"value": [0.6, 0.75, 0.9, 1.5, 1.2],
+				"multiple": 1
+			},
+			"combat-impact_": {
+				"value": [10, 12.5, 15, 17.5, 20],
+				"multiple": 2
+			},
+		}
 
 
 		self.passiveDescription = "<p>When off-field, the equipper's Energy Regen increases by <span style=\"color: rgb(237,197,84)\">{0}</span> per second. When using an EX Special Attack, the equipper's Impact is increased by <span style=\"color: rgb(237,197,84)\">{1}</span> for 10s, stacking up to 2 times. The duration of each stack is calculated separately.</p>"
@@ -208,7 +237,17 @@ class IceJadeTeapot(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 638 , 18.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 713 , 18.0
 
-		self.passiveStats = [[0.7, 0.88, 1.05, 1.22, 1.4], [20, 23, 26, 29, 32]]
+		self.passiveStats = {
+			"combat-impact_": {
+				"value": [0.7, 0.88, 1.05, 1.22, 1.4],
+				"multiple": 30
+			},
+			"combat-DMG_": {
+				"value": [20, 23, 26, 29, 32],
+				"multiple": 1
+			}
+		}
+
 		self.passiveDescription = "<p>When a Basic Attack hits an enemy, gain 1 stack of Tea-riffic. Each stack of Tea-riffic increases the user's Impact by <span style=\"color: rgb(237,197,84)\">{0}%</span>, stacking up to 30 times, and lasting for 8s. The duration of each stack is calculated separately. Upon acquiring Tea-riffic, if the equipper possesses stacks of Tea-riffic greater than or equal to 15, all squad members' DMG is increased by <span style=\"color: rgb(237,197,84)\">{1}%</span> for 10s. Passive effects of the same name do not stack.</p>"
 
 
@@ -228,7 +267,15 @@ class RiotSuppressorMarkVI(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 638 , 48.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 713 , 48.0
 
-		self.passiveStats = [[15, 18.8, 22.6, 26.4, 30], [35, 43.5, 52, 60.5, 70]]
+		self.passiveStats = {
+			"critRate_": {
+				"value": [15, 18.8, 22.6, 26.4, 30]
+			}, 
+			"combat-DMG_": {
+				"value": [35, 43.5, 52, 60.5, 70],
+				"multiple": 1
+			}
+		}
 
 
 		self.passiveDescription = "<p>Increases CRIT Rate by <span style=\"color: rgb(237,197,84)\">{0}</span>. Launching an EX Special Attack grants the equipper 8 Charge stacks, up to a maximum of 8 stacks. Whenever the equipper's Basic Attack deals Ether DMG, consumes a Charge stack and increases the skill's DMG by <span style=\"color: rgb(237,197,84)\">{1}</span>.</p>"
@@ -249,7 +296,15 @@ class SteelCushion(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 24.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 24.0
 
-		self.passiveStats = [[20, 25, 30, 35, 40], [25, 31.5, 38, 44, 50]]
+		self.passiveStats = {
+			"physicalDMG_": {
+				"value": [20, 25, 30, 35, 40],
+			},
+			"combat-DMG_": {
+				"value": [25, 31.5, 38, 44, 50],
+				"mutiple": 1
+			}
+		}
 
 		self.passiveDescription = "<p>Increases <span style=\"color: rgb(192,168,47)\">Physical DMG</span> by <span style=\"color: rgb(237,197,84)\">{0}%s</span>. The equipper's DMG increases by <span style=\"color: rgb(237,197,84)\">{1}</span> when attacking the enemy from behind.</p>"
 
@@ -270,7 +325,12 @@ class TheBrimstone(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 30.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 30.0
 
-		self.passiveStats = [[3.5, 4.4, 5.2, 6, 7]]
+		self.passiveStats = {
+			"combat-atk_": {
+				"value": [3.5, 4.4, 5.2, 6, 7],
+				"multiple": 8,
+			}
+		}
 
 		self.passiveDescription = "<p>Upon hitting an enemy with a Basic Attack, Dash Attack, or Dodge Counter, the equipper's ATK increases by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 8s, stacking up to 8 times. This effect can trigger once every 0.5s. The duration of each stack is calculated separately.</p>"
 
@@ -291,7 +351,12 @@ class TheRestrained(WEngine):
 		self.baseStatLevel['mainStat'][5][50], self.baseStatLevel['subStat'][5][50] = 611 , 18.0
 		self.baseStatLevel['mainStat'][5][60], self.baseStatLevel['subStat'][5][60] = 684 , 18.0
 
-		self.passiveStats = [[6, 7.5, 9, 10.5, 12]]
+		self.passiveStats = {
+			"combat-daze_-DMG_": {
+				"value": [6, 7.5, 9, 10.5, 12],
+				"multiple": 5
+			}
+		}
 
 		self.passiveDescription = "<p>When an attack hits an enemy, DMG and Daze from Basic Attacks increase by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 8s, stacking up to 5 times. This effect can trigger at most once during each skill. The duration of each stack is calculated separately.</p>"
 

@@ -23,6 +23,8 @@ class Stat:
 		'fireDMG_',
 		'iceDMG_',
 		'etherDMG_',
+		'DMG',
+		'DMG_'
 	]
 
 	def __init__(self, key: str = "", value: float = 0.0):

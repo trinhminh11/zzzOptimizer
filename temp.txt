@@ -1,7 +1,0 @@
-When EX Special Attack hits an enemy, one of three possible effects is randomly triggered for 5 seconds. This effect can trigger once every 0.3s. The same types of effects cannot stack. Repeated triggers reset the duration allowing several effects to be active at once:
-
-increases the equipper's ATK by 8/9.2/10.4/11.6/12.8%,
-
-increases the equipper's Anomaly Proficiency by 40/46/52/58/64,
-
-increases the equipper's Anomaly Buildup Rate by 25/28/32/36/40%.
