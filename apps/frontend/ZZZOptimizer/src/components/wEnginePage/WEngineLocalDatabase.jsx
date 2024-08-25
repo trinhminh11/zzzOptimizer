@@ -2,6 +2,7 @@ import React from "react";
 import "./wEngine.css";
 import { useEffect, useState } from "react";
 import ModalEditWEngine from "./ModalEditWEngine";
+import { getWEngineStats as fetchWEngineStats } from "../../services/WEngineService";
 
 function WEngineLocalDatabase({
   listSelectedWEngines,
@@ -49,6 +50,7 @@ function WEngineLocalDatabase({
   // Edit agent function
   const handleEditWEngine = (wEngine) => {
     setDataWEnigineEdit(wEngine);
+    getWEngineStats(wEngine);
     setShowModalEdit(true);
   };
 
@@ -89,6 +91,17 @@ function WEngineLocalDatabase({
     );
   });
 
+  // Set up for getting w-engines stat for ModalEditWEngine
+
+  const [wEngineStat, setWEngineStat] = useState([]);
+
+  const getWEngineStats = async (wEngine) => {
+    let stat = await fetchWEngineStats(wEngine.name, 0, 0);
+    if (stat) {
+      setWEngineStat(stat);
+    }
+  };
+
   return (
     <div className="wEngine-grid">
       {filteredWEngines.map((item) => {
@@ -124,6 +137,9 @@ function WEngineLocalDatabase({
         dataWEngineEdit={dataWEngineEdit}
         handleClose={handleClose}
         removeWEngine={removeWEngine}
+        subStatMap={subStatMap}
+        wEngineStat={wEngineStat}
+        setWEngineStat={setWEngineStat}
       />
     </div>
   );

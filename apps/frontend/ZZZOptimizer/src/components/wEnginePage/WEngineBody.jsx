@@ -4,6 +4,7 @@ import WEngineDatabase from "./WEngineDatabase";
 import "./wEngine.css";
 import { useState, useEffect } from "react";
 import { WEngineService } from "../../services/WEngineService";
+import { getWEngineStats as fetchWEngineStats } from "../../services/WEngineService";
 
 function WEngineBody({ selectedOptions, setSelectedOptions }) {
   // set up list for storing wEngine from api
