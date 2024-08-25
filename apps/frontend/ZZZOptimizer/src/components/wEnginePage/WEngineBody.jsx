@@ -31,7 +31,7 @@ function WEngineBody({ selectedOptions, setSelectedOptions }) {
         res[i].modification = 0;
         res[i].level = 0;
       }
-      
+
       setListWEngines(res);
     }
   };

@@ -33,8 +33,7 @@ export default function ModalEditEngine(props) {
   let passiveDescription = dataWEngineEdit.passive;
 
   // Set up var to store selected upgrade
-  const [selectedUpgrade, setSelectedUpgrade] =
-    useState("Select Upgrade");
+  const [selectedUpgrade, setSelectedUpgrade] = useState("Select Upgrade");
 
   // Set up var to store selected level
   const [selectedLevel, setSelectedLevel] = useState(0);
