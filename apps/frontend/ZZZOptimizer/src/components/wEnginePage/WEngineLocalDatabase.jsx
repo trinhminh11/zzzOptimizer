@@ -50,7 +50,7 @@ function WEngineLocalDatabase({
   // Edit agent function
   const handleEditWEngine = (wEngine) => {
     setDataWEnigineEdit(wEngine);
-    getWEngineStats(wEngine);
+    setSelectedLevel(wEngine.level);
     setShowModalEdit(true);
   };
 
@@ -91,16 +91,9 @@ function WEngineLocalDatabase({
     );
   });
 
-  // Set up for getting w-engines stat for ModalEditWEngine
+  // Set up selected Level for ModalEditWEngine
 
-  const [wEngineStat, setWEngineStat] = useState([]);
-
-  const getWEngineStats = async (wEngine) => {
-    let stat = await fetchWEngineStats(wEngine.name, 0, 0);
-    if (stat) {
-      setWEngineStat(stat);
-    }
-  };
+  const [selectedLevel, setSelectedLevel] = useState(0);
 
   return (
     <div className="wEngine-grid">
@@ -138,8 +131,8 @@ function WEngineLocalDatabase({
         handleClose={handleClose}
         removeWEngine={removeWEngine}
         subStatMap={subStatMap}
-        wEngineStat={wEngineStat}
-        setWEngineStat={setWEngineStat}
+        selectedLevel={selectedLevel}
+        setSelectedLevel={setSelectedLevel}
       />
     </div>
   );

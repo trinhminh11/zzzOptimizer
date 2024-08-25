@@ -13,10 +13,10 @@ export default function ModalEditEngine(props) {
     dataWEngineEdit,
     removeWEngine,
     subStatMap,
-    wEngineStat,
-    setWEngineStat,
+    selectedLevel,
+    setSelectedLevel,
   } = props;
-  // const [wEngineStat, setWEngineStat] = useState([]);
+  const [wEngineStat, setWEngineStat] = useState([]);
 
   const getWEngineStats = async () => {
     let stat = await fetchWEngineStats(
@@ -26,6 +26,8 @@ export default function ModalEditEngine(props) {
     );
     if (stat) {
       setWEngineStat(stat);
+      dataWEngineEdit.mainStat[1] = stat.mainStat[1];
+      dataWEngineEdit.subStat[1] = stat.subStat[1];
     }
   };
 
@@ -35,8 +37,8 @@ export default function ModalEditEngine(props) {
   // Set up var to store selected upgrade
   const [selectedUpgrade, setSelectedUpgrade] = useState("Select Upgrade");
 
-  // Set up var to store selected level
-  const [selectedLevel, setSelectedLevel] = useState(0);
+  // // Set up var to store selected level
+  // const [selectedLevel, setSelectedLevel] = useState(defaultlevel);
 
   // Set up open state for upgrade dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -68,6 +70,8 @@ export default function ModalEditEngine(props) {
 
   const handleConfirmButtonClick = () => {
     getWEngineStats();
+    dataWEngineEdit.level = selectedLevel;
+    setSelectedLevel(dataWEngineEdit.level);
   };
 
   return (
@@ -141,7 +145,6 @@ export default function ModalEditEngine(props) {
                     name="level"
                     min="1"
                     max="60"
-                    placeholder={selectedLevel}
                     value={selectedLevel}
                     onChange={(e) => setSelectedLevel(e.target.value)}
                   ></input>
@@ -191,12 +194,26 @@ export default function ModalEditEngine(props) {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{subStatMap.get(wEngineStat.mainStat[0])}</td>
-                    <td>{wEngineStat.mainStat[1]}</td>
+                    <td>
+                      {dataWEngineEdit.mainStat
+                        ? subStatMap.get(dataWEngineEdit.mainStat[0])
+                        : 0}
+                    </td>
+                    <td>
+                      {dataWEngineEdit.mainStat
+                        ? dataWEngineEdit.mainStat[1]
+                        : 0}
+                    </td>
                   </tr>
                   <tr>
-                    <td>{subStatMap.get(wEngineStat.subStat[0])}</td>
-                    <td>{wEngineStat.subStat[1]}</td>
+                    <td>
+                      {dataWEngineEdit.subStat
+                        ? subStatMap.get(dataWEngineEdit.subStat[0])
+                        : 0}
+                    </td>
+                    <td>
+                      {dataWEngineEdit.subStat ? dataWEngineEdit.subStat[1] : 0}
+                    </td>
                   </tr>
                 </tbody>
               </table>
