@@ -32,21 +32,21 @@ export default function ModalEditEngine(props) {
   // W-Engine Description
   let passiveDescription = dataWEngineEdit.passive;
 
-  // Set up var to store selected refinement
-  const [selectedRefinement, setSelectedRefinement] =
-    useState("Select Refinement");
+  // Set up var to store selected upgrade
+  const [selectedUpgrade, setSelectedUpgrade] =
+    useState("Select Upgrade");
 
   // Set up var to store selected level
   const [selectedLevel, setSelectedLevel] = useState(0);
 
-  // Set up open state for refinement dropdown
+  // Set up open state for upgrade dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Set up open state for level dropdown
   const [isLevelDropdownOpen, setIsLevelDropdownOpen] = useState(false);
 
-  // Handle the open function for refinement select button
-  const handleRefinementButtonClick = () => {
+  // Handle the open function for upgrade select button
+  const handleUpgradeButtonClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
@@ -55,9 +55,9 @@ export default function ModalEditEngine(props) {
     setIsLevelDropdownOpen(!isLevelDropdownOpen);
   };
 
-  // Handle when a refinement is chose
+  // Handle when a upgrade is chose
   const handleOptionClick = (option) => {
-    setSelectedRefinement(option);
+    setSelectedUpgrade(option);
     setIsDropdownOpen(false);
   };
 
@@ -99,33 +99,33 @@ export default function ModalEditEngine(props) {
             </div>
 
             <div className="level-display">
-              {/* Refinement */}
+              {/* Upgrade */}
               <div className="dropdown">
                 <button
                   className="dropdown-button"
-                  onClick={handleRefinementButtonClick}
+                  onClick={handleUpgradeButtonClick}
                 >
-                  {selectedRefinement}
+                  {selectedUpgrade}
                 </button>
                 {isDropdownOpen && (
                   <div className="dropdown-content">
-                    <div onClick={() => handleOptionClick("Refinement 0")}>
-                      Refinement 0
+                    <div onClick={() => handleOptionClick("Upgrade 0")}>
+                      Upgrade 0
                     </div>
-                    <div onClick={() => handleOptionClick("Refinement 1")}>
-                      Refinement 1
+                    <div onClick={() => handleOptionClick("Upgrade 1")}>
+                      Upgrade 1
                     </div>
-                    <div onClick={() => handleOptionClick("Refinement 2")}>
-                      Refinement 2
+                    <div onClick={() => handleOptionClick("Upgrade 2")}>
+                      Upgrade 2
                     </div>
-                    <div onClick={() => handleOptionClick("Refinement 3")}>
-                      Refinement 3
+                    <div onClick={() => handleOptionClick("Upgrade 3")}>
+                      Upgrade 3
                     </div>
-                    <div onClick={() => handleOptionClick("Refinement 4")}>
-                      Refinement 4
+                    <div onClick={() => handleOptionClick("Upgrade 4")}>
+                      Upgrade 4
                     </div>
-                    <div onClick={() => handleOptionClick("Refinement 5")}>
-                      Refinement 5
+                    <div onClick={() => handleOptionClick("Upgrade 5")}>
+                      Upgrade 5
                     </div>
                   </div>
                 )}

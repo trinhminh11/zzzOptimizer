@@ -25,6 +25,13 @@ function WEngineBody({ selectedOptions, setSelectedOptions }) {
   const getWEngines = async () => {
     let res = await WEngineService();
     if (res) {
+      // Add new mindScape attribute
+      for (let i = 0; i < res.length; i++) {
+        res[i].upgrade = 1;
+        res[i].modification = 0;
+        res[i].level = 0;
+      }
+      
       setListWEngines(res);
     }
   };
