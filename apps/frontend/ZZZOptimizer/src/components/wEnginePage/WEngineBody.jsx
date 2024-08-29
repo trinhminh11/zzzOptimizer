@@ -27,7 +27,7 @@ function WEngineBody({ selectedOptions, setSelectedOptions }) {
     if (res) {
       // Add new mindScape attribute
       for (let i = 0; i < res.length; i++) {
-        res[i].upgrade = 1;
+        res[i].upgrade = 0;
         res[i].modification = 0;
         res[i].level = 0;
       }

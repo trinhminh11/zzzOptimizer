@@ -51,6 +51,7 @@ function WEngineLocalDatabase({
   const handleEditWEngine = (wEngine) => {
     setDataWEnigineEdit(wEngine);
     setSelectedLevel(wEngine.level);
+    setSelectedUpgrade(wEngine.upgrade);
     setShowModalEdit(true);
   };
 
@@ -91,9 +92,10 @@ function WEngineLocalDatabase({
     );
   });
 
-  // Set up selected Level for ModalEditWEngine
+  // Set up data for ModalEditWEngine
 
   const [selectedLevel, setSelectedLevel] = useState(0);
+  const [selectedUpgrade, setSelectedUpgrade] = useState("Select Upgrade");
 
   return (
     <div className="wEngine-grid">
@@ -133,6 +135,8 @@ function WEngineLocalDatabase({
         subStatMap={subStatMap}
         selectedLevel={selectedLevel}
         setSelectedLevel={setSelectedLevel}
+        selectedUpgrade={selectedUpgrade}
+        setSelectedUpgrade={setSelectedUpgrade}
       />
     </div>
   );

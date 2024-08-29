@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { getWEngineStats as fetchWEngineStats } from "../../services/WEngineService";
+import { getWEngineDescription as fetchWEngineDescription } from "../../services/WEngineService";
 
 import parse from "html-react-parser";
 import "./wEngine.css";
@@ -15,8 +16,11 @@ export default function ModalEditEngine(props) {
     subStatMap,
     selectedLevel,
     setSelectedLevel,
+    selectedUpgrade,
+    setSelectedUpgrade,
   } = props;
   const [wEngineStat, setWEngineStat] = useState([]);
+  const [wEngineDescription, setWEngineDescription] = useState([]);
 
   const getWEngineStats = async () => {
     let stat = await fetchWEngineStats(
@@ -31,14 +35,19 @@ export default function ModalEditEngine(props) {
     }
   };
 
+  const getWEngineDescription = async () => {
+    let description = await fetchWEngineDescription(
+      dataWEngineEdit.name,
+      selectedUpgrade
+    );
+    if (description) {
+      setWEngineDescription(description.passive);
+      dataWEngineEdit.passive = description.passive;
+    }
+  };
   // W-Engine Description
+  //let passiveDescription = dataWEngineEdit.passive;
   let passiveDescription = dataWEngineEdit.passive;
-
-  // Set up var to store selected upgrade
-  const [selectedUpgrade, setSelectedUpgrade] = useState("Select Upgrade");
-
-  // // Set up var to store selected level
-  // const [selectedLevel, setSelectedLevel] = useState(defaultlevel);
 
   // Set up open state for upgrade dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -70,7 +79,9 @@ export default function ModalEditEngine(props) {
 
   const handleConfirmButtonClick = () => {
     getWEngineStats();
+    getWEngineDescription();
     dataWEngineEdit.level = selectedLevel;
+    dataWEngineEdit.upgrade = selectedUpgrade;
     setSelectedLevel(dataWEngineEdit.level);
   };
 
@@ -108,28 +119,16 @@ export default function ModalEditEngine(props) {
                   className="dropdown-button"
                   onClick={handleUpgradeButtonClick}
                 >
-                  {selectedUpgrade}
+                  Upgrade {selectedUpgrade}
                 </button>
                 {isDropdownOpen && (
                   <div className="dropdown-content">
-                    <div onClick={() => handleOptionClick("Upgrade 0")}>
-                      Upgrade 0
-                    </div>
-                    <div onClick={() => handleOptionClick("Upgrade 1")}>
-                      Upgrade 1
-                    </div>
-                    <div onClick={() => handleOptionClick("Upgrade 2")}>
-                      Upgrade 2
-                    </div>
-                    <div onClick={() => handleOptionClick("Upgrade 3")}>
-                      Upgrade 3
-                    </div>
-                    <div onClick={() => handleOptionClick("Upgrade 4")}>
-                      Upgrade 4
-                    </div>
-                    <div onClick={() => handleOptionClick("Upgrade 5")}>
-                      Upgrade 5
-                    </div>
+                    <div onClick={() => handleOptionClick("0")}>Upgrade 0</div>
+                    <div onClick={() => handleOptionClick("1")}>Upgrade 1</div>
+                    <div onClick={() => handleOptionClick("2")}>Upgrade 2</div>
+                    <div onClick={() => handleOptionClick("3")}>Upgrade 3</div>
+                    <div onClick={() => handleOptionClick("4")}>Upgrade 4</div>
+                    <div onClick={() => handleOptionClick("5")}>Upgrade 5</div>
                   </div>
                 )}
               </div>
