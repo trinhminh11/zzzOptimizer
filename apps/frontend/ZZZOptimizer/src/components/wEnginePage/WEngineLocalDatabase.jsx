@@ -96,6 +96,7 @@ function WEngineLocalDatabase({
 
   const [selectedLevel, setSelectedLevel] = useState(0);
   const [selectedUpgrade, setSelectedUpgrade] = useState("Select Upgrade");
+  const [selectedModification, setSelectedModification] = useState(0);
 
   return (
     <div className="wEngine-grid">
@@ -137,6 +138,8 @@ function WEngineLocalDatabase({
         setSelectedLevel={setSelectedLevel}
         selectedUpgrade={selectedUpgrade}
         setSelectedUpgrade={setSelectedUpgrade}
+        selectedModification={selectedModification}
+        setSelectedModification={setSelectedModification}
       />
     </div>
   );

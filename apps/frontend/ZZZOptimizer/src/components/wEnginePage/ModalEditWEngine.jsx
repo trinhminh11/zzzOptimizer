@@ -18,6 +18,8 @@ export default function ModalEditEngine(props) {
     setSelectedLevel,
     selectedUpgrade,
     setSelectedUpgrade,
+    selectedModification,
+    setSelectedModification,
   } = props;
   const [wEngineStat, setWEngineStat] = useState([]);
   const [wEngineDescription, setWEngineDescription] = useState([]);
@@ -25,7 +27,7 @@ export default function ModalEditEngine(props) {
   const getWEngineStats = async () => {
     let stat = await fetchWEngineStats(
       dataWEngineEdit.name,
-      Math.floor(selectedLevel / 10),
+      selectedModification,
       selectedLevel
     );
     if (stat) {
@@ -55,6 +57,10 @@ export default function ModalEditEngine(props) {
   // Set up open state for level dropdown
   const [isLevelDropdownOpen, setIsLevelDropdownOpen] = useState(false);
 
+  // Set up open state for modification dropdown
+  const [isModificationDropdownOpen, setIsModificationDropdownOpen] =
+    useState(false);
+
   // Handle the open function for upgrade select button
   const handleUpgradeButtonClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -63,6 +69,12 @@ export default function ModalEditEngine(props) {
   // Set up the open function for level select button
   const handleLevelButtonClick = () => {
     setIsLevelDropdownOpen(!isLevelDropdownOpen);
+  };
+
+  const handleModificationButtonClick = () => {
+    if (selectedLevel % 10 === 0) {
+      setIsModificationDropdownOpen(!isModificationDropdownOpen);
+    }
   };
 
   // Handle when a upgrade is chose
@@ -75,6 +87,37 @@ export default function ModalEditEngine(props) {
   const handleLevelOptionClick = (option) => {
     setSelectedLevel(option);
     setIsLevelDropdownOpen(false);
+
+    // Automatically set modification if the level is not a multiple of 10
+    if (option % 10 !== 0) {
+      setSelectedModification(Math.floor(option / 10));
+      setIsModificationDropdownOpen(false); // Close modification dropdown if it's not needed
+    } else {
+      // If the level is a multiple of 10, allow the user to choose between two options
+      setSelectedModification(Math.floor(option / 10));
+      setIsModificationDropdownOpen(true); // Open modification dropdown for selection
+    }
+  };
+
+  // Handle when a modification is chose
+  const handleModificationOptionClick = (option) => {
+    setSelectedModification(option);
+    setIsModificationDropdownOpen(false);
+  };
+
+  // Handle when press enter on level input
+  const handleLevelInputKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const level = parseInt(e.target.value, 10);
+
+      // Update the modification based on the level
+      if (level % 10 !== 0) {
+        setSelectedModification(Math.floor(level / 10));
+      } else {
+        setSelectedModification(Math.floor(level / 10)); // Default choice when level is a multiple of 10
+        setIsModificationDropdownOpen(true); // Optionally open the modification dropdown for selection
+      }
+    }
   };
 
   const handleConfirmButtonClick = () => {
@@ -82,7 +125,9 @@ export default function ModalEditEngine(props) {
     getWEngineDescription();
     dataWEngineEdit.level = selectedLevel;
     dataWEngineEdit.upgrade = selectedUpgrade;
+    dataWEngineEdit.modification = selectedModification;
     setSelectedLevel(dataWEngineEdit.level);
+    setSelectedModification(dataWEngineEdit.modification);
   };
 
   return (
@@ -146,6 +191,7 @@ export default function ModalEditEngine(props) {
                     max="60"
                     value={selectedLevel}
                     onChange={(e) => setSelectedLevel(e.target.value)}
+                    onKeyDown={handleLevelInputKeyDown}
                   ></input>
                 </div>
 
@@ -167,6 +213,38 @@ export default function ModalEditEngine(props) {
                     </div>
                   )}
                 </div>
+
+                {/* Choose Modification */}
+                <div className="level-dropdown">
+                  <button
+                    className="level-dropdown-button"
+                    onClick={handleModificationButtonClick}
+                  >
+                    Modification {selectedModification}
+                  </button>
+                  {isModificationDropdownOpen && (
+                    <div className="level-dropdown-content">
+                      <div
+                        onClick={() =>
+                          handleModificationOptionClick(
+                            Math.floor(selectedLevel / 10)
+                          )
+                        }
+                      >
+                        Upgrade {Math.floor(selectedLevel / 10)}
+                      </div>
+                      <div
+                        onClick={() =>
+                          handleModificationOptionClick(
+                            Math.floor(selectedLevel / 10) + 1
+                          )
+                        }
+                      >
+                        Upgrade {Math.floor(selectedLevel / 10) + 1}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Confirm Button */}
@@ -174,7 +252,7 @@ export default function ModalEditEngine(props) {
                 className="confirm-lv-button"
                 onClick={handleConfirmButtonClick}
               >
-                Comfirm
+                Confirm
               </button>
             </div>
           </div>
