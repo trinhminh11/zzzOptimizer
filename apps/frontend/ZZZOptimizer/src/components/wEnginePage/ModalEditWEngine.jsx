@@ -144,8 +144,7 @@ export default function ModalEditEngine(props) {
     dataWEngineEdit.level = selectedLevel;
     dataWEngineEdit.upgrade = selectedUpgrade;
     dataWEngineEdit.modification = selectedModification;
-    setSelectedLevel(dataWEngineEdit.level);
-    setSelectedModification(dataWEngineEdit.modification);
+
     console.log(dataWEngineEdit);
   };
 

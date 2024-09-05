@@ -54,6 +54,7 @@ function WEngineLocalDatabase({
     setSelectedUpgrade(wEngine.upgrade);
     setSelectedModification(wEngine.modification);
     setShowModalEdit(true);
+    console.log(dataWEngineEdit);
   };
 
   useEffect(() => {
