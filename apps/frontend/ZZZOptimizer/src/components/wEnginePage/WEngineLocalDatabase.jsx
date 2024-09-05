@@ -47,11 +47,12 @@ function WEngineLocalDatabase({
     setShowModalEdit(false);
   };
 
-  // Edit agent function
+  // Edit wEngine function
   const handleEditWEngine = (wEngine) => {
     setDataWEnigineEdit(wEngine);
     setSelectedLevel(wEngine.level);
     setSelectedUpgrade(wEngine.upgrade);
+    setSelectedModification(wEngine.modification);
     setShowModalEdit(true);
   };
 

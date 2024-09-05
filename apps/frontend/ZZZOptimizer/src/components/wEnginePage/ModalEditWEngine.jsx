@@ -89,13 +89,18 @@ export default function ModalEditEngine(props) {
     setIsLevelDropdownOpen(false);
 
     // Automatically set modification if the level is not a multiple of 10
+
     if (option % 10 !== 0) {
       setSelectedModification(Math.floor(option / 10));
       setIsModificationDropdownOpen(false); // Close modification dropdown if it's not needed
     } else {
       // If the level is a multiple of 10, allow the user to choose between two options
-      setSelectedModification(Math.floor(option / 10));
-      setIsModificationDropdownOpen(true); // Open modification dropdown for selection
+      if (option == 60) {
+        setSelectedModification(5);
+      } else {
+        setSelectedModification(Math.floor(option / 10));
+        setIsModificationDropdownOpen(true); // Open modification dropdown for selection
+      }
     }
   };
 
@@ -107,16 +112,29 @@ export default function ModalEditEngine(props) {
 
   // Handle when press enter on level input
   const handleLevelInputKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key == "Enter") {
       const level = parseInt(e.target.value, 10);
+      changeModification(level);
+    }
+  };
 
-      // Update the modification based on the level
-      if (level % 10 !== 0) {
-        setSelectedModification(Math.floor(level / 10));
-      } else {
-        setSelectedModification(Math.floor(level / 10)); // Default choice when level is a multiple of 10
-        setIsModificationDropdownOpen(true); // Optionally open the modification dropdown for selection
-      }
+  // Handle when the level is changed
+  const handleLevelChanged = (level) => {
+    setSelectedLevel(level);
+    changeModification(level);
+  };
+
+  const changeModification = (level) => {
+    // Update the modification based on the level
+    if (level < 10) {
+      setSelectedModification(0);
+    } else if (level == 60) {
+      setSelectedModification(5);
+    } else if (level % 10 !== 0) {
+      setSelectedModification(Math.floor(level / 10));
+    } else {
+      setSelectedModification(Math.floor(level / 10)); // Default choice when level is a multiple of 10
+      setIsModificationDropdownOpen(true); // Optionally open the modification dropdown for selection
     }
   };
 
@@ -128,6 +146,7 @@ export default function ModalEditEngine(props) {
     dataWEngineEdit.modification = selectedModification;
     setSelectedLevel(dataWEngineEdit.level);
     setSelectedModification(dataWEngineEdit.modification);
+    console.log(dataWEngineEdit);
   };
 
   return (
@@ -190,7 +209,7 @@ export default function ModalEditEngine(props) {
                     min="1"
                     max="60"
                     value={selectedLevel}
-                    onChange={(e) => setSelectedLevel(e.target.value)}
+                    onChange={(e) => handleLevelChanged(e.target.value)}
                     onKeyDown={handleLevelInputKeyDown}
                   ></input>
                 </div>
@@ -236,11 +255,11 @@ export default function ModalEditEngine(props) {
                       <div
                         onClick={() =>
                           handleModificationOptionClick(
-                            Math.floor(selectedLevel / 10) + 1
+                            Math.floor(selectedLevel / 10) - 1
                           )
                         }
                       >
-                        Upgrade {Math.floor(selectedLevel / 10) + 1}
+                        Upgrade {Math.floor(selectedLevel / 10) - 1}
                       </div>
                     </div>
                   )}
