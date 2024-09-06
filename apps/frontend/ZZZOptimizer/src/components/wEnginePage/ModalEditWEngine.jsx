@@ -138,14 +138,32 @@ export default function ModalEditEngine(props) {
     }
   };
 
-  const handleConfirmButtonClick = () => {
-    getWEngineStats();
-    getWEngineDescription();
+  const handleConfirmButtonClick = async () => {
+    await getWEngineStats();
+    await getWEngineDescription();
     dataWEngineEdit.level = selectedLevel;
     dataWEngineEdit.upgrade = selectedUpgrade;
     dataWEngineEdit.modification = selectedModification;
+    // Get the current list from localStorage
+    const savedData = localStorage.getItem("selected wEngine");
+    const currentList = savedData ? JSON.parse(savedData) : [];
 
-    console.log(dataWEngineEdit);
+    // Find the index of the WEngine being edited
+    const index = currentList.findIndex(
+      (wEngine) => wEngine.name === dataWEngineEdit.name
+    );
+
+    // Update the WEngine in the list
+    if (index !== -1) {
+      currentList[index] = dataWEngineEdit;
+    } else {
+      currentList.push(dataWEngineEdit);
+    }
+
+    // Save the updated list back to localStorage
+    localStorage.setItem("selected wEngine", JSON.stringify(currentList));
+
+    console.log("Updated dataWEngineEdit:", dataWEngineEdit);
   };
 
   return (
