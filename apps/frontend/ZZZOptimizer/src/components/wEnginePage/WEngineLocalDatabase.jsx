@@ -106,7 +106,7 @@ function WEngineLocalDatabase({
         return (
           <div
             className="card-container"
-            key={item.name}
+            key={item.id}
             onClick={() => handleEditWEngine(item)}
           >
             {/* Header */}
@@ -123,7 +123,8 @@ function WEngineLocalDatabase({
                   Rarity: {item.rank} | Specialty: Attack
                 </div>
                 <div className="card-rarity">
-                  Sub Stat: <b>{subStatMap.get(item.subStat[0])}</b>
+                  Sub Stat: <b>{subStatMap.get(item.subStat[0])}</b> | Lv:{" "}
+                  {item.level}
                 </div>
               </div>
             </div>

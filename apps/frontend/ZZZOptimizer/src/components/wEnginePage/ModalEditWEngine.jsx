@@ -157,7 +157,7 @@ export default function ModalEditEngine(props) {
 
     // Find the index of the WEngine being edited
     const index = currentList.findIndex(
-      (wEngine) => wEngine.name === dataWEngineEdit.name
+      (wEngine) => wEngine.id === dataWEngineEdit.id
     );
 
     // Update the WEngine in the list
