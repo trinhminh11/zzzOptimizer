@@ -81,8 +81,12 @@ export default function ModalEditEngine(props) {
   const handleOptionClick = (option) => {
     setSelectedUpgrade(option);
     setIsDropdownOpen(false);
-    handleConfirmButtonClick();
   };
+  useEffect(() => {
+    if (selectedUpgrade) {
+      handleConfirmButtonClick();
+    }
+  }, [selectedUpgrade]);
 
   // Handle when a level is chose
   const handleLevelOptionClick = (option) => {
