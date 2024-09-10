@@ -77,10 +77,11 @@ export default function ModalEditEngine(props) {
     }
   };
 
-  // Handle when a upgrade is chose
+  // Handle when an upgrade is chose
   const handleOptionClick = (option) => {
     setSelectedUpgrade(option);
     setIsDropdownOpen(false);
+    handleConfirmButtonClick();
   };
 
   // Handle when a level is chose
@@ -108,6 +109,7 @@ export default function ModalEditEngine(props) {
   const handleModificationOptionClick = (option) => {
     setSelectedModification(option);
     setIsModificationDropdownOpen(false);
+    handleConfirmButtonClick();
   };
 
   // Handle when press enter on level input
@@ -115,6 +117,7 @@ export default function ModalEditEngine(props) {
     if (e.key == "Enter") {
       const level = parseInt(e.target.value, 10);
       changeModification(level);
+      handleConfirmButtonClick();
     }
   };
 
@@ -204,7 +207,6 @@ export default function ModalEditEngine(props) {
                 </button>
                 {isDropdownOpen && (
                   <div className="dropdown-content">
-                    <div onClick={() => handleOptionClick("0")}>Upgrade 0</div>
                     <div onClick={() => handleOptionClick("1")}>Upgrade 1</div>
                     <div onClick={() => handleOptionClick("2")}>Upgrade 2</div>
                     <div onClick={() => handleOptionClick("3")}>Upgrade 3</div>
