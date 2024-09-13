@@ -1,5 +1,4 @@
 import config
-import re
 from typing import Literal, Type
 
 availabelMainStats: dict[Literal[1,2,3,4,5,6], list[str]] = {
@@ -293,7 +292,7 @@ class FreedomBlues(DriveDisc):
 
 	passiveDescription2Pieces = '<p>Increases <span style=\"color: rgb(237,197,84)\">Anomaly Proficiency</span> by <span style=\"color: rgb(237,197,84)\">{0}</span>.</p>'
 
-	
+
 
 	passiveDescription4Pieces = '<p>When an EX Special Attack hits an enemy, reduce the target\'s Anomaly Buildup RES to the equipper\'s Attribute by <span style=\"color: rgb(237,197,84)\">{0}%</span> for 8s. This effect does not stack with others of the same attribute.</p>'
 

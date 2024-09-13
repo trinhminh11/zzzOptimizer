@@ -8,7 +8,7 @@ class WEngineModel(BaseModel):
 	name: str
 	rank: config.RANKS
 	specialty: config.SPECIALTY
-	nameIcon: Optional[str]
+	# nameIcon: Optional[str]
 
 	mainStat: tuple[str, float]
 	subStat: tuple[str, float]

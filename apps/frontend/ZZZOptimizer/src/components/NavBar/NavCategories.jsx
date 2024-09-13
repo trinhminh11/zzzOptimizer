@@ -1,9 +1,6 @@
 import React from "react";
 import "./nav.css";
-import engineIcon from "../../assets/icon/wEngine/W-Engine.jpg";
-import discIcon from "../../assets/icon/driveDisc/Drive-Disc.jpg";
-import bangbooIcon from "../../assets/icon/bangboos/Bangboo.jpg";
-import agentIcon from "../../assets/icon/agents/agents.jpg";
+import util from "../../util";
 
 function NavCategories() {
   return (
@@ -12,7 +9,7 @@ function NavCategories() {
         {/* Agent  */}
         <li className="nav-item">
           <a href="/deploy-github/agents" className="nav-link collapsed">
-            <img alt="agent Icon" src={agentIcon} className="nav-icon"></img>
+            <img alt="agent Icon" src={util.navIcon.agent} className="nav-icon"></img>
             <span>Agents</span>
           </a>
         </li>
@@ -20,7 +17,7 @@ function NavCategories() {
         {/* W-Engine */}
         <li className="nav-item">
           <a href="/deploy-github/w-engine" className="nav-link collapsed">
-            <img alt="W-Engine Icon" src={engineIcon} className="nav-icon" />
+            <img alt="W-Engine Icon" src={util.navIcon.wEngine} className="nav-icon" />
             <span>W-Engines</span>
           </a>
         </li>
@@ -28,7 +25,7 @@ function NavCategories() {
         {/* Drive Disc */}
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
-            <img alt="Icon" src={discIcon} className="nav-icon" />
+            <img alt="Icon" src={util.navIcon.driveDisc} className="nav-icon" />
             <span>Drive-Discs</span>
           </a>
         </li>
@@ -44,7 +41,7 @@ function NavCategories() {
         {/* Bangboos */}
         <li className="nav-item">
           <a href="#" className="nav-link collapsed">
-            <img alt="bangbooIcon" src={bangbooIcon} className="nav-icon" />
+            <img alt="bangbooIcon" src={util.navIcon.bangboo} className="nav-icon" />
             <span>Bangboo</span>
           </a>
         </li>

@@ -28,7 +28,7 @@ export default function AgentLocalDatabase({
 
   useEffect(() => {
     const handleStorageChange = (event) => {
-      if (event.key === "selected agent") {
+      if (event.key === "agents") {
         setListSelectedAgents(event.newValue ? JSON.parse(event.newValue) : []);
       }
     };
@@ -47,7 +47,7 @@ export default function AgentLocalDatabase({
       (agent) => agent.name !== name
     );
     setListSelectedAgents(updatedAgents);
-    localStorage.setItem("selected agent", JSON.stringify(updatedAgents));
+    localStorage.setItem("agents", JSON.stringify(updatedAgents));
     handleClose();
   };
 
@@ -80,38 +80,39 @@ export default function AgentLocalDatabase({
           </tr>
         </thead>
         <tbody>
-          {filteredAgents.map((item) => {
+          {filteredAgents.map((agent) => {
             return (
-              <tr key={`users-${item.name}`}>
-                <td onClick={() => handleEditAgent(item)}>
-                  <img src={item.nameIcon} alt="demo" className="agentImg" />
-                  <span>{item.realName}</span>
+              <tr key={`users-${agent.name}`}>
+                <td onClick={() => handleEditAgent(agent)}>
+                  {/* <img src={agent.nameIcon} alt="demo" className="agentImg" /> */}
+                  <img src={agent.api_dir + "media/agent/icon/" + agent.name + ".png"} alt="demo" className="agentImg" />
+                  <span>{agent.realName}</span>
                 </td>
                 <td
                   className="center-column"
-                  onClick={() => handleEditAgent(item)}
+                  onClick={() => handleEditAgent(agent)}
                 >
                   <img
-                    src={item.rankIcon}
+                    src={agent.api_dir + "media/rank/" + agent.rank + ".png"}
                     alt="demo"
                     style={{ width: "30px", height: "30px" }}
                   />
                 </td>
                 <td
                   className="center-column"
-                  onClick={() => handleEditAgent(item)}
+                  onClick={() => handleEditAgent(agent)}
                 >
-                  <img src={item.attributeIcon} alt="demo" />
+                  <img src={agent.api_dir + "media/attribute/" + agent.attribute + ".png"} alt="demo" />
                 </td>
                 <td
                   className="center-column"
-                  onClick={() => handleEditAgent(item)}
+                  onClick={() => handleEditAgent(agent)}
                 >
-                  <img src={item.specialtyIcon} alt="demo" />
+                  <img src={agent.api_dir + "media/specialty/" + agent.specialty + ".png"} alt="demo" />
                 </td>
-                <td onClick={() => handleEditAgent(item)}>Default weapon</td>
+                <td onClick={() => handleEditAgent(agent)}>Default weapon</td>
                 <td className="center-column">
-                  <span>M{item.mindScape}</span>
+                  <span>M{agent.mindScape}</span>
                 </td>
               </tr>
             );

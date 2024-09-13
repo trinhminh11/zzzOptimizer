@@ -13,7 +13,7 @@ function WEngineBody({ selectedOptions, setSelectedOptions }) {
   //set up local storage for storing information
   const [listSelectedWEngines, setListSelectedWEngines] = useState(() => {
     //Check local storage and initialize list
-    const storedWEngines = localStorage.getItem("selected wEngine");
+    const storedWEngines = localStorage.getItem("wengines");
     return storedWEngines ? JSON.parse(storedWEngines) : [];
   });
 

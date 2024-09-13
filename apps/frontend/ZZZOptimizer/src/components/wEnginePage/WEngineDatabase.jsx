@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./wEngine.css";
-import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
-import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
-import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
-import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
-import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
+import util from "../../util"
 
 function WEngineDatabase({
   listWEngines,
@@ -18,7 +14,7 @@ function WEngineDatabase({
 
   useEffect(() => {
     const handleStorageChange = (event) => {
-      if (event.key === "selected wEngine") {
+      if (event.key === "wengines") {
         setListSelectedAgents(event.newValue ? JSON.parse(event.newValue) : []);
       }
     };
@@ -44,7 +40,8 @@ function WEngineDatabase({
     setListSelectedWEngines(updatedWEngines);
 
     // Update the localStorage with the new list
-    localStorage.setItem("selected wEngine", JSON.stringify(updatedWEngines));
+    localStorage.setItem("wengines", JSON.stringify(updatedWEngines));
+
   };
 
   const handleSpecialtyClick = (style) => {
@@ -68,7 +65,7 @@ function WEngineDatabase({
         {/* Search Bar */}
         <input
           type="text"
-          placeholder="Search an WEngine"
+          placeholder="Search a WEngine"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         ></input>
@@ -83,7 +80,7 @@ function WEngineDatabase({
           }`}
           onClick={() => handleSpecialtyClick("Attack")}
         >
-          <img src={attackIcon} alt="attack icon" />
+          <img src={util.specialtyIcon.attack} alt="attack icon" />
         </button>
 
         <button
@@ -93,7 +90,7 @@ function WEngineDatabase({
           }`}
           onClick={() => handleSpecialtyClick("Anomaly")}
         >
-          <img src={anomalyIcon} alt="anomaly icon" />
+          <img src={util.specialtyIcon.anomaly} alt="anomaly icon" />
         </button>
 
         <button
@@ -103,7 +100,7 @@ function WEngineDatabase({
           }`}
           onClick={() => handleSpecialtyClick("Defense")}
         >
-          <img src={defenseIcon} alt="defense icon" />
+          <img src={util.specialtyIcon.defense} alt="defense icon" />
         </button>
 
         <button
@@ -113,7 +110,7 @@ function WEngineDatabase({
           }`}
           onClick={() => handleSpecialtyClick("Stun")}
         >
-          <img src={stunIcon} alt="stun icon" />
+          <img src={util.specialtyIcon.stun} alt="stun icon" />
         </button>
 
         <button
@@ -123,7 +120,7 @@ function WEngineDatabase({
           }`}
           onClick={() => handleSpecialtyClick("Support")}
         >
-          <img src={supportIcon} alt="support icon" />
+          <img src={util.specialtyIcon.support} alt="support icon" />
         </button>
       </div>
 
@@ -135,7 +132,7 @@ function WEngineDatabase({
             key={wEngine.name}
             onClick={() => handleWEngineClick(wEngine)}
           >
-            <img src={wEngine.nameIcon} alt="demo"></img>
+            <img src={util.api_dir + "media/wengine/icon/" + util.trim(wEngine.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"), "_") + ".png"} alt="demo"></img>
             <div className="agent-name-showcase">{wEngine.name} </div>
           </div>
         ))}

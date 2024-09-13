@@ -1,13 +1,6 @@
 import React from "react";
-import sRankIcon from "../../assets/icon/wEngineRanks/wEngine_Rank_S.jpg";
-import aRankIcon from "../../assets/icon/wEngineRanks/wEngine_Rank_A.jpg";
-import bRankIcon from "../../assets/icon/wEngineRanks/wEngine_Rank_B.jpg";
-import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
-import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
-import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
-import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
-import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
 import "./wEngine.css";
+import util from "../../util";
 
 function WEngineSort({ selectedOptions, setSelectedOptions }) {
   const handleSelect = (category, option) => {
@@ -24,7 +17,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
       <div className="top-search-bar">
         <input
           type="text"
-          placeholder="Search an WEngine"
+          placeholder="Search a WEngine"
           // value={searchInput}
           // onChange={(e) => setSearchInput(e.target.value)}
           className="search-input"
@@ -48,7 +41,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("rank", "S")}
         >
-          <img alt="S rank Icon" src={sRankIcon} className="nav-icon" />
+          <img alt="S rank Icon" src={util.wEngineRankIcon.S} className="nav-icon" />
         </a>
 
         <a
@@ -57,7 +50,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("rank", "A")}
         >
-          <img alt="A rank Icon" src={aRankIcon} className="nav-icon" />
+          <img alt="A rank Icon" src={util.wEngineRankIcon.A} className="nav-icon" />
         </a>
 
         <a
@@ -66,7 +59,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("rank", "B")}
         >
-          <img alt="B rank Icon" src={bRankIcon} className="nav-icon" />
+          <img alt="B rank Icon" src={util.wEngineRankIcon.B} className="nav-icon" />
         </a>
       </div>
 
@@ -87,7 +80,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Attack")}
         >
-          <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
+          <img alt="Attack Icon" src={util.specialtyIcon.attack} className="nav-icon" />
         </a>
 
         <a
@@ -96,7 +89,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Anomaly")}
         >
-          <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
+          <img alt="Anomaly Icon" src={util.specialtyIcon.anomaly} className="nav-icon" />
         </a>
 
         <a
@@ -105,7 +98,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Defense")}
         >
-          <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
+          <img alt="Defense Icon" src={util.specialtyIcon.defense} className="nav-icon" />
         </a>
 
         <a
@@ -114,7 +107,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Stun")}
         >
-          <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
+          <img alt="Stun Icon" src={util.specialtyIcon.stun} className="nav-icon" />
         </a>
 
         <a
@@ -123,7 +116,7 @@ function WEngineSort({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Support")}
         >
-          <img alt="Support Icon" src={supportIcon} className="nav-icon" />
+          <img alt="Support Icon" src={util.specialtyIcon.support} className="nav-icon" />
         </a>
       </div>
     </div>

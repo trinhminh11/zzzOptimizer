@@ -47,7 +47,7 @@ for wengine in wengines.values():
 		name = wengine.name,
 		rank = wengine.rank,
 		specialty= wengine.specialty,
-		nameIcon=f'{BASE_DIR}/{MEDIA_DIR}/wengines/' + re.sub('[^0-9a-zA-Z]+', '_', f'{wengine.name}').strip("_") + '.png',
+		# nameIcon=f'{BASE_DIR}/{MEDIA_DIR}/wengines/' + re.sub('[^0-9a-zA-Z]+', '_', f'{wengine.name}').strip("_") + '.png',
 		mainStat=mainStat,
 		subStat=subStat,
 		passive=passive

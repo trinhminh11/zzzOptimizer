@@ -12,7 +12,7 @@ function AgentBody({ selectedOptions, setSelectedOptions }) {
   // set up localstorage for storing infomation
   const [listSelectedAgents, setListSelectedAgents] = useState(() => {
     // Check local storage and initialize list
-    const storedAgents = localStorage.getItem("selected agent");
+    const storedAgents = localStorage.getItem("agents");
     return storedAgents ? JSON.parse(storedAgents) : [];
   });
 
@@ -28,13 +28,15 @@ function AgentBody({ selectedOptions, setSelectedOptions }) {
       for (let i = 0; i < res.length; i++) {
         res[i].mindScape = 0;
         res[i].promotion = 0;
-        res[i].level = 1;
-        res[i].core = 1;
-        res[i].basic = 1;
-        res[i].dodge = 1;
-        res[i].assist = 1;
-        res[i].special = 1;
-        res[i].chain = 1;
+        res[i].skills = {
+          level: 1,
+          core: 1,
+          basic: 1,
+          dodge: 1,
+          assist: 1,
+          special: 1,
+          chain: 1
+        }
       }
       setListAgents(res);
     }

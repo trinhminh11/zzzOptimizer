@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import ModalEditWEngine from "./ModalEditWEngine";
 import { getWEngineStats as fetchWEngineStats } from "../../services/WEngineService";
 
+import util from "../../util"
+
+
 function WEngineLocalDatabase({
   listSelectedWEngines,
   setListSelectedWEngines,
@@ -59,7 +62,7 @@ function WEngineLocalDatabase({
 
   useEffect(() => {
     const handleStorageChange = (event) => {
-      if (event.key === "selected wEngine") {
+      if (event.key === "wengines") {
         setListSelectedAgents(event.newValue ? JSON.parse(event.newValue) : []);
       }
     };
@@ -78,7 +81,7 @@ function WEngineLocalDatabase({
       (wEngine) => wEngine.name !== name
     );
     setListSelectedWEngines(updatedWEngines);
-    localStorage.setItem("selected wEngine", JSON.stringify(updatedWEngines));
+    localStorage.setItem("wengines", JSON.stringify(updatedWEngines));
     handleClose();
   };
 
@@ -102,29 +105,29 @@ function WEngineLocalDatabase({
 
   return (
     <div className="wEngine-grid">
-      {filteredWEngines.map((item) => {
+      {filteredWEngines.map((wEngine) => {
         return (
           <div
             className="card-container"
-            key={item.id}
-            onClick={() => handleEditWEngine(item)}
+            key={wEngine.id}
+            onClick={() => handleEditWEngine(wEngine)}
           >
             {/* Header */}
             <div
               className="card-header"
-              onClick={() => handleEditWEngine(item)}
+              onClick={() => handleEditWEngine(wEngine)}
             >
-              <div className={"card-icon rarity-" + item.rank}>
-                <img src={item.nameIcon}></img>
+              <div className={"card-icon rarity-" + wEngine.rank}>
+                <img src={util.api_dir + "media/wengine/icon/" + util.trim(wEngine.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"), "_") + ".png"}></img>
               </div>
               <div className="card-info">
-                <div className="card-title">{item.name}</div>
+                <div className="card-title">{wEngine.name}</div>
                 <div className="card-rarity">
-                  Rarity: {item.rank} | Specialty: Attack
+                  Rarity: {wEngine.rank} | Specialty: Attack
                 </div>
                 <div className="card-rarity">
-                  Sub Stat: <b>{subStatMap.get(item.subStat[0])}</b> | Lv:{" "}
-                  {item.level}
+                  Sub Stat: <b>{subStatMap.get(wEngine.subStat[0])}</b> | Lv:{" "}
+                  {wEngine.level}
                 </div>
               </div>
             </div>

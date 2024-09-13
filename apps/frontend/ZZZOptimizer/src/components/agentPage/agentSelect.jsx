@@ -1,18 +1,7 @@
 import React from "react";
 import "./agent.css";
-import fireIcon from "../../assets/icon/agentsAttributes/Icon_Fire.jpg";
-import electricIcon from "../../assets/icon/agentsAttributes/Icon_Electric.jpg";
-import etherIcon from "../../assets/icon/agentsAttributes/Icon_Ether.jpg";
-import iceIcon from "../../assets/icon/agentsAttributes/Icon_Ice.jpg";
-import physicalIcon from "../../assets/icon/agentsAttributes/Icon_Physical.jpg";
-import sRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_S.jpg";
-import aRankIcon from "../../assets/icon/agentsRanks/Icon_AgentRank_A.jpg";
-import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
-import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
-import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
-import stunIcon from "../../assets/icon/agentsRoles/Icon_Stun.jpg";
-import supportIcon from "../../assets/icon/agentsRoles/Icon_Support.jpg";
-import { useState, useEffect } from "react";
+
+import util from "../../util";
 
 export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
   const handleSelect = (category, option) => {
@@ -42,7 +31,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("rank", "S")}
         >
-          <img alt="S rank Icon" src={sRankIcon} className="nav-icon" />
+          <img alt="S rank Icon" src={util.agentRankIcon.S} className="nav-icon" />
         </a>
 
         <a
@@ -51,7 +40,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("rank", "A")}
         >
-          <img alt="A rank Icon" src={aRankIcon} className="nav-icon" />
+          <img alt="A rank Icon" src={util.agentRankIcon.A} className="nav-icon" />
         </a>
       </div>
 
@@ -73,7 +62,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("attribute", "Electric")}
         >
-          <img alt="Electric Icon" src={electricIcon} className="nav-icon" />
+          <img alt="Electric Icon" src={util.attributeIcon.electric} className="nav-icon" />
         </a>
 
         <a
@@ -82,7 +71,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("attribute", "Fire")}
         >
-          <img alt="Fire Icon" src={fireIcon} className="nav-icon" />
+          <img alt="Fire Icon" src={util.attributeIcon.fire} className="nav-icon" />
         </a>
 
         <a
@@ -91,7 +80,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("attribute", "Physical")}
         >
-          <img alt="Physical Icon" src={physicalIcon} className="nav-icon" />
+          <img alt="Physical Icon" src={util.attributeIcon.physical} className="nav-icon" />
         </a>
 
         <a
@@ -100,7 +89,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("attribute", "Ice")}
         >
-          <img alt="Ice Icon" src={iceIcon} className="nav-icon" />
+          <img alt="Ice Icon" src={util.attributeIcon.ice} className="nav-icon" />
         </a>
 
         <a
@@ -109,7 +98,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("attribute", "Ether")}
         >
-          <img alt="Ether Icon" src={etherIcon} className="nav-icon" />
+          <img alt="Ether Icon" src={util.attributeIcon.ether} className="nav-icon" />
         </a>
       </div>
 
@@ -130,7 +119,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Attack")}
         >
-          <img alt="Attack Icon" src={attackIcon} className="nav-icon" />
+          <img alt="Attack Icon" src={util.specialtyIcon.attack} className="nav-icon" />
         </a>
 
         <a
@@ -139,7 +128,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Anomaly")}
         >
-          <img alt="Anomaly Icon" src={anomalyIcon} className="nav-icon" />
+          <img alt="Anomaly Icon" src={util.specialtyIcon.anomaly} className="nav-icon" />
         </a>
 
         <a
@@ -148,7 +137,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Defense")}
         >
-          <img alt="Defense Icon" src={defenseIcon} className="nav-icon" />
+          <img alt="Defense Icon" src={util.specialtyIcon.defense} className="nav-icon" />
         </a>
 
         <a
@@ -157,7 +146,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Stun")}
         >
-          <img alt="Stun Icon" src={stunIcon} className="nav-icon" />
+          <img alt="Stun Icon" src={util.specialtyIcon.stun} className="nav-icon" />
         </a>
 
         <a
@@ -166,7 +155,7 @@ export default function AgentSelect({ selectedOptions, setSelectedOptions }) {
           }`}
           onClick={() => handleSelect("specialty", "Support")}
         >
-          <img alt="Support Icon" src={supportIcon} className="nav-icon" />
+          <img alt="Support Icon" src={util.specialtyIcon.support} className="nav-icon" />
         </a>
       </div>
     </div>

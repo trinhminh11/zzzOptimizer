@@ -7,6 +7,9 @@ import { getWEngineDescription as fetchWEngineDescription } from "../../services
 import parse from "html-react-parser";
 import "./wEngine.css";
 
+import util from "../../util"
+
+
 export default function ModalEditEngine(props) {
   const {
     show,
@@ -152,7 +155,7 @@ export default function ModalEditEngine(props) {
     dataWEngineEdit.upgrade = selectedUpgrade;
     dataWEngineEdit.modification = selectedModification;
     // Get the current list from localStorage
-    const savedData = localStorage.getItem("selected wEngine");
+    const savedData = localStorage.getItem("wengines");
     const currentList = savedData ? JSON.parse(savedData) : [];
 
     // Find the index of the WEngine being edited
@@ -168,7 +171,7 @@ export default function ModalEditEngine(props) {
     }
 
     // Save the updated list back to localStorage
-    localStorage.setItem("selected wEngine", JSON.stringify(currentList));
+    localStorage.setItem("wengines", JSON.stringify(currentList));
 
     console.log("Updated dataWEngineEdit:", dataWEngineEdit);
   };
@@ -197,7 +200,7 @@ export default function ModalEditEngine(props) {
           {/* Left Diplay */}
           <div className="col-lg-4">
             <div className={"wEngine-left-img agent-" + dataWEngineEdit.rank}>
-              <img src={dataWEngineEdit.nameIcon} alt="" />
+              {dataWEngineEdit.length != 0 ? <img src={util.api_dir + "media/wengine/icon/" + util.trim(dataWEngineEdit.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"), "_") + ".png"} alt="" />: null}
             </div>
 
             <div className="level-display">
