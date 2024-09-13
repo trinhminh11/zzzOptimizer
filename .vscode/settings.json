@@ -1,5 +1,5 @@
 {
-	"python.analysis.typeCheckingMode": "off",
+	"python.analysis.typeCheckingMode": "basic",
 	"files.associations": {
 		"iostream": "cpp",
 		"vector": "cpp",

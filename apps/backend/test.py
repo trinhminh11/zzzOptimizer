@@ -1,9 +1,10 @@
-from Processing.wengine import wengines
-import json
+import Processing.driveDisc as f
 
+rank = 'A'
+incre = f.mainStatIncrement[rank]
 
-a = wengines['Deep Sea Visitor']
+level = 12
 
-p = a.getPassive(2)
-p = json.dumps(p, indent=4)
-print(p)
+stat = 'hp'
+
+print(f.mainStatBase[rank][stat] + incre[stat]*level)
