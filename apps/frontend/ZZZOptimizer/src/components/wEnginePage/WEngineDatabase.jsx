@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./wEngine.css";
-import sRankIcon from "../../assets/icon/wEngineRanks/wEngine_Rank_S.jpg";
-import aRankIcon from "../../assets/icon/wEngineRanks/wEngine_Rank_A.jpg";
-import bRankIcon from "../../assets/icon/wEngineRanks/wEngine_Rank_B.jpg";
 import attackIcon from "../../assets/icon/agentsRoles/Icon_Attack.jpg";
 import anomalyIcon from "../../assets/icon/agentsRoles/Icon_Anomaly.jpg";
 import defenseIcon from "../../assets/icon/agentsRoles/Icon_Defense.jpg";
@@ -36,14 +33,18 @@ function WEngineDatabase({
   }, []);
 
   const handleWEngineClick = (wEngine) => {
-    const check = listSelectedWEngines.some(
-      (selectedWEngine) => selectedWEngine.name === wEngine.name
-    );
-    if (!check) {
-      const updatedWEngines = [...listSelectedWEngines, wEngine];
-      setListSelectedWEngines(updatedWEngines);
-      localStorage.setItem("selected wEngine", JSON.stringify(updatedWEngines));
-    }
+    // Clone the wEngine and give it a new unique ID
+    const wEngineWithUniqueID = {
+      ...wEngine,
+      id: `wEngine-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    };
+
+    // Add the cloned item to the list
+    const updatedWEngines = [...listSelectedWEngines, wEngineWithUniqueID];
+    setListSelectedWEngines(updatedWEngines);
+
+    // Update the localStorage with the new list
+    localStorage.setItem("selected wEngine", JSON.stringify(updatedWEngines));
   };
 
   const handleSpecialtyClick = (style) => {
