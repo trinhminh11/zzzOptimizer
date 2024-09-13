@@ -1,8 +1,10 @@
 import axios from "axios";
+import util from "../util";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/",
+  baseURL: util.api_dir,
 });
+
 instance.interceptors.response.use(
   function (response) {
     return response.data;
