@@ -55,6 +55,7 @@ function WEngineLocalDatabase({
     setSelectedLevel(wEngine.level);
     setSelectedUpgrade(wEngine.upgrade);
     setSelectedModification(wEngine.modification);
+    setModificationDisplay((Math.floor(wEngine.level / 10) + 1) * 10);
     setShowModalEdit(true);
   };
 
