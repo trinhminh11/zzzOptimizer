@@ -131,32 +131,40 @@ export default function ModalEditEngine(props) {
   const handleLevelInputKeyDown = (e) => {
     if (e.key == "Enter") {
       const level = parseInt(e.target.value, 10);
-      changeModification(level);
+      handleLevelChanged(level);
       handleConfirmButtonClick();
     }
   };
 
   // Handle when the level is changed
   const handleLevelChanged = (level) => {
-    setSelectedLevel(level);
-    changeModification(level);
-  };
-
-  const changeModification = (level) => {
-    // Update the modification based on the level
-    if (level < 10) {
-      setSelectedModification(0);
-      setModificationDisplay(10);
-    } else if (level == 60) {
+    if (level > 60) {
+      setSelectedLevel(60);
       setSelectedModification(5);
       setModificationDisplay(60);
-    } else if (level % 10 !== 0) {
-      setSelectedModification(Math.floor(level / 10));
-      setModificationDisplay((Math.floor(selectedLevel / 10) + 1) * 10);
     } else {
-      setSelectedModification(Math.floor(level / 10)); // Default choice when level is a multiple of 10
-      setIsModificationDropdownOpen(true); // Optionally open the modification dropdown for selection
+      setSelectedLevel(level);
+      // Update modification and modificationDisplay based on the new level
+      if (level < 10) {
+        setSelectedModification(0);
+        setModificationDisplay(10);
+      } else if (level == 60) {
+        setSelectedModification(5);
+        setModificationDisplay(60);
+      } else if (level % 10 !== 0) {
+        const newModification = Math.floor(level / 10);
+        const newDisplay = (newModification + 1) * 10;
+        setSelectedModification(newModification);
+        setModificationDisplay(newDisplay);
+      } else {
+        const newModification = Math.floor(level / 10);
+        setSelectedModification(newModification);
+        setIsModificationDropdownOpen(true);
+        setModificationDisplay(newModification * 10);
+      }
     }
+
+    handleConfirmButtonClick(); // Confirm the changes right away if necessary
   };
 
   const handleConfirmButtonClick = async () => {
