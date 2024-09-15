@@ -7,8 +7,7 @@ import { getWEngineDescription as fetchWEngineDescription } from "../../services
 import parse from "html-react-parser";
 import "./wEngine.css";
 
-import util from "../../util"
-
+import util from "../../util";
 
 export default function ModalEditEngine(props) {
   const {
@@ -23,6 +22,8 @@ export default function ModalEditEngine(props) {
     setSelectedUpgrade,
     selectedModification,
     setSelectedModification,
+    modificationDisplay,
+    setModificationDisplay,
   } = props;
   const [wEngineStat, setWEngineStat] = useState([]);
   const [wEngineDescription, setWEngineDescription] = useState([]);
@@ -113,11 +114,18 @@ export default function ModalEditEngine(props) {
   };
 
   // Handle when a modification is chose
-  const handleModificationOptionClick = (option) => {
+  const handleModificationOptionClick = (option, option1) => {
     setSelectedModification(option);
+    setModificationDisplay(option1);
     setIsModificationDropdownOpen(false);
     handleConfirmButtonClick();
   };
+
+  useEffect(() => {
+    if (selectedModification) {
+      handleConfirmButtonClick();
+    }
+  }, [selectedModification]);
 
   // Handle when press enter on level input
   const handleLevelInputKeyDown = (e) => {
@@ -138,10 +146,13 @@ export default function ModalEditEngine(props) {
     // Update the modification based on the level
     if (level < 10) {
       setSelectedModification(0);
+      setModificationDisplay(10);
     } else if (level == 60) {
       setSelectedModification(5);
+      setModificationDisplay(60);
     } else if (level % 10 !== 0) {
       setSelectedModification(Math.floor(level / 10));
+      setModificationDisplay((Math.floor(selectedLevel / 10) + 1) * 10);
     } else {
       setSelectedModification(Math.floor(level / 10)); // Default choice when level is a multiple of 10
       setIsModificationDropdownOpen(true); // Optionally open the modification dropdown for selection
@@ -200,7 +211,20 @@ export default function ModalEditEngine(props) {
           {/* Left Diplay */}
           <div className="col-lg-4">
             <div className={"wEngine-left-img agent-" + dataWEngineEdit.rank}>
-              {dataWEngineEdit.length != 0 ? <img src={util.api_dir + "media/wengine/icon/" + util.trim(dataWEngineEdit.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"), "_") + ".png"} alt="" />: null}
+              {dataWEngineEdit.length != 0 ? (
+                <img
+                  src={
+                    util.api_dir +
+                    "media/wengine/icon/" +
+                    util.trim(
+                      dataWEngineEdit.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"),
+                      "_"
+                    ) +
+                    ".png"
+                  }
+                  alt=""
+                />
+              ) : null}
             </div>
 
             <div className="level-display">
@@ -228,16 +252,51 @@ export default function ModalEditEngine(props) {
               <div className="level-container">
                 <div className="level-input">
                   <label htmlFor="level">Level</label>
-                  <input
-                    type="number"
-                    id="level"
-                    name="level"
-                    min="1"
-                    max="60"
-                    value={selectedLevel}
-                    onChange={(e) => handleLevelChanged(e.target.value)}
-                    onKeyDown={handleLevelInputKeyDown}
-                  ></input>
+                  <div className="input-button-wrapper">
+                    <input
+                      type="number"
+                      id="level"
+                      name="level"
+                      min="1"
+                      max="60"
+                      value={selectedLevel}
+                      onChange={(e) => handleLevelChanged(e.target.value)}
+                      onKeyDown={handleLevelInputKeyDown}
+                    />
+                    {/* Choose Modification */}
+                    <div className="level-dropdown">
+                      <button
+                        className="info-button"
+                        onClick={handleModificationButtonClick}
+                      >
+                        / {modificationDisplay}
+                      </button>
+                      {isModificationDropdownOpen && (
+                        <div className="level-dropdown-content">
+                          <div
+                            onClick={() =>
+                              handleModificationOptionClick(
+                                Math.floor(selectedLevel / 10),
+                                (Math.floor(selectedLevel / 10) + 1) * 10
+                              )
+                            }
+                          >
+                            / {(Math.floor(selectedLevel / 10) + 1) * 10}
+                          </div>
+                          <div
+                            onClick={() =>
+                              handleModificationOptionClick(
+                                Math.floor(selectedLevel / 10) - 1,
+                                Math.floor(selectedLevel / 10) * 10
+                              )
+                            }
+                          >
+                            / {Math.floor(selectedLevel / 10) * 10}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="level-dropdown">
@@ -255,38 +314,6 @@ export default function ModalEditEngine(props) {
                       <div onClick={() => handleLevelOptionClick(40)}>40</div>
                       <div onClick={() => handleLevelOptionClick(50)}>50</div>
                       <div onClick={() => handleLevelOptionClick(60)}>60</div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Choose Modification */}
-                <div className="level-dropdown">
-                  <button
-                    className="level-dropdown-button"
-                    onClick={handleModificationButtonClick}
-                  >
-                    Modification {selectedModification}
-                  </button>
-                  {isModificationDropdownOpen && (
-                    <div className="level-dropdown-content">
-                      <div
-                        onClick={() =>
-                          handleModificationOptionClick(
-                            Math.floor(selectedLevel / 10)
-                          )
-                        }
-                      >
-                        Upgrade {Math.floor(selectedLevel / 10)}
-                      </div>
-                      <div
-                        onClick={() =>
-                          handleModificationOptionClick(
-                            Math.floor(selectedLevel / 10) - 1
-                          )
-                        }
-                      >
-                        Upgrade {Math.floor(selectedLevel / 10) - 1}
-                      </div>
                     </div>
                   )}
                 </div>

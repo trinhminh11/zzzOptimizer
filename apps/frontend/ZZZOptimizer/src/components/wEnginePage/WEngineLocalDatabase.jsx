@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import ModalEditWEngine from "./ModalEditWEngine";
 import { getWEngineStats as fetchWEngineStats } from "../../services/WEngineService";
 
-import util from "../../util"
-
+import util from "../../util";
 
 function WEngineLocalDatabase({
   listSelectedWEngines,
@@ -57,7 +56,6 @@ function WEngineLocalDatabase({
     setSelectedUpgrade(wEngine.upgrade);
     setSelectedModification(wEngine.modification);
     setShowModalEdit(true);
-    console.log(dataWEngineEdit);
   };
 
   useEffect(() => {
@@ -100,8 +98,11 @@ function WEngineLocalDatabase({
   // Set up data for ModalEditWEngine
 
   const [selectedLevel, setSelectedLevel] = useState(0);
-  const [selectedUpgrade, setSelectedUpgrade] = useState("Select Upgrade");
+  const [selectedUpgrade, setSelectedUpgrade] = useState(1);
   const [selectedModification, setSelectedModification] = useState(0);
+  const [modificationDisplay, setModificationDisplay] = useState(
+    (Math.floor(selectedLevel / 10) + 1) * 10
+  );
 
   return (
     <div className="wEngine-grid">
@@ -118,7 +119,17 @@ function WEngineLocalDatabase({
               onClick={() => handleEditWEngine(wEngine)}
             >
               <div className={"card-icon rarity-" + wEngine.rank}>
-                <img src={util.api_dir + "media/wengine/icon/" + util.trim(wEngine.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"), "_") + ".png"}></img>
+                <img
+                  src={
+                    util.api_dir +
+                    "media/wengine/icon/" +
+                    util.trim(
+                      wEngine.name.replaceAll(/[^0-9a-zA-Z]+/gm, "_"),
+                      "_"
+                    ) +
+                    ".png"
+                  }
+                ></img>
               </div>
               <div className="card-info">
                 <div className="card-title">{wEngine.name}</div>
@@ -146,6 +157,8 @@ function WEngineLocalDatabase({
         setSelectedUpgrade={setSelectedUpgrade}
         selectedModification={selectedModification}
         setSelectedModification={setSelectedModification}
+        modificationDisplay={modificationDisplay}
+        setModificationDisplay={setModificationDisplay}
       />
     </div>
   );
