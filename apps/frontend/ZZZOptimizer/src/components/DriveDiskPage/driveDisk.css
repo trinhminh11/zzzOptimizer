@@ -13,3 +13,105 @@
   border-radius: 5px;
   width: 80%;
 }
+/* **************************************** */
+/* CSS for Modal Add New */
+
+/* CSS for set and rarity select */
+.artifact-header {
+  display: flex;
+  gap: 5px;
+}
+.input-holder {
+  padding: 6px;
+  border-radius: 5px;
+  border: solid white 1px;
+  display: flex;
+}
+
+#field-set {
+  background-color: #404258;
+  border: none;
+  color: white;
+}
+
+#field-set:focus {
+  outline: none;
+  border: none;
+}
+
+.input-holder button {
+  background-color: #404258;
+  border-radius: 30%;
+  border: none;
+  color: white;
+}
+
+.input-holder button:hover {
+  background-color: #7b7b7b;
+}
+
+.select-rarity {
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+/* CSS for level selection */
+.artifact-level {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+}
+.drivedisk-level-container {
+  background-color: #2c3e50;
+  padding: 10px;
+  border-radius: 4px;
+  color: #bdc3c7;
+}
+
+.drivedisk-level-container label {
+  display: block;
+  font-size: 12px; /* Smaller font size for the label */
+  margin-bottom: 5px; /* Space between label and input */
+}
+
+.drivedisk-level-input {
+  background-color: transparent; /* Make the input background transparent */
+  border: none; /* Remove default border */
+  outline: none; /* Remove focus outline */
+  color: white; /* White text color */
+  font-size: 16px; /* Font size of the input value */
+  width: 100%; /* Take full width of the container */
+}
+
+.quick-level-select {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.quick-level-select button {
+  background-color: #1c71bd;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 0;
+  width: 38px;
+  height: 100%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: solid #1c1c1f;
+  border-width: 1px;
+}
+
+.quick-level-select button:last-child {
+  border-radius: 0px 6px 6px 0px;
+  border: none;
+}
+
+.quick-level-select button:first-child {
+  border-radius: 6px 0px 0px 6px;
+}
