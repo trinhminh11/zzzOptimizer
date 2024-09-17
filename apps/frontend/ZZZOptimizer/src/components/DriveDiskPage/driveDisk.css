@@ -1,0 +1,15 @@
+.drive-disc-container {
+  border: solid white;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-disk-btn {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+}
