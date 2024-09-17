@@ -63,28 +63,28 @@
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  height: 70px;
+  height: 55px;
 }
 .drivedisk-level-container {
   background-color: #2c3e50;
-  padding: 10px;
+  padding: 5px;
+  padding-left: 10px;
   border-radius: 4px;
   color: #bdc3c7;
 }
 
 .drivedisk-level-container label {
   display: block;
-  font-size: 12px; /* Smaller font size for the label */
-  margin-bottom: 5px; /* Space between label and input */
+  font-size: 12px;
 }
 
 .drivedisk-level-input {
-  background-color: transparent; /* Make the input background transparent */
-  border: none; /* Remove default border */
-  outline: none; /* Remove focus outline */
-  color: white; /* White text color */
-  font-size: 16px; /* Font size of the input value */
-  width: 100%; /* Take full width of the container */
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  width: 100%;
 }
 
 .quick-level-select {
