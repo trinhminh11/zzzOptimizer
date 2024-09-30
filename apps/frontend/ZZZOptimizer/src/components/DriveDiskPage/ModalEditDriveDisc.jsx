@@ -40,9 +40,13 @@ function ModalEditDriveDisc(props) {
                 </button>
               </div>
 
-              <button className="col-lg-3 select-rarity">Rarity</button>
+              <button className="col-lg-3 select-rarity">
+                Rarity{" "}
+                <span>
+                  <i class="bi bi-arrow-down"></i>
+                </span>
+              </button>
             </div>
-
             {/* Select level */}
             <div class="artifact-level">
               <div class="drivedisk-level-container col-lg-5">
@@ -67,8 +71,26 @@ function ModalEditDriveDisc(props) {
                 <button>+</button>
               </div>
             </div>
+            {/* Select slot */}
+            <button className="select-slot">Select partition</button>
+
+            {/* Select Main Stat */}
+            <div className="main-stat-display">
+              <button className=" main-stat-select">
+                HP
+                <span>
+                  <i class="bi bi-arrow-down"></i>
+                </span>
+              </button>
+
+              <div className=" main-stat">2000</div>
+            </div>
           </div>
+
+          {/* Right Display */}
+          <div className="col-lg-6">{/* Select sub stat */}</div>
         </Modal.Body>
+
         <Modal.Footer className="modal-footer no-border">
           <Button variant="secondary" onClick={handleClose}>
             Close
