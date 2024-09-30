@@ -85,7 +85,13 @@ export default function AgentLocalDatabase({
               <tr key={`users-${agent.name}`}>
                 <td onClick={() => handleEditAgent(agent)}>
                   {/* <img src={agent.nameIcon} alt="demo" className="agentImg" /> */}
-                  <img src={agent.api_dir + "media/agent/icon/" + agent.name + ".png"} alt="demo" className="agentImg" />
+                  <img
+                    src={
+                      agent.api_dir + "media/agent/icon/" + agent.name + ".png"
+                    }
+                    alt="demo"
+                    className="agentImg"
+                  />
                   <span>{agent.realName}</span>
                 </td>
                 <td
@@ -102,13 +108,29 @@ export default function AgentLocalDatabase({
                   className="center-column"
                   onClick={() => handleEditAgent(agent)}
                 >
-                  <img src={agent.api_dir + "media/attribute/" + agent.attribute + ".png"} alt="demo" />
+                  <img
+                    src={
+                      agent.api_dir +
+                      "media/attribute/" +
+                      agent.attribute +
+                      ".png"
+                    }
+                    alt="demo"
+                  />
                 </td>
                 <td
                   className="center-column"
                   onClick={() => handleEditAgent(agent)}
                 >
-                  <img src={agent.api_dir + "media/specialty/" + agent.specialty + ".png"} alt="demo" />
+                  <img
+                    src={
+                      agent.api_dir +
+                      "media/specialty/" +
+                      agent.specialty +
+                      ".png"
+                    }
+                    alt="demo"
+                  />
                 </td>
                 <td onClick={() => handleEditAgent(agent)}>Default weapon</td>
                 <td className="center-column">

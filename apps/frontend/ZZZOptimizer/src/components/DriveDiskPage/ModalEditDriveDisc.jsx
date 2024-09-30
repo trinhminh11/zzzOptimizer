@@ -26,7 +26,7 @@ function ModalEditDriveDisc(props) {
           <div className="col-lg-6">
             {/* Set and Rarity selection */}
             <div class="artifact-header">
-              <div className="input-holder col-lg-9">
+              <div className="input-holder">
                 <input
                   id="field-set"
                   name="field-set"
@@ -40,7 +40,7 @@ function ModalEditDriveDisc(props) {
                 </button>
               </div>
 
-              <button className="col-lg-3 select-rarity">
+              <button className=" select-rarity">
                 Rarity{" "}
                 <span>
                   <i class="bi bi-arrow-down"></i>
@@ -83,12 +83,86 @@ function ModalEditDriveDisc(props) {
                 </span>
               </button>
 
-              <div className=" main-stat">2000</div>
+              <div className="main-stat">2000</div>
             </div>
           </div>
 
           {/* Right Display */}
-          <div className="col-lg-6">{/* Select sub stat */}</div>
+          <div className="col-lg-6">
+            {
+              <>
+                {" "}
+                {/* First sub stat */}
+                <div className="sub-stat">
+                  <div className="sub-stat-header">
+                    <button className="sub-stat-selection">Substat 1</button>
+                    <div className="sub-stat-display">0</div>
+                  </div>
+                  <div className="sub-stat-body">
+                    <input
+                      type="range"
+                      id="subStat1"
+                      name="subStat1"
+                      min="0"
+                      max="11"
+                      step={1}
+                    />
+                  </div>
+                </div>
+                {/*  Second */}
+                <div className="sub-stat">
+                  <div className="sub-stat-header">
+                    <button className="sub-stat-selection">Substat 2</button>
+                    <div className="sub-stat-display">0</div>
+                  </div>
+                  <div className="sub-stat-body">
+                    <input
+                      type="range"
+                      id="subStat2"
+                      name="subStat2"
+                      min="0"
+                      max="11"
+                      step={1}
+                    />
+                  </div>
+                </div>
+                {/* Third */}
+                <div className="sub-stat">
+                  <div className="sub-stat-header">
+                    <button className="sub-stat-selection">Substat 3</button>
+                    <div className="sub-stat-display">0</div>
+                  </div>
+                  <div className="sub-stat-body">
+                    <input
+                      type="range"
+                      id="subStat3"
+                      name="subStat3"
+                      min="0"
+                      max="11"
+                      step={1}
+                    />
+                  </div>
+                </div>
+                {/* Fourth */}
+                <div className="sub-stat">
+                  <div className="sub-stat-header">
+                    <button className="sub-stat-selection">Substat 4</button>
+                    <div className="sub-stat-display">0</div>
+                  </div>
+                  <div className="sub-stat-body">
+                    <input
+                      type="range"
+                      id="subStat4"
+                      name="subStat4"
+                      min="0"
+                      max="11"
+                      step={1}
+                    />
+                  </div>
+                </div>
+              </>
+            }
+          </div>
         </Modal.Body>
 
         <Modal.Footer className="modal-footer no-border">
