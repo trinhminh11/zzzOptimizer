@@ -31,6 +31,7 @@
   border: solid white 1px;
   display: flex;
   width: 70%;
+  color: white;
 }
 
 .select-rarity {
@@ -48,14 +49,14 @@
   border: none;
 }
 
-.input-holder button {
+.arrow-down {
   background-color: #404258;
   border-radius: 30%;
   border: none;
   color: white;
 }
 
-.input-holder button:hover {
+.arrow-down:hover {
   background-color: #7b7b7b;
 }
 
@@ -165,6 +166,43 @@
   border-width: 1px;
 }
 
+/* dropdown */
+.name-dropdown-menu {
+  position: absolute;
+  width: 100%; /* Keep the width consistent with the input */
+  z-index: 1000;
+  background-color: #1d1f27; /* Darker background */
+  border: 1px solid #4c4f58; /* Add a border for contrast */
+  border-radius: 4px; /* Rounded corners */
+  max-height: 200px; /* Limit height */
+  overflow-y: auto; /* Scroll if needed */
+  top: 100%; /* Position dropdown below the input */
+  left: 0; /* Align to the left of the input */
+  margin-top: 5px; /* Add space between the input and dropdown */
+}
+
+.name-select-dropdown-item {
+  background-color: red;
+  padding: 10px 15px; /* Adequate padding for clickable space */
+  color: #cfcfcf; /* Light text color */
+  background-color: transparent; /* Ensure no background */
+  border: none; /* Remove any borders */
+  border-radius: 0; /* Remove border radius for individual items */
+  cursor: pointer; /* Pointer cursor for usability */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
+  width: 100%;
+}
+
+.name-select-dropdown-item:hover {
+  background-color: #2d8ffb; /* Highlight the item on hover */
+  color: #ffffff; /* Make the text white for better visibility */
+}
+
+.no-matches {
+  padding: 10px 15px;
+  color: #888;
+}
+
 /* CSS for right display */
 .sub-stat {
   width: 100%;
@@ -172,6 +210,7 @@
   flex-direction: column;
   background-color: #2c3e50;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .sub-stat-header {
@@ -204,4 +243,13 @@
 .sub-stat-body input {
   width: 80%;
   margin-left: 10px;
+}
+
+.add-btn {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  width: 200px;
 }
