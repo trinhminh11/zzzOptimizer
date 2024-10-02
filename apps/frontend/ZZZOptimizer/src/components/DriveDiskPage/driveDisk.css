@@ -34,8 +34,42 @@
   color: white;
 }
 
+/* Rarity dropdown menu */
 .select-rarity {
+  width: 100%;
+  height: 100%;
+}
+
+.rarity-container {
   width: 30%;
+  position: relative;
+}
+.rarity-dropdown-menu {
+  position: absolute;
+  width: auto; /* Match the button width */
+  z-index: 1050; /* Ensure it stays on top of the modal */
+  background-color: #1d1f27; /* Darker background */
+  border: 1px solid #4c4f58; /* Add a border for contrast */
+  border-radius: 4px; /* Rounded corners */
+  max-height: 200px; /* Limit height */
+  overflow-y: auto; /* Scroll if needed */
+  margin-top: 5px; /* Space between the button and dropdown */
+  left: 0;
+}
+.rarity-select-dropdown-item {
+  padding: 10px 15px; /* Adequate padding for clickable space */
+  color: #cfcfcf; /* Light text color */
+  background-color: transparent; /* Ensure no background */
+  border: none; /* Remove any borders */
+  border-radius: 0; /* Remove border radius for individual items */
+  cursor: pointer; /* Pointer cursor for usability */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
+  width: 100%;
+}
+
+.rarity-select-dropdown-item:hover {
+  background-color: #2d8ffb; /* Highlight the item on hover */
+  color: #ffffff; /* Make the text white for better visibility */
 }
 
 #field-set {

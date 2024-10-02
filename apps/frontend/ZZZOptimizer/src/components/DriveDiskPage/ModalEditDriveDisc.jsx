@@ -1,6 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
+import util from "../../util";
 
 function ModalEditDriveDisc(props) {
   const { show, handleClose, listDriveDiscs } = props;
@@ -10,6 +11,13 @@ function ModalEditDriveDisc(props) {
   const [selectedDiscName, setSelectedDiscName] = useState("Unknown set"); // Selected disc
   const [showNameSelectDropdown, setShowNameSelectDropdown] = useState(false); // Control dropdown visibility
 
+  // Control dropdown visibility for rarity selection
+  const [showRaritySelectionDropdown, setShowRaritySelectionDropdown] =
+    useState(false);
+
+  const [selectedRarity, setSelectedRarity] = useState("Select Rarity"); // Selected rarity
+  const [selectedLevel, setSelectedLevel] = useState(""); // State for selected level
+
   // Filter the discs based on the search term
   const filteredDiscs = driveDiskNameSearch
     ? listDriveDiscs.filter((disc) =>
@@ -17,14 +25,47 @@ function ModalEditDriveDisc(props) {
       )
     : listDriveDiscs; // Show all discs if no search term is provided
 
-  // Handle disc selection
+  // Handle disc name selection
   const handleSelectDisc = (disc) => {
     setSelectedDiscName(disc.name); // Set selected name as input value
     setDriveDiskNameSearch(""); // Clear the search input after selection
     setShowNameSelectDropdown(false); // Close the dropdown after selection
   };
 
-  // End setting up for set selection
+  // Handle rarity selection
+  const handleSelectRarity = (rarity) => {
+    setSelectedRarity(rarity); // Set the selected rarity
+    setShowRaritySelectionDropdown(false); // Close the dropdown after selection
+  };
+
+  // Handle level selection and update input
+  const handleSelectLevel = (level) => {
+    setSelectedLevel(level); // Set the selected level
+  };
+
+  // Determine the maximum level based on selected rarity
+  const getMaxLevel = () => {
+    switch (selectedRarity) {
+      case "S":
+        return 15;
+      case "A":
+        return 12;
+      case "B":
+        return 9;
+      default:
+        return 15; // Default max level
+    }
+  };
+
+  // Handle manual level input
+  const handleLevelInputChange = (e) => {
+    const value = parseInt(e.target.value, 10); // Parse the input value to an integer
+    if (!isNaN(value) && value >= 0 && value <= getMaxLevel()) {
+      setSelectedLevel(value); // Update state with the parsed value if it's a valid number
+    } else {
+      setSelectedLevel(""); // Clear the input if the value is invalid
+    }
+  };
 
   return (
     <div>
@@ -91,35 +132,73 @@ function ModalEditDriveDisc(props) {
                 )}
               </div>
 
-              <button className=" select-rarity">
-                Rarity{" "}
-                <span>
-                  <i className="bi bi-arrow-down"></i>
-                </span>
-              </button>
+              <div className="rarity-container">
+                <button
+                  className=" select-rarity"
+                  onClick={() => setShowRaritySelectionDropdown(true)}
+                >
+                  {selectedRarity ? (
+                    <img
+                      src={util.wEngineRankIcon[selectedRarity]}
+                      alt={`Rank ${selectedRarity}`}
+                      style={{ width: "30px", height: "30px" }}
+                    />
+                  ) : (
+                    "Select Rarity"
+                  )}
+                  {!selectedRarity && (
+                    <span>
+                      <i className="bi bi-arrow-down"></i>
+                    </span>
+                  )}
+                </button>
+
+                {showRaritySelectionDropdown && (
+                  <div className="rarity-dropdown-menu">
+                    {["S", "A", "B"].map((rarity, index) => (
+                      <button
+                        key={index}
+                        className="rarity-select-dropdown-item"
+                        onClick={() => handleSelectRarity(rarity)}
+                      >
+                        Rank {rarity}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
+
             {/* Select level */}
             <div className="artifact-level">
-              <div className="drivedisk-level-container col-lg-5">
-                <label for="drivedisk-level-input">Level</label>
+              <div className="drivedisk-level-container col-lg-6">
+                <label htmlFor="drivedisk-level-input">Level</label>
                 <input
                   type="number"
                   id="drivedisk-level-input"
                   className="drivedisk-level-input"
-                  min="1"
-                  max="15"
+                  min="0" // Start from 0
+                  max={getMaxLevel()} // Set max level based on rarity
+                  value={selectedLevel} // The selected level is reflected here
                   placeholder="0"
+                  onChange={handleLevelInputChange} // Use the new input handler
                 />
               </div>
-              <div className="quick-level-select col-lg-7">
-                <button>-</button>
-                <button>0</button>
-                <button>3</button>
-                <button>6</button>
-                <button>9</button>
-                <button>12</button>
-                <button>15</button>
-                <button>+</button>
+              <div className="quick-level-select col-lg-6">
+                {[0, 3, 6, 9, 12, 15].map((level) => (
+                  <button
+                    key={level}
+                    onClick={() => handleSelectLevel(level)}
+                    disabled={level > getMaxLevel()} // Disable button if level is above max allowed
+                    style={{
+                      backgroundColor: level > getMaxLevel() ? "gray" : "", // Set background color to gray if disabled
+                      color: level > getMaxLevel() ? "white" : "", // Change text color for better visibility
+                      cursor: level > getMaxLevel() ? "not-allowed" : "pointer", // Change cursor style
+                    }}
+                  >
+                    {level}
+                  </button>
+                ))}
               </div>
             </div>
             {/* Select slot */}
