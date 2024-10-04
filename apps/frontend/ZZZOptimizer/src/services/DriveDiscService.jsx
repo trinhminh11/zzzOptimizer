@@ -5,4 +5,8 @@ function DriveDiscService() {
   return axios.get("/drivediscs");
 }
 
-export { DriveDiscService };
+function DriveDiscProperty() {
+  return axios.get("/drivediscs/property");
+}
+
+export { DriveDiscService, DriveDiscProperty };

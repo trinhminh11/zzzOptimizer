@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./driveDisk.css";
 import ModalEditDriveDisc from "./ModalEditDriveDisc";
-import { DriveDiscService } from "../../services/DriveDiscService";
+import {
+  DriveDiscService,
+  DriveDiscProperty,
+} from "../../services/DriveDiscService";
 
 function DriveDiskBody() {
   const [isShowModalEdit, setShowModalEdit] = useState(false);
@@ -9,6 +12,7 @@ function DriveDiskBody() {
 
   // set up list for storing Drive Disc from api
   const [listDriveDiscs, setListDriveDiscs] = useState([]);
+  const [listDriveDiscsProperty, setListDriveDiscProperty] = useState([]);
 
   // set up local storage for storing information
   const [listSelectedDriveDiscs, setListSelectedDriveDiscs] = useState(() => {
@@ -20,12 +24,20 @@ function DriveDiskBody() {
   // Set up function for storing data from api into the list
   useEffect(() => {
     getDriveDiscs();
+    getDriveDiscProperty();
   }, []);
 
   const getDriveDiscs = async () => {
     let res = await DriveDiscService();
     if (res) {
       setListDriveDiscs(res);
+    }
+  };
+
+  const getDriveDiscProperty = async () => {
+    let res = await DriveDiscProperty();
+    if (res) {
+      setListDriveDiscProperty(res);
     }
   };
 
@@ -47,6 +59,7 @@ function DriveDiskBody() {
         show={isShowModalEdit}
         handleClose={handleClose}
         listDriveDiscs={listDriveDiscs}
+        listDriveDiscsProperty={listDriveDiscsProperty}
       />
     </div>
   );

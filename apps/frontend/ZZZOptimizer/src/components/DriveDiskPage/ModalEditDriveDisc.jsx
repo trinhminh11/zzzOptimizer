@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import util from "../../util";
 
 function ModalEditDriveDisc(props) {
-  const { show, handleClose, listDriveDiscs } = props;
+  const { show, handleClose, listDriveDiscs, listDriveDiscsProperty } = props;
 
   // Start setting up for set selection
   const [driveDiskNameSearch, setDriveDiskNameSearch] = useState(""); // User's search term
@@ -15,8 +15,19 @@ function ModalEditDriveDisc(props) {
   const [showRaritySelectionDropdown, setShowRaritySelectionDropdown] =
     useState(false);
 
+  // Partition selection
+  const [selectedPartition, setSelectedPartition] =
+    useState("Select partition"); // Selected partition
+  const [showPartitionDropdown, setShowPartitionDropdown] = useState(false); // Control partition dropdown visibility
+
+  // Rarity selection
   const [selectedRarity, setSelectedRarity] = useState("Select Rarity"); // Selected rarity
   const [selectedLevel, setSelectedLevel] = useState(""); // State for selected level
+
+  // Main Stat selection
+  const [showMainStatDropdown, setShowMainStatDropdown] = useState(false);
+  const [selectedMainStat, setSelectedMainStat] = useState("Select Main Stat");
+  const [availableMainStats, setAvailableMainStats] = useState([]);
 
   // Filter the discs based on the search term
   const filteredDiscs = driveDiskNameSearch
@@ -36,6 +47,7 @@ function ModalEditDriveDisc(props) {
   const handleSelectRarity = (rarity) => {
     setSelectedRarity(rarity); // Set the selected rarity
     setShowRaritySelectionDropdown(false); // Close the dropdown after selection
+    console.log(listDriveDiscsProperty);
   };
 
   // Handle level selection and update input
@@ -65,6 +77,26 @@ function ModalEditDriveDisc(props) {
     } else {
       setSelectedLevel(""); // Clear the input if the value is invalid
     }
+  };
+
+  // Handle partition selection
+  const handleSelectPartition = (partition) => {
+    setSelectedPartition(partition);
+    setShowPartitionDropdown(false);
+
+    // Set available main stats based on selected partition
+    const partitionNumber = parseInt(partition.split(" ")[1]); // Extract the number from "Partition X"
+    if (partitionNumber >= 1 && partitionNumber <= 6) {
+      setAvailableMainStats(
+        listDriveDiscsProperty.availabelMainStats[partitionNumber]
+      );
+    }
+  };
+
+  // Handle main stat selection
+  const handleMainStatSelect = (stat) => {
+    setSelectedMainStat(stat); // Set selected main stat
+    setShowMainStatDropdown(false);
   };
 
   return (
@@ -201,17 +233,73 @@ function ModalEditDriveDisc(props) {
                 ))}
               </div>
             </div>
-            {/* Select slot */}
-            <button className="select-slot">Select partition</button>
+
+            {/* Select partition */}
+            <div className="partition-selection">
+              <button
+                className="select-slot"
+                onClick={() => setShowPartitionDropdown(!showPartitionDropdown)}
+              >
+                {selectedPartition}
+                <span>
+                  <i className="bi bi-arrow-down"></i>
+                </span>
+              </button>
+
+              {showPartitionDropdown && (
+                <div className="partition-dropdown-menu">
+                  {[1, 2, 3, 4, 5, 6].map((partition) => (
+                    <button
+                      key={partition}
+                      className="partition-select-dropdown-item"
+                      onClick={() =>
+                        handleSelectPartition(`Partition ${partition}`)
+                      }
+                    >
+                      Partition {partition}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Select Main Stat */}
             <div className="main-stat-display">
-              <button className=" main-stat-select">
-                HP
-                <span>
-                  <i class="bi bi-arrow-down"></i>
-                </span>
-              </button>
+              {availableMainStats.length === 1 ? (
+                // If only one main stat available, display it directly
+                <button
+                  className="main-stat-select"
+                  onClick={() => handleMainStatSelect(availableMainStats[0])}
+                >
+                  {availableMainStats[0]}
+                </button>
+              ) : (
+                // If multiple stats are available, show dropdown
+                <button
+                  className="main-stat-select"
+                  onClick={() => setShowMainStatDropdown(!showMainStatDropdown)}
+                >
+                  {selectedMainStat}
+                  <span>
+                    <i className="bi bi-arrow-down"></i>
+                  </span>
+                </button>
+              )}
+
+              {/* Dropdown for main stats if there are multiple options */}
+              {availableMainStats.length > 1 && showMainStatDropdown && (
+                <div className="main-stat-dropdown-menu">
+                  {availableMainStats.map((stat, index) => (
+                    <button
+                      key={index}
+                      className="main-stat-dropdown-item"
+                      onClick={() => handleMainStatSelect(stat)}
+                    >
+                      {stat}
+                    </button>
+                  ))}
+                </div>
+              )}
 
               <div className="main-stat">2000</div>
             </div>
