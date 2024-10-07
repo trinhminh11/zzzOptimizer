@@ -28,6 +28,7 @@ function ModalEditDriveDisc(props) {
   const [showMainStatDropdown, setShowMainStatDropdown] = useState(false);
   const [selectedMainStat, setSelectedMainStat] = useState("Select Main Stat");
   const [availableMainStats, setAvailableMainStats] = useState([]);
+  const [mainStatValue, setMainStatValue] = useState(0);
 
   // Filter the discs based on the search term
   const filteredDiscs = driveDiskNameSearch
@@ -47,7 +48,6 @@ function ModalEditDriveDisc(props) {
   const handleSelectRarity = (rarity) => {
     setSelectedRarity(rarity); // Set the selected rarity
     setShowRaritySelectionDropdown(false); // Close the dropdown after selection
-    console.log(listDriveDiscsProperty);
   };
 
   // Handle level selection and update input
@@ -94,9 +94,29 @@ function ModalEditDriveDisc(props) {
   };
 
   // Handle main stat selection
-  const handleMainStatSelect = (stat) => {
-    setSelectedMainStat(stat); // Set selected main stat
-    setShowMainStatDropdown(false);
+  const handleMainStatSelect = async (stat, selectedRarity, selectedLevel) => {
+    await setSelectedMainStat(stat); // Set selected main stat
+    await setShowMainStatDropdown(false);
+    handleUpdateMainStat(selectedMainStat, selectedRarity, selectedLevel);
+  };
+
+  const handleUpdateMainStat = (
+    selectedMainStat,
+    selectedRarity,
+    selectedLevel
+  ) => {
+    const value =
+      listDriveDiscsProperty.mainStatBase[selectedRarity][selectedMainStat];
+
+    const increment =
+      listDriveDiscsProperty.mainStatIncrement[selectedRarity][
+        selectedMainStat
+      ];
+
+    const valueWithIncrement = value + increment * selectedLevel;
+
+    setMainStatValue(valueWithIncrement);
+    console.log(increment);
   };
 
   return (
@@ -269,7 +289,13 @@ function ModalEditDriveDisc(props) {
                 // If only one main stat available, display it directly
                 <button
                   className="main-stat-select"
-                  onClick={() => handleMainStatSelect(availableMainStats[0])}
+                  onClick={() =>
+                    handleMainStatSelect(
+                      availableMainStats[0],
+                      selectedRarity,
+                      selectedLevel
+                    )
+                  }
                 >
                   {availableMainStats[0]}
                 </button>
@@ -293,7 +319,13 @@ function ModalEditDriveDisc(props) {
                     <button
                       key={index}
                       className="main-stat-dropdown-item"
-                      onClick={() => handleMainStatSelect(stat)}
+                      onClick={() =>
+                        handleMainStatSelect(
+                          stat,
+                          selectedRarity,
+                          selectedLevel
+                        )
+                      }
                     >
                       {stat}
                     </button>
@@ -301,7 +333,7 @@ function ModalEditDriveDisc(props) {
                 </div>
               )}
 
-              <div className="main-stat">2000</div>
+              <div className="main-stat">{mainStatValue}</div>
             </div>
           </div>
 
