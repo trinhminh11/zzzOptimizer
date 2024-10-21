@@ -87,17 +87,35 @@ function ModalEditDriveDisc(props) {
     // Set available main stats based on selected partition
     const partitionNumber = parseInt(partition.split(" ")[1]); // Extract the number from "Partition X"
     if (partitionNumber >= 1 && partitionNumber <= 6) {
-      setAvailableMainStats(
-        listDriveDiscsProperty.availabelMainStats[partitionNumber]
-      );
+      const newAvailableMainStats =
+        listDriveDiscsProperty.availabelMainStats[partitionNumber];
+      setAvailableMainStats(newAvailableMainStats);
+
+      console.log(availableMainStats);
+
+      // Automatically select the main stat if there's only one available
+      if (newAvailableMainStats.length === 1) {
+        const selectedStat = newAvailableMainStats[0];
+        setSelectedMainStat(selectedStat);
+        handleUpdateMainStat(selectedStat, selectedRarity, selectedLevel); // Update main stat value immediately
+      }
     }
   };
 
-  // Handle main stat selection
-  const handleMainStatSelect = async (stat, selectedRarity, selectedLevel) => {
-    await setSelectedMainStat(stat); // Set selected main stat
-    await setShowMainStatDropdown(false);
-    handleUpdateMainStat(selectedMainStat, selectedRarity, selectedLevel);
+  useEffect(() => {
+    if (
+      selectedMainStat !== "Select Main Stat" ||
+      selectedRarity !== "Select Rarity" ||
+      selectedLevel
+    ) {
+      handleUpdateMainStat(selectedMainStat, selectedRarity, selectedLevel);
+    }
+  }, [selectedMainStat, selectedRarity, selectedLevel]);
+
+  const handleMainStatSelect = (stat) => {
+    setSelectedMainStat(stat);
+    setShowMainStatDropdown(false);
+    handleUpdateMainStat(stat, selectedRarity, selectedLevel); // Pass 'stat' directly
   };
 
   const handleUpdateMainStat = (
@@ -116,7 +134,6 @@ function ModalEditDriveDisc(props) {
     const valueWithIncrement = value + increment * selectedLevel;
 
     setMainStatValue(valueWithIncrement);
-    console.log(increment);
   };
 
   return (
